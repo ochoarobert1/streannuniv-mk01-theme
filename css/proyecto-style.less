@@ -1,0 +1,39 @@
+/* --------------------------------------------------------------
+/* MAIN LESS MIXINS AND FUNCTIONS - LESSHAT
+-------------------------------------------------------------- */
+@import 'less/lesshat.less';
+/* --------------------------------------------------------------
+Variables
+-------------------------------------------------------------- */
+
+/* Colors */
+@black: #000000;
+@gray3: #333333;
+@gray6: #666666;
+@gray9: #999999;
+@grayc: #cccccc;
+@grayf0: #f0f0f0;
+@white: #ffffff;
+@blue: #2B7BCB;
+@orange: #FFB12A;
+
+/* --------------------------------------------------------------
+Body default
+-------------------------------------------------------------- */
+html, body { height: 100%; }
+
+body {
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    .transition(all .2s ease-in-out);
+
+    &:hover { text-decoration: none; }
+}
+
+
+.page-container {
+    min-height: 85vh;
+}
