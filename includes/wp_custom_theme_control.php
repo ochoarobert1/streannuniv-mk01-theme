@@ -23,6 +23,8 @@ function my_admin_menu() {
     add_submenu_page( 'streann_dashboard', __( 'Niveles', 'streannuniv' ), __( 'Niveles', 'streannuniv' ), 'manage_options', 'edit-tags.php?taxonomy=nivel_cursos');
     add_submenu_page( 'streann_dashboard', __( 'Quizzes', 'streannuniv' ), __( 'Quizzes', 'streannuniv' ), 'manage_options', 'edit.php?post_type=quiz');
     add_submenu_page( 'streann_dashboard', __( 'Agregar Quiz', 'streannuniv' ), __( 'Agregar Quiz', 'streannuniv' ), 'manage_options', 'post-new.php?post_type=quiz');
+    add_submenu_page( 'streann_dashboard', __( 'Testimonios', 'streannuniv' ), __( 'Testimonios', 'streannuniv' ), 'manage_options', 'edit.php?post_type=testimonios');
+    add_submenu_page( 'streann_dashboard', __( 'Agregar Testimonio', 'streannuniv' ), __( 'Agregar Testimonio', 'streannuniv' ), 'manage_options', 'post-new.php?post_type=testimonios');
     add_submenu_page( 'streann_dashboard', __( 'Opciones del Sitio', 'streannuniv' ), __( 'Opciones del Sitio', 'streannuniv' ), 'manage_options', 'streannuniv_custom_options', 'streannuniv_custom_options_callback');
 
     /* call register settings function */

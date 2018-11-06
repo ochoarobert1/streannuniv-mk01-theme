@@ -52,36 +52,36 @@ CUSTOM LOGIN OVERRIDE
   width: 120px;
   float: right;
   background-color: #073e55 !important;
-  background: -webkit-gradient(linear, left top, left bottom, from(#0154b6), to(#073e55));
-  background: -webkit-linear-gradient(top, #0154b6, #073e55);
-  background: -moz-linear-gradient(top, #0154b6, #073e55);
-  background: -ms-linear-gradient(top, #0154b6, #073e55);
-  background: -o-linear-gradient(top, #0154b6, #073e55);
-  background-image: -ms-linear-gradient(top, #0154b6 0%, #073e55 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#eb8025), to(#073e55));
+  background: -webkit-linear-gradient(top, #eb8025, #073e55);
+  background: -moz-linear-gradient(top, #eb8025, #073e55);
+  background: -ms-linear-gradient(top, #eb8025, #073e55);
+  background: -o-linear-gradient(top, #eb8025, #073e55);
+  background-image: -ms-linear-gradient(top, #eb8025 0%, #073e55 100%);
   color: #ffffff;
   -webkit-border-radius: 4px;
   border: 1px solid #032634;
 }
 .login .button-primary:hover {
   background-color: #073e55 !important;
-  background: -webkit-gradient(linear, left top, left bottom, from(#0154b6), to(#032634));
-  background: -webkit-linear-gradient(top, #0154b6, #032634);
-  background: -moz-linear-gradient(top, #0154b6, #032634);
-  background: -ms-linear-gradient(top, #0154b6, #032634);
-  background: -o-linear-gradient(top, #0154b6, #032634);
-  background-image: -ms-linear-gradient(top, #0154b6 0%, #032634 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#eb8025), to(#032634));
+  background: -webkit-linear-gradient(top, #eb8025, #032634);
+  background: -moz-linear-gradient(top, #eb8025, #032634);
+  background: -ms-linear-gradient(top, #eb8025, #032634);
+  background: -o-linear-gradient(top, #eb8025, #032634);
+  background-image: -ms-linear-gradient(top, #eb8025 0%, #032634 100%);
   color: #fff;
   -webkit-border-radius: 4px;
   border: 1px solid #032634;
 }
 .login .button-primary:active {
   background-color: #073e55 !important;
-  background: -webkit-gradient(linear, left top, left bottom, from(#0154b6), to(#073e55));
-  background: -webkit-linear-gradient(top, #0154b6, #073e55);
-  background: -moz-linear-gradient(top, #0154b6, #073e55);
-  background: -ms-linear-gradient(top, #0154b6, #073e55);
-  background: -o-linear-gradient(top, #0154b6, #073e55);
-  background-image: -ms-linear-gradient(top, #0154b6 0%, #073e55 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#eb8025), to(#073e55));
+  background: -webkit-linear-gradient(top, #eb8025, #073e55);
+  background: -moz-linear-gradient(top, #eb8025, #073e55);
+  background: -ms-linear-gradient(top, #eb8025, #073e55);
+  background: -o-linear-gradient(top, #eb8025, #073e55);
+  background-image: -ms-linear-gradient(top, #eb8025 0%, #073e55 100%);
   color: #fff;
   -webkit-border-radius: 4px;
   border: 1px solid #032634;
@@ -99,32 +99,32 @@ CUSTOM LOGIN OVERRIDE
 .login #backtoblog a,
 .login #nav a {
   text-decoration: none;
-  color: #0154b6;
+  color: #eb8025;
   font-weight: 400;
   font-size: 16px;
   line-height: 10px;
 }
 .wp-admin .postbox .hndle {
-  background-color: #0154b6;
+  background-color: #eb8025;
   color: #ffffff;
 }
 .wp-admin .postbox .toggle-indicator {
   color: #ffffff;
 }
 .wp-admin .custom-metabox-headline {
-  background: #0154b6;
+  background: #eb8025;
   padding: 5px 15px;
 }
 .wp-admin .custom-metabox-headline h2 {
   color: #ffffff;
 }
 .wp-admin #footer-thankyou a {
-  color: #0154b6;
+  color: #eb8025;
   font-weight: 500;
   text-decoration: none;
 }
 .wp-admin #footer-thankyou a:hover {
-  color: #0154b6;
+  color: #eb8025;
 }
 /* MENU */
 #wpwrap #adminmenumain #adminmenu .toplevel_page_streann_dashboard {
@@ -145,7 +145,7 @@ CUSTOM LOGIN OVERRIDE
   padding-left: 0;
 }
 .universidad_page_streannuniv_custom_options #wpcontent .streannuniv_custom_options-header {
-  background: #808080;
+  background: #eb8025;
   border-bottom: 1px solid black;
   padding: 20px;
 }

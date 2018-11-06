@@ -1,5 +1,4 @@
 <?php
-
 /* --------------------------------------------------------------
     ENQUEUE AND REGISTER CSS
 -------------------------------------------------------------- */
@@ -104,15 +103,15 @@ function streannuniv_widgets_init() {
         'after_title'   => '</h2>',
     ) );
 
-    //    register_sidebar( array(
-    //        'name' => __( 'Shop Sidebar', 'streannuniv' ),
-    //        'id' => 'shop_sidebar',
-    //        'description' => __( 'Estos widgets seran vistos en Tienda y Categorias de Producto', 'streannuniv' ),
-    //        'before_widget' => '<li id='%1$s' class='widget %2$s'>',
-    //        'after_widget'  => '</li>',
-    //        'before_title'  => '<h2 class='widgettitle'>',
-    //        'after_title'   => '</h2>',
-    //    ) );
+    register_sidebars( 4, array(
+        'name'          => __('Pie de Pagina %d', 'streannuniv'),
+        'id'            => 'sidebar_footer',
+        'description'   => __('Sección de Pie de Pagina', 'streannuniv'),
+        'before_widget' => '<li id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</li>',
+        'before_title'  => '<h2 class="widgettitle">',
+        'after_title'   => '</h2>'
+    ) );
 }
 
 /* --------------------------------------------------------------
@@ -154,6 +153,12 @@ require_once('includes/wp_custom_post_type.php');
 -------------------------------------------------------------- */
 
 require_once('includes/wp_custom_theme_control.php');
+
+/* --------------------------------------------------------------
+    ADD CUSTOM JS COMPOSER COMPONENTS
+-------------------------------------------------------------- */
+
+require_once('includes/wp_jscomposer_extended.php');
 
 /* --------------------------------------------------------------
     ADD CUSTOM IMAGE SIZE

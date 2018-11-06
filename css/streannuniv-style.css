@@ -15,7 +15,7 @@ body {
 }
 body {
   font-weight: 400;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Yantramanav', sans-serif;
 }
 a {
   -webkit-transition: all 0.2s ease-in-out;
@@ -26,6 +26,170 @@ a {
 a:hover {
   text-decoration: none;
 }
+/* --------------------------------------------------------------
+0.- GENERAL PURPOSE
+-------------------------------------------------------------- */
 .page-container {
   min-height: 85vh;
+}
+/* --------------------------------------------------------------
+1.- HEADER
+-------------------------------------------------------------- */
+.the-header {
+  z-index: 1000;
+}
+.the-header .the-navbar .navbar {
+  background: none transparent !important;
+}
+.the-header .the-navbar .navbar .img-navbar-logo {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.the-header .the-navbar .navbar .img-navbar-logo:hover {
+  -webkit-filter: grayscale(0.2);
+  -moz-filter: grayscale(0.2);
+  -ms-filter: grayscale(0.2);
+  filter: grayscale(0.2);
+}
+.the-header .the-navbar .navbar .btn-login-navbar {
+  background: #eb8025;
+  color: #ffffff;
+  padding: .8rem 3.5rem;
+  border: 1px solid #eb8025;
+}
+.the-header .the-navbar .navbar .btn-login-navbar:hover {
+  background: transparent;
+  color: #eb8025;
+}
+.the-header .the-navbar .navbar .navbar-nav li a {
+  position: relative;
+  padding: .5rem 0;
+  margin: .5rem 1rem;
+  font-size: 1.4rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.the-header .the-navbar .navbar .navbar-nav li a:before {
+  content: ' ';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #eb8025;
+  height: 4px;
+  width: 0%;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.the-header .the-navbar .navbar .navbar-nav li a:hover {
+  color: #eb8025;
+}
+.the-header .the-navbar .navbar .navbar-nav li a:hover:before {
+  width: 100%;
+}
+.header-internal .the-navbar .navbar .navbar-nav li a {
+  color: #000000 !important;
+}
+/* --------------------------------------------------------------
+2.- FRONT PAGE
+-------------------------------------------------------------- */
+.front-page-container {
+  margin-top: -11.5%;
+}
+/* --------------------------------------------------------------
+3.- FOOTER
+-------------------------------------------------------------- */
+.the-footer {
+  background: #282828;
+  color: #ffffff;
+  padding: 1rem;
+  padding-bottom: 3rem;
+}
+.the-footer .footer-item {
+  padding: 1rem 0;
+}
+.the-footer .footer-item img {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.the-footer .footer-item img:hover {
+  -webkit-filter: grayscale(0.3);
+  -moz-filter: grayscale(0.3);
+  -ms-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+}
+.the-footer .footer-item ul {
+  padding-left: 0;
+  list-style: none;
+}
+.the-footer .footer-item ul .widget {
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  font-weight: 300;
+}
+.the-footer .footer-item ul .widget .widgettitle {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: .8rem;
+}
+.the-footer .footer-item ul .widget .menu li a {
+  padding: .7rem 0;
+  color: #ffffff;
+}
+.the-footer .footer-item ul .widget .menu li a:hover {
+  color: #eb8025;
+}
+.the-footer .footer-fixed {
+  padding: 1.5rem 0;
+  padding-bottom: 3rem;
+}
+.the-footer .footer-social {
+  text-align: right;
+}
+.the-footer .footer-social a {
+  color: #ffffff;
+  background: #eb8025;
+  border: 1px solid #eb8025;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  padding: .756rem 1rem;
+  padding-bottom: .5rem;
+  min-width: 45px;
+  border-radius: 100%;
+  margin-left: .5rem;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.the-footer .footer-social a:hover {
+  background: transparent;
+}
+.footer-copyright {
+  background: #000000;
+  color: #ffffff;
+  padding: .8rem 0;
+}
+.footer-copyright .footer-copyright-inline h5 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 300;
+}
+.footer-copyright .footer-copyright-menu {
+  text-align: right;
+}
+.footer-copyright .footer-copyright-menu a {
+  color: #ffffff;
+  margin-left: 1rem;
+}
+.footer-copyright .footer-copyright-menu a:hover {
+  color: #eb8025;
 }

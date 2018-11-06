@@ -8,32 +8,231 @@ Variables
 
 /* Colors */
 @black: #000000;
+@darkgray: #282828;
 @gray3: #333333;
 @gray6: #666666;
 @gray9: #999999;
-@grayc: #cccccc;
-@grayf0: #f0f0f0;
-@white: #ffffff;
-@blue: #2B7BCB;
-@orange: #FFB12A;
+@grayc: #CCCCCC;
+@grayf0: #F0F0F0;
+@white: #FFFFFF;
+@orange: #EB8025;
 
 /* --------------------------------------------------------------
 Body default
 -------------------------------------------------------------- */
-html, body { height: 100%; }
+html,
+body {
+    height: 100%;
+}
 
 body {
     font-weight: 400;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Yantramanav', sans-serif;
 }
 
 a {
     .transition(all .2s ease-in-out);
 
-    &:hover { text-decoration: none; }
+    &:hover {
+        text-decoration: none;
+    }
 }
 
+/* --------------------------------------------------------------
+0.- GENERAL PURPOSE
+-------------------------------------------------------------- */
 
 .page-container {
     min-height: 85vh;
+}
+
+
+/* --------------------------------------------------------------
+1.- HEADER
+-------------------------------------------------------------- */
+.the-header {
+    z-index: 1000;
+
+    & .the-navbar {
+        & .navbar {
+            background: none transparent !important;
+
+            & .img-navbar-logo {
+                .transition(all .3s ease-in-out);
+
+                &:hover {
+                    .filter(grayscale(.2));
+                }
+            }
+
+            & .btn-login-navbar {
+                background: @orange;
+                color: @white;
+                padding: .8rem 3.5rem;
+                border: 1px solid @orange;
+
+                &:hover {
+                    background: transparent;
+                    color: @orange;
+                }
+            }
+
+            & .navbar-nav {
+                & li {
+                    & a {
+                        position: relative;
+                        padding: .5rem 0;
+                        margin: .5rem 1rem;
+                        font-size: 1.4rem;
+                        font-weight: 300;
+                        letter-spacing: 1px;
+                        text-transform: uppercase;
+                        color: @white;
+
+                        &:before {
+                            content: ' ';
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            background: @orange;
+                            height: 4px;
+                            width: 0%;
+                            .transition(all .3s ease-in-out);
+                        }
+
+                        &:hover {
+                            color: @orange;
+
+                            &:before {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.header-internal {
+    & .the-navbar {
+        & .navbar {
+            & .navbar-nav {
+                & li {
+                    & a {
+                        color: @black  !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* --------------------------------------------------------------
+2.- FRONT PAGE
+-------------------------------------------------------------- */
+.front-page-container {
+    margin-top: -11.5%;
+}
+
+/* --------------------------------------------------------------
+3.- FOOTER
+-------------------------------------------------------------- */
+.the-footer {
+    background: @darkgray;
+    color: @white;
+    padding: 1rem;
+    padding-bottom: 3rem;
+
+    & .footer-item {
+        padding: 1rem 0;
+
+        & img {
+            .transition(all .3s ease-in-out);
+
+            &:hover {
+                .filter(grayscale(.3));
+            }
+        }
+
+        & ul {
+            padding-left: 0;
+            list-style: none;
+
+            & .widget {
+                font-size: 1.2rem;
+                line-height: 1.2rem;
+                font-weight: 300;
+
+                & .widgettitle {
+                    font-size: 1.4rem;
+                    font-weight: 500;
+                    margin-bottom: .8rem;
+                }
+
+                & .menu li a {
+                    padding: .7rem 0;
+                    color: @white;
+
+                    &:hover {
+                        color: @orange;
+                    }
+                }
+            }
+        }
+    }
+
+    & .footer-fixed {
+        padding: 1.5rem 0;
+        padding-bottom: 3rem;
+    }
+
+    & .footer-social {
+        text-align: right;
+
+        & a {
+            color: @white;
+            background: @orange;
+            border: 1px solid @orange;
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+            padding: .756rem 1rem;
+            padding-bottom: .5rem;
+            min-width: 45px;
+            border-radius: 100%;
+            margin-left: .5rem;
+            .transition(all .3s ease-in-out);
+
+            &:hover {
+                background: transparent;
+            }
+        }
+    }
+}
+
+.footer-copyright {
+    background: @black;
+    color: @white;
+    padding: .8rem 0;
+
+    & .footer-copyright-inline h5 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 300;
+    }
+
+    & .footer-copyright-menu {
+        text-align: right;
+
+        & a {
+            color: @white;
+            margin-left: 1rem;
+
+            &:hover {
+                color: @orange;
+            }
+        }
+    }
 }
