@@ -18,12 +18,12 @@ function register_streannuniv_settings() {
 
 function my_admin_menu() {
     add_menu_page( 'Escritorio', 'Universidad', 'manage_options', 'streann_dashboard', 'streann_dashboard_callback', get_template_directory_uri() . '/images/plugin-icon.png', 0  );
-    add_submenu_page( 'streann_dashboard', __( 'Cursos', 'sombras' ), __( 'Cursos', 'sombras' ), 'manage_options', 'edit.php?post_type=cursos');
-    add_submenu_page( 'streann_dashboard', __( 'Agregar Curso', 'sombras' ), __( 'Agregar Curso', 'sombras' ), 'manage_options', 'post-new.php?post_type=cursos');
-    add_submenu_page( 'streann_dashboard', __( 'Niveles', 'sombras' ), __( 'Niveles', 'sombras' ), 'manage_options', 'edit-tags.php?taxonomy=nivel_cursos');
-    add_submenu_page( 'streann_dashboard', __( 'Quizzes', 'sombras' ), __( 'Quizzes', 'sombras' ), 'manage_options', 'edit.php?post_type=quiz');
-    add_submenu_page( 'streann_dashboard', __( 'Agregar Quiz', 'sombras' ), __( 'Agregar Quiz', 'sombras' ), 'manage_options', 'post-new.php?post_type=quiz');
-    add_submenu_page( 'streann_dashboard', __( 'Opciones del Sitio', 'sombras' ), __( 'Opciones del Sitio', 'sombras' ), 'manage_options', 'streannuniv_custom_options', 'streannuniv_custom_options_callback');
+    add_submenu_page( 'streann_dashboard', __( 'Cursos', 'streannuniv' ), __( 'Cursos', 'streannuniv' ), 'manage_options', 'edit.php?post_type=cursos');
+    add_submenu_page( 'streann_dashboard', __( 'Agregar Curso', 'streannuniv' ), __( 'Agregar Curso', 'streannuniv' ), 'manage_options', 'post-new.php?post_type=cursos');
+    add_submenu_page( 'streann_dashboard', __( 'Niveles', 'streannuniv' ), __( 'Niveles', 'streannuniv' ), 'manage_options', 'edit-tags.php?taxonomy=nivel_cursos');
+    add_submenu_page( 'streann_dashboard', __( 'Quizzes', 'streannuniv' ), __( 'Quizzes', 'streannuniv' ), 'manage_options', 'edit.php?post_type=quiz');
+    add_submenu_page( 'streann_dashboard', __( 'Agregar Quiz', 'streannuniv' ), __( 'Agregar Quiz', 'streannuniv' ), 'manage_options', 'post-new.php?post_type=quiz');
+    add_submenu_page( 'streann_dashboard', __( 'Opciones del Sitio', 'streannuniv' ), __( 'Opciones del Sitio', 'streannuniv' ), 'manage_options', 'streannuniv_custom_options', 'streannuniv_custom_options_callback');
 
     /* call register settings function */
     add_action( 'admin_init', 'register_streannuniv_settings' );
