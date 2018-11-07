@@ -161,3 +161,8 @@ CUSTOM LOGIN OVERRIDE
 .universidad_page_streannuniv_custom_options #wpcontent .streannuniv_custom_options-content {
   padding: 5px 20px;
 }
+.cmb-custom-3columns {
+  width: 30%;
+  display: inline-block;
+  padding: 1rem !important;
+}

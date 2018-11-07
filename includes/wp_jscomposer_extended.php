@@ -9,6 +9,7 @@ class VCExtendAddonClass {
         add_shortcode( 'custom_item_counter', array( $this, 'render_custom_item_counter' ) );
         add_shortcode( 'custom_media_item', array( $this, 'render_custom_media_item' ) );
         add_shortcode( 'custom_testimonials_slider', array( $this, 'render_custom_testimonials_slider' ) );
+        add_shortcode( 'custom_niveles_item', array( $this, 'render_custom_niveles_item' ) );
 
         // Register CSS and JS
         add_action( 'wp_enqueue_scripts', array( $this, 'loadCssAndJs' ) );
@@ -22,6 +23,19 @@ class VCExtendAddonClass {
             add_action('admin_notices', array( $this, 'showVcVersionNotice' ));
             return;
         }
+
+        /* GET LEVELS */
+        $products_array = array();
+        $terms = get_terms( array(
+            'taxonomy' => 'nivel_cursos',
+            'hide_empty' => false,
+        ) );
+        if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
+            foreach ( $terms as $term ) {
+                $niveles_array[$term->name] = $term->term_id;
+            }
+        }
+        /* GET LEVELS */
 
         /* WPBakery Logic Script */
         vc_map( array(
@@ -128,6 +142,37 @@ class VCExtendAddonClass {
                 ),
             )
         ) );
+
+        vc_map( array(
+            'name' => __('Items de Niveles de Cursos', 'streannuniv'),
+            'description' => __('Shortcode para insertar un Items de Niveles de Cursos', 'streannuniv'),
+            'base' => 'custom_niveles_item',
+            'class' => '',
+            'controls' => 'full',
+            'icon' => get_template_directory_uri() . '/images/favicon.png',
+            'category' => __('Content', 'js_composer'),
+            //'admin_enqueue_js' => get_template_directory_uri() . '/js/wp_composer_extended.js',
+            //'admin_enqueue_css' =>  get_template_directory_uri() . '/css/wp_composer_extended.css',
+            'params' => array(
+                array(
+                    'type' => 'attach_image',
+                    'class' => '',
+                    'heading' => __('Banner del Nivel', 'streannuniv'),
+                    'param_name' => 'image_icon',
+                    'value' => '',
+                    'description' => __('Inserte un Banner del Nivel. Se redimensionará a 50x50', 'streannuniv')
+                ),
+                array(
+                    'type' => 'dropdown',
+                    'admin_label' => true,
+                    "class" => "",
+                    'heading' => __( 'Seleccione Nivel', 'redkraniet' ),
+                    'description' => __( 'Seleccione Nivel a colocar en el item.', 'redkraniet' ),
+                    'param_name' => 'level_selection',
+                    'value' => $niveles_array,
+                ),
+            )
+        ) );
     }
 
     /* Shortcode logic how it should be rendered */
@@ -216,6 +261,48 @@ class VCExtendAddonClass {
         return $output;
     }
 
+    /* Shortcode logic how it should be rendered */
+    public function render_custom_niveles_item( $atts, $content ) {
+        extract( shortcode_atts( array( 'image_icon' => 'image_icon', 'level_selection' => 'level_selection' ), $atts ) );
+        $output = '';
+
+        $image_object = wp_get_attachment_image_src($image_icon, array('350', '195'));
+
+        $image_url = $image_object[0];
+
+
+        $term = get_term_by( 'id', $level_selection, 'nivel_cursos' );
+
+        $cursos = get_posts(array(
+            'post_type' => 'cursos',
+            'numberposts' => -1,
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'nivel_cursos',
+                    'field' => 'id',
+                    'terms' => $level_selection, // Where term_id of Term 1 is "1".
+                    'include_children' => false
+                )
+            )
+        ));
+        $output .= '<div class="custom-level-item">';
+        $output .= '<div class="custom-level-img-wrapper">';
+        $output .= '<img src="'. $image_url .'" class="align-self-center img-fluid"/>';
+        $output .= '</div>';
+        $output .= '<h3>' . $term->name . '</h3>';
+        $output .= '<ul>';
+        foreach ($cursos as $curso) {
+            $output .= '<li>';
+            $output .= '<a href="'. get_term_link($term, 'nivel_curso') .'" title="' . esc_html("Leer Más", "streannuniv") . '">';
+            $output .= $curso->post_title;
+            $output .= '</a>';
+            $output .= '</li>';
+        }
+        $output .= '</ul>';
+        $output .= '</div>';
+
+        return $output;
+    }
 
 
 

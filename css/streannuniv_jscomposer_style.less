@@ -15,7 +15,7 @@ Variables
 @grayc: #CCCCCC;
 @grayf0: #F0F0F0;
 @white: #FFFFFF;
-@orange: #EB8025;
+@orange: #FC5000;
 
 /* --------------------------------------------------------------
 CUSTOM ITEM COUNTERS
@@ -89,4 +89,85 @@ CUSTOM MEDIA ITEMS
     }
 
 
+}
+
+/* --------------------------------------------------------------
+CUSTOM MEDIA ITEMS
+-------------------------------------------------------------- */
+.vc_btn3-color-warning {
+    color: @orange;
+    border-color: @orange;
+
+    &:hover {
+        color: @white;
+        background: @orange;
+    }
+}
+
+/* --------------------------------------------------------------
+CUSTOM MEDIA ITEMS
+-------------------------------------------------------------- */
+.custom-level-item {
+    background: #f9f9f9;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden;
+    font-size: 1.1rem;
+    line-height: 2.5rem;
+    min-height: 450px;
+    .transition(all .3s ease-in-out);
+
+    & .custom-level-img-wrapper {
+        overflow: hidden;
+        max-height: 195px;
+
+        & img {
+            .transition(all .3s ease-in-out);
+        }
+    }
+
+    &:hover {
+        background: #efefef;
+
+        & .custom-level-img-wrapper {
+            & img {
+                .transform(scale(1.1));
+            }
+        }
+    }
+
+    & h3 {
+        font-size: 1.75rem;
+        margin-bottom: 0;
+        padding: 1.3rem 0;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    & ul {
+        padding: 0 3rem;
+        list-style: none;
+
+        & li {
+            position: relative;
+
+            &:before {
+                content: '+';
+                position: absolute;
+                top: 0px;
+                left: -1.5rem;
+                font-weight: 900;
+                color: @orange;
+                font-size: 2rem;
+            }
+
+            & a {
+                color: @black;
+
+                &:hover {
+                    color: @orange;
+                }
+            }
+        }
+    }
 }
