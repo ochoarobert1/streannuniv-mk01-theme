@@ -35,3 +35,18 @@ function add_menuclass($ulclass) {
     return preg_replace('/<a /', '<a class="nav-link"', $ulclass);
 }
 add_filter('wp_nav_menu','add_menuclass');
+
+/* --------------------------------------------------------------
+/* CUSTOM COURSE LEVEL ARRAY
+-------------------------------------------------------------- */
+function get_levels() {
+    $list_nivel = array();
+    $array_nivel= new WP_Query(array('post_type' => 'nivel', 'posts_per_page' => -1, 'order' => 'ASC', 'orderby' => 'date'));
+    if ($array_nivel->have_posts()) :
+    while ($array_nivel->have_posts()) : $array_nivel->the_post();
+    $list_nivel[get_the_ID()] = get_the_title();
+    endwhile;
+    endif;
+
+    return $list_nivel;
+}

@@ -18,9 +18,10 @@ function register_streannuniv_settings() {
 
 function my_admin_menu() {
     add_menu_page( 'Escritorio', 'Universidad', 'manage_options', 'streann_dashboard', 'streann_dashboard_callback', get_template_directory_uri() . '/images/plugin-icon.png', 0  );
+    add_submenu_page( 'streann_dashboard', __( 'Niveles', 'streannuniv' ), __( 'Niveles', 'streannuniv' ), 'manage_options', 'edit.php?post_type=nivel');
+    add_submenu_page( 'streann_dashboard', __( 'Agregar Nivel', 'streannuniv' ), __( 'Agregar Nivel', 'streannuniv' ), 'manage_options', 'post-new.php?post_type=nivel');
     add_submenu_page( 'streann_dashboard', __( 'Cursos', 'streannuniv' ), __( 'Cursos', 'streannuniv' ), 'manage_options', 'edit.php?post_type=cursos');
     add_submenu_page( 'streann_dashboard', __( 'Agregar Curso', 'streannuniv' ), __( 'Agregar Curso', 'streannuniv' ), 'manage_options', 'post-new.php?post_type=cursos');
-    add_submenu_page( 'streann_dashboard', __( 'Niveles', 'streannuniv' ), __( 'Niveles', 'streannuniv' ), 'manage_options', 'edit-tags.php?taxonomy=nivel_cursos');
     add_submenu_page( 'streann_dashboard', __( 'Quizzes', 'streannuniv' ), __( 'Quizzes', 'streannuniv' ), 'manage_options', 'edit.php?post_type=quiz');
     add_submenu_page( 'streann_dashboard', __( 'Agregar Quiz', 'streannuniv' ), __( 'Agregar Quiz', 'streannuniv' ), 'manage_options', 'post-new.php?post_type=quiz');
     add_submenu_page( 'streann_dashboard', __( 'Testimonios', 'streannuniv' ), __( 'Testimonios', 'streannuniv' ), 'manage_options', 'edit.php?post_type=testimonios');

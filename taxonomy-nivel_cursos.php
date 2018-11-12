@@ -42,7 +42,7 @@
             <div class="container-fluid p-0">
                 <div class="row no-gutters">
                     <div class="section-container col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <ul class="nav nav-tabs nav-justified custom-nav" id="myTab" role="tablist">
+                        <ul class="nav nav-tabs custom-nav" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
                             </li>

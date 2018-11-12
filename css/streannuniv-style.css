@@ -224,3 +224,16 @@ a:hover {
   font-size: 1.3rem;
   line-height: 2.5rem;
 }
+.taxonomy-banner {
+  background: black;
+}
+.taxonomy-banner .page-banner-wrapper {
+  display: none;
+}
+.custom-nav {
+  background: #fc5100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .5rem;
+}

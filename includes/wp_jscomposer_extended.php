@@ -173,6 +173,8 @@ class VCExtendAddonClass {
                 ),
             )
         ) );
+
+
     }
 
     /* Shortcode logic how it should be rendered */
