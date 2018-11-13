@@ -61,6 +61,50 @@
         </div>
     </div>
 </footer>
+<?php if ( !is_user_logged_in() ) { ?>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4><?php _e('Iniciar Sesión', 'srteannuniv'); ?></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="login" action="login" method="post">
+                    <div class="row align-items-center form-item">
+                        <div class="col-12">
+                            <p><?php _e('Ingresa con tus datos y empieza a aprender mediante nuestros cursos', 'streannuniv'); ?></p>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" id="username" name="username" class="form-control" placeholder="<?php _e('Correo electrónico:', 'streannuniv'); ?>" />
+                            <small class="danger d-none"></small>
+                        </div>
+                    </div>
+                    <div class="row align-items-center form-item">
+                        <div class="col-12">
+                            <input type="password" id="password" name="password" class="form-control" placeholder="<?php _e('Contraseña:', 'streannuniv'); ?>" />
+                            <small class="danger d-none"></small>
+                        </div>
+                        <div class="col-12">
+                            <a class="lost" href="<?php echo wp_lostpassword_url(); ?>"><?php _e('¿Has perdido tu contraseña?'); ?></a>
+                        </div>
+                    </div>
+                    <div class="row align-items-center justify-content-end form-item">
+                        <div class="col-12 status"></div>
+                        <div class="col-12">
+                            <button class="btn btn-md btn-login"><?php _e('Ingresar', 'streannuniv'); ?></button>
+                        </div>
+                    </div>
+                    <?php wp_nonce_field( 'ajax-login-nonce', 'security' ); ?>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<?php } ?>
 <?php wp_footer() ?>
 </body>
 

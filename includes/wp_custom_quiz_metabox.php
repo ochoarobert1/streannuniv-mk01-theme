@@ -38,7 +38,7 @@ $cmb_quizzes->add_group_field( $quiz_field_id, [
     'name'       => esc_html__( 'Texto de la Pregunta:', 'bylablum' ),
     'desc'       => esc_html__( 'Inserte el argumento de la Pregunta', 'bylablum' ),
     'id'         => $prefix . 'pregunta_text',
-    'type'       => 'textarea',
+    'type'       => 'wysiwyg',
     //'show_on_cb' => 'yourprefix_hide_if_no_cats', // function should return a bool value
     // 'sanitization_cb' => 'my_custom_sanitization', // custom sanitization callback parameter
     // 'escape_cb'       => 'my_custom_escaping',  // custom escaping callback parameter

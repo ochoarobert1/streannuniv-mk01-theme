@@ -25,16 +25,19 @@ class VCExtendAddonClass {
         }
 
         /* GET LEVELS */
-        $products_array = array();
-        $terms = get_terms( array(
-            'taxonomy' => 'nivel_cursos',
-            'hide_empty' => false,
-        ) );
-        if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
-            foreach ( $terms as $term ) {
-                $niveles_array[$term->name] = $term->term_id;
-            }
+        function get_levels_inverted() {
+            $list_nivel = array();
+            $array_nivel= new WP_Query(array('post_type' => 'nivel', 'posts_per_page' => -1, 'order' => 'ASC', 'orderby' => 'date'));
+            if ($array_nivel->have_posts()) :
+            while ($array_nivel->have_posts()) : $array_nivel->the_post();
+            $list_nivel[get_the_title()] = get_the_ID();
+            endwhile;
+            endif;
+
+            return $list_nivel;
         }
+
+
         /* GET LEVELS */
 
         /* WPBakery Logic Script */
@@ -169,7 +172,7 @@ class VCExtendAddonClass {
                     'heading' => __( 'Seleccione Nivel', 'redkraniet' ),
                     'description' => __( 'Seleccione Nivel a colocar en el item.', 'redkraniet' ),
                     'param_name' => 'level_selection',
-                    'value' => $niveles_array,
+                    'value' => get_levels_inverted(),
                 ),
             )
         ) );
@@ -273,17 +276,16 @@ class VCExtendAddonClass {
         $image_url = $image_object[0];
 
 
-        $term = get_term_by( 'id', $level_selection, 'nivel_cursos' );
+        $term = get_post( $level_selection );
 
         $cursos = get_posts(array(
             'post_type' => 'cursos',
             'numberposts' => -1,
-            'tax_query' => array(
+            'meta_query' => array(
                 array(
-                    'taxonomy' => 'nivel_cursos',
-                    'field' => 'id',
-                    'terms' => $level_selection, // Where term_id of Term 1 is "1".
-                    'include_children' => false
+                    'key' => 'su_curso_nivel',
+                    'value' => array($level_selection), // Where term_id of Term 1 is "1".
+                    'compare' => 'IN'
                 )
             )
         ));
@@ -291,11 +293,11 @@ class VCExtendAddonClass {
         $output .= '<div class="custom-level-img-wrapper">';
         $output .= '<img src="'. $image_url .'" class="align-self-center img-fluid"/>';
         $output .= '</div>';
-        $output .= '<h3>' . $term->name . '</h3>';
+        $output .= '<h3>' . $term->post_title . '</h3>';
         $output .= '<ul>';
         foreach ($cursos as $curso) {
             $output .= '<li>';
-            $output .= '<a href="'. get_term_link($term, 'nivel_curso') .'" title="' . esc_html("Leer Más", "streannuniv") . '">';
+            $output .= '<a href="'. get_permalink($term) .'" title="' . esc_html("Leer Más", "streannuniv") . '">';
             $output .= $curso->post_title;
             $output .= '</a>';
             $output .= '</li>';

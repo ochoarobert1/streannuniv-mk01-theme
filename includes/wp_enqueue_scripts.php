@@ -123,6 +123,23 @@ function streannuniv_load_js() {
         /*- MAIN FUNCTIONS -*/
         wp_register_script('main-functions', get_template_directory_uri() . '/js/functions.js', array('jquery'), $version_remove, true);
         wp_enqueue_script('main-functions');
+
+         wp_localize_script( 'main-functions', 'ajax_object', array(
+            'ajaxurl' => admin_url( 'admin-ajax.php' ),
+            'loadingmessage' => __('Validando tus datos, por favor espere...', 'streannuniv')
+        ));
+
+        if (is_page('mi-cuenta')) {
+            wp_register_script('user-functions', get_template_directory_uri() . '/js/user-functions.js', array('jquery'), $version_remove, true);
+            wp_enqueue_script('user-functions');
+        }
+
+         wp_localize_script( 'user-functions', 'ajax_object', array(
+            'ajaxurl' => admin_url( 'admin-ajax.php' ),
+             'loadingmessage' => __('Actualizando tus datos, por favor espere...', 'streannuniv')
+        ));
+
+
     }
 }
 

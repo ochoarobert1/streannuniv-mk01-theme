@@ -237,3 +237,185 @@ a:hover {
   justify-content: center;
   padding: .5rem;
 }
+.custom-nav .nav-item {
+  margin: auto 3rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.custom-nav .nav-item .nav-link {
+  border: 0;
+  color: #ffffff;
+  border-bottom: 5px solid transparent;
+}
+.custom-nav .nav-item .nav-link :hover {
+  border: 0;
+  border-bottom: 5px solid white !important;
+}
+.custom-nav .nav-item .active {
+  color: white !important;
+  background-color: transparent;
+  border-color: transparent;
+  border-bottom: 5px solid white !important;
+  border-radius: 0 !important !important;
+}
+.taxonomy-info {
+  min-height: 25vh;
+  color: #ffffff;
+}
+.taxonomy-info .btn-curso {
+  background: #fc5000;
+  border-radius: 0;
+  border: 1px solid #ffffff;
+  padding: 1rem 3rem;
+  font-size: 1.2rem;
+  margin: 2rem 0;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.taxonomy-counter {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  font-weight: 300;
+}
+.taxonomy-counter span {
+  font-weight: 700;
+}
+.form-item {
+  margin-bottom: 1rem;
+}
+.form-item input {
+  border-radius: 0;
+  border: 0;
+  background: #f0f0f0;
+}
+.form-item .btn-login {
+  background: #fc5000;
+  color: white;
+  padding: .5rem 2rem;
+  float: right;
+}
+.form-item .danger {
+  background: red;
+  width: 100%;
+  display: block;
+  padding: .2rem 1rem;
+  color: white;
+}
+.form-item .lost {
+  margin-top: .5rem;
+  display: block;
+  font-weight: 600;
+  color: #fc5000;
+}
+.status {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 27px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #fc5000;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 6px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 6px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 26px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 45px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(19px, 0);
+  }
+}
+/* --------------------------------------------------------------
+4.- USER DASHBOARD
+-------------------------------------------------------------- */
+.user-container {
+  margin: 1rem 0;
+}
+.user-container .nav-user .nav-item {
+  border: 1px solid #eaeaea;
+}
+.user-container .nav-user .nav-item .nav-link {
+  border: 0;
+  border-radius: 0;
+  color: #000000;
+}
+.user-container .nav-user .nav-item .active {
+  background: #fc5000;
+  color: #ffffff;
+}
+.user-container .tab-user .tab-pane {
+  border: 1px solid #eaeaea;
+  min-height: 30vh;
+  padding: .8rem;
+}
+.user-container .tab-user .tab-pane .custom-user-form-field {
+  margin-top: 1rem;
+}
+.user-container .tab-user .tab-pane .custom-user-form-field input {
+  border: 0;
+  border-radius: 0;
+  background: #eaeaea;
+}
+.user-container .tab-user .tab-pane .custom-user-form-field .danger {
+  background: red;
+  width: 100%;
+  display: block;
+  padding: .2rem 1rem;
+  color: #ffffff;
+}
+.user-container .btn-submit {
+  background: #fc5000;
+  color: #ffffff;
+  display: block;
+  margin: 0 auto;
+  margin-right: 0;
+  border-radius: 0;
+}
+/* --------------------------------------------------------------
+5.- PLAYER
+-------------------------------------------------------------- */
+.player-container {
+  background: #2f2f2f;
+  color: white;
+}

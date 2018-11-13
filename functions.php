@@ -172,3 +172,101 @@ if ( function_exists('add_image_size') ) {
     add_image_size('blog_img', 276, 217, true);
     add_image_size('single_img', 636, 297, true );
 }
+
+/* ----------------------------------------------------------- */
+/* LOGIN USER
+-------------------------------------------------------------- */
+function ajax_login(){
+
+    // First check the nonce, if it fails the function will break
+    check_ajax_referer( 'ajax-login-nonce', 'security' );
+
+    // Nonce is checked, get the POST data and sign user on
+    $info = array();
+    $info['user_login'] = $_POST['username'];
+    $info['user_password'] = $_POST['password'];
+    $info['remember'] = true;
+
+    $user_signon = wp_signon( $info, false );
+    if ( is_wp_error($user_signon) ){
+        echo json_encode(array('loggedin'=>false, 'message'=> '<strong>' . __('Error:', 'streannuniv') . '</strong> ' . __('Correo electrónico o contraseña incorrecta.', 'streannuniv')));
+    } else {
+        echo json_encode(array('loggedin'=>true, 'url' => wp_get_referer(), 'message'=> '<strong>' . __('Éxito:', 'streannuniv') . '</strong> ' . __('Bienvenido, iniciando su sesión.', 'streannuniv')));
+    }
+
+    die();
+}
+
+add_action('wp_ajax_nopriv_ajaxlogin', 'ajax_login' );
+
+/* --------------------------------------------------------------
+    VIMEO CUSTOM FETCHER
+-------------------------------------------------------------- */
+function streann_vimeo_fetch($link) {
+    /* REMOVER PROTOCOLO HTTPS:// */
+    $link_protocol = trim($link, 'https://');
+    /* SEPARAMOS EL LINK EN PEDAZOS EN ARRAY */
+    $link_array = explode('/', $link_protocol, 3);
+    /* DEVUELVO EL ID DEL VIDEO */
+    return $link_array[1];
+
+}
+
+/* ----------------------------------------------------------- */
+/* USER DATA UPDATER
+-------------------------------------------------------------- */
+function ajax_user_data_updater () {
+
+    // Nonce is checked, get the POST data and sign user on
+    $info = array();
+
+    $user_id = $_POST['user_id'];
+
+    if (isset($_POST['first_name'])) {
+        update_user_meta($user_id, 'first_name', $_POST['first_name']);
+    }
+
+    if (isset($_POST['last_name'])) {
+        update_user_meta($user_id, 'last_name', $_POST['last_name']);
+    }
+
+    if (isset($_POST['business'])) {
+        update_user_meta($user_id, 'business', $_POST['business']);
+    }
+
+    echo json_encode(array('message'=> '<strong>' . __('Éxito:', 'streannuniv') . '</strong> ' . __('Los datos han sido actualizados.', 'streannuniv')));
+
+    die();
+}
+
+add_action('wp_ajax_user_data_ajax', 'ajax_user_data_updater');
+
+/* ----------------------------------------------------------- */
+/* USER SOCIAL UPDATER
+-------------------------------------------------------------- */
+function ajax_user_social_updater () {
+
+    check_ajax_referer('social-data-nonce', 'social-data-security');
+    // Nonce is checked, get the POST data and sign user on
+    $info = array();
+
+    $user_id = $_POST['user_id'];
+
+    if (isset($_POST['facebook_user'])) {
+        update_user_meta($user_id, 'facebook_user', $_POST['facebook_user']);
+    }
+
+    if (isset($_POST['twitter_user'])) {
+        update_user_meta($user_id, 'twitter_user', $_POST['twitter_user']);
+    }
+
+    if (isset($_POST['instagram_user'])) {
+        update_user_meta($user_id, 'instagram_user', $_POST['instagram_user']);
+    }
+
+    echo json_encode(array('message'=> '<strong>' . __('Éxito:', 'streannuniv') . '</strong> ' . __('Los datos han sido actualizados.', 'streannuniv')));
+
+    die();
+}
+
+add_action('wp_ajax_social_data_ajax', 'ajax_user_social_updater');

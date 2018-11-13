@@ -52,48 +52,5 @@
         <?php get_template_part('includes/ga-script'); ?>
     </head>
 
-    <body class="the-main-body <?php echo join(' ', get_body_class()); ?>" itemscope itemtype="http://schema.org/WebPage">
+    <body class="the-main-body player-container <?php echo join(' ', get_body_class()); ?>" itemscope itemtype="http://schema.org/WebPage">
         <div id="fb-root"></div>
-        <header class="container-fluid p-0" role="banner" itemscope itemtype="http://schema.org/WPHeader">
-            <div class="row no-gutters">
-                <?php if (is_front_page()) { $class = 'header-home'; } else { $class = 'header-internal'; } ?>
-                <div class="the-header col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 <?php echo $class; ?>">
-                    <div class="container-fluid">
-                        <div class="row align-items-center justify-content-center no-gutters">
-                            <div class="the-navbar col-xl-11 col-lg-11 col-md-11 col-sm-12 col-12">
-                                <nav class="navbar navbar-expand-md bg-light" role="navigation">
-                                    <a class="navbar-brand" href="<?php echo home_url('/');?>" title="<?php echo get_bloginfo('name'); ?>">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="<?php echo get_bloginfo('name'); ?>" class="img-fluid img-navbar-logo" />
-                                    </a>
-                                    <!-- Brand and toggle get grouped for better mobile display -->
-                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
-                                        <span class="navbar-toggler-icon"></span>
-                                    </button>
-
-                                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                        <?php
-                                        wp_nav_menu( array(
-                                            'theme_location'    => 'header_menu',
-                                            'depth'             => 1, // 1 = with dropdowns, 0 = no dropdowns.
-                                            'container'         => 'ul',
-                                            'menu_class'        => 'navbar-nav ml-auto mr-auto',
-                                        ) );
-                                        ?>
-                                        <?php if (is_user_logged_in()) { ?>
-                                        <a class="btn btn-outline-primary btn-login-navbar my-2 my-sm-0" href="<?php echo home_url('/mi-cuenta'); ?>" title="<?php _e('Ir a Mi Cuenta', 'streannuniv'); ?>">
-                                            <?php _e('Mi Cuenta', 'streannuniv'); ?>
-                                        </a>
-                                        <?php } else { ?>
-                                        <button class="btn btn-outline-primary btn-login-navbar my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal">
-                                            <?php _e('Iniciar Sesión', 'streannuniv'); ?>
-                                        </button>
-                                        <?php } ?>
-                                    </div>
-
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
