@@ -1,5 +1,30 @@
 <?php
 /* --------------------------------------------------------------
+/* THEME ACTIVATION HOOK
+-------------------------------------------------------------- */
+function streann_activation_callback() {
+    global $wpdb;
+
+    $charset_collate = $wpdb->get_charset_collate();
+
+    $sql = "CREATE TABLE `{$wpdb->prefix}user_video` (
+  id mediumint(9) NOT NULL AUTO_INCREMENT,
+  user_id mediumint(9) NOT NULL,
+  last_video mediumint(9) NOT NULL,
+  last_quiz mediumint(9) NOT NULL,
+  level_access mediumint(9) NOT NULL,
+  certificate_access boolean NOT NULL default 0,
+  PRIMARY KEY  (id)
+) $charset_collate;";
+
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+    dbDelta( $sql );
+
+    flush_rewrite_rules();
+}
+
+add_action('after_switch_theme', 'streann_activation_callback', 10 , 2);
+/* --------------------------------------------------------------
     ENQUEUE AND REGISTER CSS
 -------------------------------------------------------------- */
 
@@ -22,7 +47,7 @@ function my_jquery_enqueue() {
         /*- JQUERY ON WEB  -*/
         wp_register_script( 'jquery', 'https://code.jquery.com/jquery-3.3.1.min.js', false, '3.3.1', false);
         /*- JQUERY MIGRATE ON WEB  -*/
-        wp_register_script( 'jquery-migrate', 'http://code.jquery.com/jquery-migrate-3.0.1.min.js', array('jquery'), '3.0.1', true);
+        wp_register_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-3.0.1.min.js', array('jquery'), '3.0.1', true);
     }
     wp_enqueue_script('jquery');
     wp_enqueue_script('jquery-migrate');
@@ -198,6 +223,29 @@ function ajax_login(){
 }
 
 add_action('wp_ajax_nopriv_ajaxlogin', 'ajax_login' );
+
+/* ----------------------------------------------------------- */
+/* LOGIN PAGE USER
+-------------------------------------------------------------- */
+function ajax_page_login(){
+
+    // Nonce is checked, get the POST data and sign user on
+    $info = array();
+    $info['user_login'] = $_POST['username'];
+    $info['user_password'] = $_POST['password'];
+    $info['remember'] = true;
+
+    $user_signon = wp_signon( $info, false );
+    if ( is_wp_error($user_signon) ){
+        echo json_encode(array('loggedin'=>false, 'message'=> '<strong>' . __('Error:', 'streannuniv') . '</strong> ' . __('Correo electrónico o contraseña incorrecta.', 'streannuniv')));
+    } else {
+        echo json_encode(array('loggedin'=>true, 'url' => wp_get_referer(), 'message'=> '<strong>' . __('Éxito:', 'streannuniv') . '</strong> ' . __('Bienvenido, iniciando su sesión.', 'streannuniv')));
+    }
+
+    die();
+}
+
+add_action('wp_ajax_nopriv_ajaxpagelogin', 'ajax_page_login' );
 
 /* --------------------------------------------------------------
     VIMEO CUSTOM FETCHER

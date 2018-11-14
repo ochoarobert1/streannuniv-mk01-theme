@@ -79,13 +79,13 @@
                             <p><?php _e('Ingresa con tus datos y empieza a aprender mediante nuestros cursos', 'streannuniv'); ?></p>
                         </div>
                         <div class="col-12">
-                            <input type="text" id="username" name="username" class="form-control" placeholder="<?php _e('Correo electrónico:', 'streannuniv'); ?>" />
+                            <input type="text" id="username" name="username" class="form-control" placeholder="<?php _e('Correo electrónico:', 'streannuniv'); ?>" autocomplete="username" />
                             <small class="danger d-none"></small>
                         </div>
                     </div>
                     <div class="row align-items-center form-item">
                         <div class="col-12">
-                            <input type="password" id="password" name="password" class="form-control" placeholder="<?php _e('Contraseña:', 'streannuniv'); ?>" />
+                            <input type="password" id="password" name="password" class="form-control" placeholder="<?php _e('Contraseña:', 'streannuniv'); ?>" autocomplete="current-password" />
                             <small class="danger d-none"></small>
                         </div>
                         <div class="col-12">

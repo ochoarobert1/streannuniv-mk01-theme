@@ -124,7 +124,7 @@ function streannuniv_load_js() {
         wp_register_script('main-functions', get_template_directory_uri() . '/js/functions.js', array('jquery'), $version_remove, true);
         wp_enqueue_script('main-functions');
 
-         wp_localize_script( 'main-functions', 'ajax_object', array(
+        wp_localize_script( 'main-functions', 'ajax_object', array(
             'ajaxurl' => admin_url( 'admin-ajax.php' ),
             'loadingmessage' => __('Validando tus datos, por favor espere...', 'streannuniv')
         ));
@@ -132,13 +132,25 @@ function streannuniv_load_js() {
         if (is_page('mi-cuenta')) {
             wp_register_script('user-functions', get_template_directory_uri() . '/js/user-functions.js', array('jquery'), $version_remove, true);
             wp_enqueue_script('user-functions');
+
+            wp_localize_script( 'user-functions', 'ajax_object', array(
+                'ajaxurl' => admin_url( 'admin-ajax.php' ),
+                'loadingmessage' => __('Actualizando tus datos, por favor espere...', 'streannuniv')
+            ));
         }
 
-         wp_localize_script( 'user-functions', 'ajax_object', array(
-            'ajaxurl' => admin_url( 'admin-ajax.php' ),
-             'loadingmessage' => __('Actualizando tus datos, por favor espere...', 'streannuniv')
-        ));
+        if (is_page('player')) {
+            wp_register_script('vimeo-js', 'https://player.vimeo.com/api/player.js', array('jquery'), $version_remove, true);
+            wp_enqueue_script('vimeo-js');
 
+            wp_register_script('video-functions', get_template_directory_uri() . '/js/video-functions.js', array('jquery', 'vimeo-js', 'main-functions'), $version_remove, true);
+            wp_enqueue_script('video-functions');
+
+            wp_localize_script( 'video-functions', 'ajax_object', array(
+                'ajaxurl' => admin_url( 'admin-ajax.php' )
+            ));
+
+        }
 
     }
 }

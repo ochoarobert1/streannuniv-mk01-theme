@@ -20,6 +20,7 @@
                 <div class="row">
                     <div class="section-container user-container col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="row">
+                            <?php if (is_user_logged_in()) { ?>
                             <div class="col-12 col-xl-3 col-lg-3 col-md-3 col-sm-4">
                                 <ul class="nav nav-tabs nav-user flex-column" id="myTab" role="tablist">
                                     <li class="nav-item">
@@ -45,6 +46,7 @@
                                 </ul>
                             </div>
                             <div class="col-12 col-xl-9 col-lg-9 col-md-9 col-sm-8">
+
                                 <div class="tab-content tab-user" id="myTabContent">
                                     <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
                                         <h2>
@@ -179,7 +181,42 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
+                            <?php } else { ?>
+                            <div class="my-account-login-container col-12">
+                                <div class="row align-items-center justify-content-center">
+                                    <div class="my-account-login-content col-6">
+                                        <form id="login-page" action="login" method="post">
+                                            <div class="row align-items-center form-item">
+                                                <div class="col-12">
+                                                    <p><?php _e('Ingresa con tus datos y empieza a aprender mediante nuestros cursos', 'streannuniv'); ?></p>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="text" id="username-page" name="username" class="form-control" placeholder="<?php _e('Correo electrónico:', 'streannuniv'); ?>" autocomplete="username" />
+                                                    <small class="danger d-none"></small>
+                                                </div>
+                                            </div>
+                                            <div class="row align-items-center form-item">
+                                                <div class="col-12">
+                                                    <input type="password" id="password-page" name="password" class="form-control" placeholder="<?php _e('Contraseña:', 'streannuniv'); ?>" autocomplete="current-password" />
+                                                    <small class="danger d-none"></small>
+                                                </div>
+                                                <div class="col-12">
+                                                    <a class="lost" href="<?php echo wp_lostpassword_url(); ?>"><?php _e('¿Has perdido tu contraseña?'); ?></a>
+                                                </div>
+                                            </div>
+                                            <div class="row align-items-center justify-content-end form-item">
+                                                <div class="col-12 status"></div>
+                                                <div class="col-12">
+                                                    <button class="btn btn-md btn-login"><?php _e('Ingresar', 'streannuniv'); ?></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

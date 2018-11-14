@@ -369,6 +369,13 @@ a:hover {
 /* --------------------------------------------------------------
 4.- USER DASHBOARD
 -------------------------------------------------------------- */
+.my-account-login-content {
+  margin-top: 2rem;
+  background: #fbfbfb;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #d8d8d8;
+}
 .user-container {
   margin: 1rem 0;
 }
@@ -416,6 +423,137 @@ a:hover {
 5.- PLAYER
 -------------------------------------------------------------- */
 .player-container {
-  background: #2f2f2f;
-  color: white;
+  background: #0e0e0e;
+  color: #ffffff;
+  overflow: hidden;
+}
+.row-player {
+  min-height: 90vh;
+}
+.video-player-side-container {
+  margin-top: 2rem;
+  border-right: 1px solid #4a4a4a;
+}
+.video-player-level-container {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+.video-player-level-container h3 {
+  font-weight: 400;
+  font-size: 1.5rem;
+  letter-spacing: -0.5px;
+}
+.video-player-level-container .video-player-curso-item {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.video-player-level-container .video-player-curso-item a {
+  cursor: pointer;
+}
+.video-player-level-container .video-player-curso-item:hover {
+  padding-left: 10px;
+}
+.video-player-level-container .active {
+  padding-left: 20px;
+  position: relative;
+  font-weight: 600;
+}
+.video-player-level-container .active:hover {
+  padding-left: 20px;
+}
+.video-player-level-container .active:before {
+  content: '>>';
+  position: absolute;
+  top: .2rem;
+  left: 0;
+  font-size: .8rem;
+  font-weight: 100;
+}
+.lds-roller {
+  display: block;
+  margin: auto;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-roller div {
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 32px 32px;
+}
+.lds-roller div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+  margin: -3px 0 0 -3px;
+}
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.lds-roller div:nth-child(1):after {
+  top: 50px;
+  left: 50px;
+}
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+  top: 54px;
+  left: 45px;
+}
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+  top: 57px;
+  left: 39px;
+}
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+  top: 58px;
+  left: 32px;
+}
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+  top: 57px;
+  left: 25px;
+}
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+  top: 54px;
+  left: 19px;
+}
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+  top: 50px;
+  left: 14px;
+}
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+  top: 45px;
+  left: 10px;
+}
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
