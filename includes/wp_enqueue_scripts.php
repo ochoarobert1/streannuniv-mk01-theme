@@ -139,7 +139,7 @@ function streannuniv_load_js() {
             ));
         }
 
-        if (is_page('player')) {
+        if (is_page('reproductor')) {
             wp_register_script('vimeo-js', 'https://player.vimeo.com/api/player.js', array('jquery'), $version_remove, true);
             wp_enqueue_script('vimeo-js');
 
@@ -147,6 +147,16 @@ function streannuniv_load_js() {
             wp_enqueue_script('video-functions');
 
             wp_localize_script( 'video-functions', 'ajax_object', array(
+                'ajaxurl' => admin_url( 'admin-ajax.php' )
+            ));
+
+        }
+
+        if (is_singular('quiz')) {
+            wp_register_script('quiz-functions', get_template_directory_uri() . '/js/quiz-functions.js', array('jquery', 'main-functions'), $version_remove, true);
+            wp_enqueue_script('quiz-functions');
+
+            wp_localize_script( 'quiz-functions', 'ajax_object', array(
                 'ajaxurl' => admin_url( 'admin-ajax.php' )
             ));
 

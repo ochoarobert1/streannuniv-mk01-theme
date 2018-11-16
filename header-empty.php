@@ -51,6 +51,6 @@
         <?php get_template_part('includes/fb-script'); ?>
         <?php get_template_part('includes/ga-script'); ?>
     </head>
-
-    <body class="the-main-body player-container <?php echo join(' ', get_body_class()); ?>" itemscope itemtype="http://schema.org/WebPage">
+    <?php if (is_singular('quiz')) { $class = "quiz-container"; } else { $class = "player-container"; } ?>
+    <body class="the-main-body <?php echo $class; ?> <?php echo join(' ', get_body_class()); ?>" itemscope itemtype="http://schema.org/WebPage">
         <div id="fb-root"></div>

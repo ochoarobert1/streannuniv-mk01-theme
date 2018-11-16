@@ -81,7 +81,7 @@ function extra_user_profile_fields( $user ) { ?>
 <table class="form-table">
     <tr>
         <th><label for="course_selection">
-                <?php _e("Selección de Cursos"); ?></label></th>
+            <?php _e("Selección de Cursos"); ?></label></th>
         <td>
             <?php $args = array('post_type' => 'nivel', 'posts_per_page' => -1, 'order' => 'ASC', 'orderby' => 'date'); ?>
             <?php $nivel_list = new WP_Query($args); ?>
@@ -122,11 +122,30 @@ function save_extra_user_profile_fields( $user_id ) {
 function get_authorized_levels() {
     $user_id = get_current_user_id();
     if( current_user_can('editor') || current_user_can('administrator') ) {
-
-
-
-    $authorized_levels = (array)get_user_meta($user_id, 'course_selection', true);
+        $level_array = new WP_Query(array('post_type' => 'nivel', 'posts_per_page' => -1, 'order' => 'ASC', 'orderby' => 'date'));
+        while ($level_array->have_posts()) : $level_array->the_post();
+        $authorized_levels[] = get_the_ID();
+        endwhile;
+    } else {
+        $authorized_levels = (array)get_user_meta($user_id, 'course_selection', true);
+    }
     return $authorized_levels;
+}
+
+/* --------------------------------------------------------------
+/* CUSTOM FUNCTION TO GET APPROVED LEVELS
+-------------------------------------------------------------- */
+function get_approved_levels() {
+    $user_id = get_current_user_id();
+//    if( current_user_can('editor') || current_user_can('administrator') ) {
+//        $level_array = new WP_Query(array('post_type' => 'nivel', 'posts_per_page' => -1, 'order' => 'ASC', 'orderby' => 'date'));
+//        while ($level_array->have_posts()) : $level_array->the_post();
+//        $approved_levels[] = get_the_ID();
+//        endwhile;
+//    } else {
+        $approved_levels = (array)get_user_meta($user_id, 'course_approved', true);
+//    }
+    return $approved_levels;
 }
 
 /* --------------------------------------------------------------
@@ -162,19 +181,8 @@ function get_the_quiz($course_id) {
                 'value' => array($course_id),
                 'compare' => 'IN'
             ))));
+
     return $array_quiz;
-}
-
-/* --------------------------------------------------------------
-/* CUSTOM REDIRECT IF NOT LOGGED IN
--------------------------------------------------------------- */
-add_action( 'template_redirect', 'custom_redirect_player' );
-
-function custom_redirect_player() {
-    if ( is_page('player') && ! is_user_logged_in() ) {
-        wp_redirect( home_url('/mi-cuenta'), 301 );
-        exit;
-    }
 }
 
 /* --------------------------------------------------------------
@@ -190,3 +198,146 @@ function change_current_video() {
 
 add_action('wp_ajax_change_current_video', 'change_current_video');
 add_action('wp_ajax_change_next_video', 'change_current_video');
+
+
+/* --------------------------------------------------------------
+/* CUSTOM QUIZ OPTIONS FETCHER
+-------------------------------------------------------------- */
+function custom_quiz_question_fetcher ($array) {
+    foreach($array as $key => $value){
+        $exp_key = explode('su_pregunta_option_', $key);
+        if($exp_key[0] == ''){
+            $arr_result[] = $value;
+        }
+    }
+    return $arr_result;
+}
+
+/* --------------------------------------------------------------
+/* CUSTOM QUIZ GET RIGHT ANSWERS
+-------------------------------------------------------------- */
+function get_quiz_right_answers_callback() {
+    $quiz_id = $_POST['quiz_id'];
+    $array_questions = (array)get_post_meta($quiz_id, 'preguntas_group', true);
+    foreach ($array_questions as $question_item) {
+        $right_answers[] = $question_item['su_opcion_correcta'];
+    }
+    echo json_encode($right_answers);
+    die();
+}
+
+add_action('wp_ajax_get_quiz_right_answers', 'get_quiz_right_answers_callback');
+
+/* --------------------------------------------------------------
+/* CUSTOM QUIZ GET RESULTS
+-------------------------------------------------------------- */
+function get_quiz_results_callback() {
+    $score = $_POST['acum'];
+    $quantity = $_POST['quantity'];
+    $quiz_id = $_POST['quiz_id'];
+    $user_id = get_current_user_id();
+    $quizzes = array();
+    $level_id = get_post_meta($quiz_id, 'su_curso_level', true);
+
+
+    $percentage = ($score * 100) / $quantity;
+    if ($percentage > 70) {
+        $quizzes = get_user_meta($user_id, 'course_approved', true);
+
+        if(is_array($quizzes))
+            $quizzes[] = $level_id; //I'm sure you would do more processing here
+        else
+            $quizzes = array($level_id);
+        update_user_meta($user_id, 'course_approved', $quizzes);
+        update_user_meta($user_id, 'quiz_reprobred_times', 0);
+?>
+<div class="container">
+
+    <div class="row align-items-center justify-content-center">
+        <div class="quiz-test-result-content col-6">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
+                <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+            </svg>
+            <h2>
+                <?php _e('Ud ha aprobado el curso', 'streannuniv'); ?>
+            </h2>
+            <p>
+                <?php _e('Te invitamos a continuar con el siguiente nivel de estudio para compeltar tu certificación', 'streannuniv'); ?>
+            </p>
+            <button class="btn btn-md btn-quiz">
+                <?php _e('Siguiente Nivel', 'streannteam'); ?></button>
+        </div>
+    </div>
+</div>
+
+<?php
+    } else {
+        $reprobred_times = get_user_meta($user_id, 'quiz_reprobred_times', true);
+        $reprobred_times = $reprobred_times + 1;
+        update_user_meta($user_id, 'quiz_reprobred_times', $reprobred_times);
+        if ($reprobred_times < 3) {
+?>
+<div class="container">
+    <div class="row align-items-center justify-content-center">
+        <div class="quiz-test-result-content col-6">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                <circle class="path circle" fill="none" stroke="#ad0000" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
+                <line class="path line" fill="none" stroke="#ad0000" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3" />
+                <line class="path line" fill="none" stroke="#ad0000" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2" />
+            </svg>
+            <h2>
+                <?php _e('Ud no ha aprobado el curso', 'streannuniv'); ?>
+            </h2>
+            <p>
+                <?php _e('Te invitamos a repetir el nivel para poder aprobar este quiz y completar tu certificación', 'streannuniv'); ?>
+            </p>
+            <button onclick="repeat_quiz()" class="btn btn-md btn-repeat">
+                <?php _e('Repetir Qüiz', 'streannteam'); ?></button>
+        </div>
+    </div>
+</div>
+<?php
+                                  } else {
+?>
+<div class="container">
+    <div class="row align-items-center justify-content-center">
+        <div class="quiz-test-result-content col-6">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                <circle class="path circle" fill="none" stroke="#ad0000" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
+                <line class="path line" fill="none" stroke="#ad0000" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3" />
+                <line class="path line" fill="none" stroke="#ad0000" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2" />
+            </svg>
+            <h2>
+                <?php _e('Ud no ha aprobado el curso', 'streannuniv'); ?>
+            </h2>
+            <p>
+                <?php _e('Deberás repetir el nivel antes de intentar de nuevo este quiz', 'streannuniv'); ?>
+            </p>
+            <button onclick="repeat_level(<?php echo $level_id; ?>)" class="btn btn-md btn-repeat">
+                <?php _e('Repetir Nivel', 'streannteam'); ?></button>
+        </div>
+    </div>
+</div>
+<?php
+                                         }
+    }
+    die();
+}
+
+add_action('wp_ajax_get_quiz_results', 'get_quiz_results_callback');
+
+function repeat_level_by_quiz_callback() {
+    $level_ID = $_POST['level_id'];
+    $args = array('post_type' => 'cursos', 'posts_per_page' => 1, 'order' => 'DESC', 'date', 'meta_query' => array(array('key' => 'su_curso_nivel', 'value' => array($level_ID), 'compare' => 'IN')));
+    $first_video = new WP_Query($args);
+    while ($first_video->have_posts()) : $first_video->the_post();
+    $curso_id = get_the_ID();
+    endwhile;
+    $link = home_url('/reproductor?curso=' . $curso_id);
+    echo esc_url($link);
+    die();
+}
+
+
+add_action('wp_ajax_repeat_level_by_quiz', 'repeat_level_by_quiz_callback');
