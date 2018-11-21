@@ -81,7 +81,7 @@ function extra_user_profile_fields( $user ) { ?>
 <table class="form-table">
     <tr>
         <th><label for="course_selection">
-            <?php _e("Selección de Cursos"); ?></label></th>
+                <?php _e("Selección de Cursos"); ?></label></th>
         <td>
             <?php $args = array('post_type' => 'nivel', 'posts_per_page' => -1, 'order' => 'ASC', 'orderby' => 'date'); ?>
             <?php $nivel_list = new WP_Query($args); ?>
@@ -137,14 +137,27 @@ function get_authorized_levels() {
 -------------------------------------------------------------- */
 function get_approved_levels() {
     $user_id = get_current_user_id();
-//    if( current_user_can('editor') || current_user_can('administrator') ) {
-//        $level_array = new WP_Query(array('post_type' => 'nivel', 'posts_per_page' => -1, 'order' => 'ASC', 'orderby' => 'date'));
-//        while ($level_array->have_posts()) : $level_array->the_post();
-//        $approved_levels[] = get_the_ID();
-//        endwhile;
-//    } else {
+    $approved_levels = array();
+    if( current_user_can('editor') || current_user_can('administrator') ) {
+        $level_array = new WP_Query(array('post_type' => 'nivel', 'posts_per_page' => -1, 'order' => 'ASC', 'orderby' => 'date'));
+        while ($level_array->have_posts()) : $level_array->the_post();
+        $approved_levels[] = get_the_ID();
+        endwhile;
+    } else {
         $approved_levels = (array)get_user_meta($user_id, 'course_approved', true);
-//    }
+        foreach ($approved_levels as $key => $value) {
+            if (empty($value)) {
+                unset($approved_levels[$key]);
+            }
+        }
+        if (empty($approved_levels)) {
+            $level_array = new WP_Query(array('post_type' => 'nivel', 'posts_per_page' => 1, 'order' => 'ASC', 'orderby' => 'date'));
+            while ($level_array->have_posts()) : $level_array->the_post();
+            $basic_level = get_the_ID();
+            endwhile;
+            $approved_levels[] = $basic_level;
+        }
+    }
     return $approved_levels;
 }
 
@@ -242,7 +255,7 @@ function get_quiz_results_callback() {
 
     $percentage = ($score * 100) / $quantity;
     if ($percentage > 70) {
-        $quizzes = get_user_meta($user_id, 'course_approved', true);
+        $quizzes = get_approved_levels();
 
         if(is_array($quizzes))
             $quizzes[] = $level_id; //I'm sure you would do more processing here
@@ -255,17 +268,20 @@ function get_quiz_results_callback() {
 
     <div class="row align-items-center justify-content-center">
         <div class="quiz-test-result-content col-6">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
-                <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
-                <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
-            </svg>
+            <div class="svg-container">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
+                    <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
+                </svg>
+            </div>
             <h2>
                 <?php _e('Ud ha aprobado el curso', 'streannuniv'); ?>
             </h2>
             <p>
-                <?php _e('Te invitamos a continuar con el siguiente nivel de estudio para compeltar tu certificación', 'streannuniv'); ?>
+                <?php _e('Te invitamos a continuar con el siguiente nivel de estudio para completar tu certificación', 'streannuniv'); ?>
             </p>
-            <button class="btn btn-md btn-quiz">
+            <?php $level_array = get_posts(array('post_type' => 'nivel', 'posts_per_page' => 1, 'order' => 'ASC', 'orderby' => 'date', 'offset' => 1)); ?>
+            <button onclick="next_level(<?php echo $level_array[0]->ID; ?>)" class="btn btn-md btn-quiz">
                 <?php _e('Siguiente Nivel', 'streannteam'); ?></button>
         </div>
     </div>
@@ -281,11 +297,13 @@ function get_quiz_results_callback() {
 <div class="container">
     <div class="row align-items-center justify-content-center">
         <div class="quiz-test-result-content col-6">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
-                <circle class="path circle" fill="none" stroke="#ad0000" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
-                <line class="path line" fill="none" stroke="#ad0000" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3" />
-                <line class="path line" fill="none" stroke="#ad0000" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2" />
-            </svg>
+            <div class="svg-container">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <circle class="path circle" fill="none" stroke="#ad0000" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
+                    <line class="path line" fill="none" stroke="#ad0000" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3" />
+                    <line class="path line" fill="none" stroke="#ad0000" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2" />
+                </svg>
+            </div>
             <h2>
                 <?php _e('Ud no ha aprobado el curso', 'streannuniv'); ?>
             </h2>
@@ -303,11 +321,13 @@ function get_quiz_results_callback() {
 <div class="container">
     <div class="row align-items-center justify-content-center">
         <div class="quiz-test-result-content col-6">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
-                <circle class="path circle" fill="none" stroke="#ad0000" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
-                <line class="path line" fill="none" stroke="#ad0000" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3" />
-                <line class="path line" fill="none" stroke="#ad0000" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2" />
-            </svg>
+            <div class="svg-container">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <circle class="path circle" fill="none" stroke="#ad0000" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
+                    <line class="path line" fill="none" stroke="#ad0000" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3" />
+                    <line class="path line" fill="none" stroke="#ad0000" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2" />
+                </svg>
+            </div>
             <h2>
                 <?php _e('Ud no ha aprobado el curso', 'streannuniv'); ?>
             </h2>
@@ -341,3 +361,61 @@ function repeat_level_by_quiz_callback() {
 
 
 add_action('wp_ajax_repeat_level_by_quiz', 'repeat_level_by_quiz_callback');
+
+/* --------------------------------------------------------------
+/* CREATE CERTIFICATE DOCUMENT
+-------------------------------------------------------------- */
+function get_certificate_pdf($levelid, $userid) {
+    ob_start();
+    $level_post = get_post($levelid);
+    $nivel = $level_post->post_title;
+    $first_name = get_user_meta($userid, 'first_name', true);
+    $last_name = get_user_meta($userid, 'last_name', true);
+    $nombre = $first_name . ' ' . $last_name;
+
+    require_once('tcpdf.php');
+    require_once('create-cert.php');
+    ob_end_flush();
+
+}
+
+function remove_reprobed_pointer_callback() {
+    $user_id = $_POST['userid'];
+    $videoid = $_POST['videoid'];
+    update_user_meta($user_id, 'quiz_reprobred_times', 0);
+    $level_id = get_post_meta($videoid, 'su_curso_nivel', true);
+    $levels = get_user_meta($user_id, 'quiz_unlocked_level', true);
+    if(is_array($levels))
+        $levels[] = $level_id; //I'm sure you would do more processing here
+    else
+        $levels = array($level_id);
+    update_user_meta($user_id, 'quiz_unlocked_level', $levels);
+
+    die();
+}
+
+add_action('wp_ajax_remove_reprobed_pointer', 'remove_reprobed_pointer_callback');
+
+
+function get_last_video_callback() {
+    $videoid = $_POST['videoid'];
+    $level_id = get_post_meta($videoid, 'su_curso_nivel', true);
+    $args = array('post_type' => 'cursos', 'posts_per_page' => 1, 'order' => 'ASC', 'date', 'meta_query' => array(array('key' => 'su_curso_nivel', 'value' => array($level_id), 'compare' => 'IN')));
+    $first_video = new WP_Query($args);
+    while ($first_video->have_posts()) : $first_video->the_post();
+    $curso_id = get_the_ID();
+    endwhile;
+    echo $curso_id;
+    die();
+}
+
+add_action('wp_ajax_get_last_video', 'get_last_video_callback');
+
+function quiz_next_level_callback() {
+    $levelid = $_POST['level_id'];
+    $url = home_url('/reproductor?level_id=') . $levelid;
+    echo $url;
+    die();
+}
+
+add_action('wp_ajax_quiz_next_level', 'quiz_next_level_callback');

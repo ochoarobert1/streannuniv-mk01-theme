@@ -198,6 +198,22 @@ if ( function_exists('add_image_size') ) {
     add_image_size('single_img', 636, 297, true );
 }
 
+/* --------------------------------------------------------------
+/* CHANGE EMAIL SENDER NAME AND EMAIL
+-------------------------------------------------------------- */
+function wpb_sender_email( $original_email_address ) {
+    return 'streann@edu.streann.com';
+}
+
+// Function to change sender name
+function wpb_sender_name( $original_email_from ) {
+    return 'Streann University';
+}
+
+// Hooking up our functions to WordPress filters
+add_filter( 'wp_mail_from', 'wpb_sender_email' );
+add_filter( 'wp_mail_from_name', 'wpb_sender_name' );
+
 /* ----------------------------------------------------------- */
 /* LOGIN USER
 -------------------------------------------------------------- */

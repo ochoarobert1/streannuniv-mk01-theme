@@ -1,7 +1,85 @@
 var passd = false,
+    scrollHeight = 0,
+    lastScrollTop = 0,
+    flag = false,
+    st = jQuery(document).scrollTop(),
+    secondaryNav = jQuery('.home-menu-section-content'),
+    secondaryNavTopPosition = secondaryNav.offset().top,
     testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
 jQuery(document).ready(function (jQuery) {
     "use strict";
+    jQuery(window).on('scroll', function () {
+        //        st > lastScrollTop ? jQuery(".floating-nav").addClass("is-hidden") : jQuery(window).scrollTop() > 200 ? (jQuery(".floating-nav").removeClass("is-hidden"), setTimeout(function () {}, 200)) : jQuery(".floating-nav").addClass("is-hidden"), lastScrollTop = st, 0 == jQuery(this).scrollTop() && jQuery(".floating-nav").addClass("is-hidden");
+
+        if (jQuery(window).scrollTop() > 10) {
+            jQuery('.header-mobile').addClass('fixed-mobile');
+        } else {
+            jQuery('.header-mobile').removeClass('fixed-mobile');
+        }
+
+        if (jQuery(window).scrollTop() > secondaryNavTopPosition) {
+            secondaryNav.addClass('is-fixed');
+            setTimeout(function () {
+                jQuery('.home-menu-logo').removeClass('hidden');
+                jQuery('.home-menu-bar').removeClass('hidden');
+                jQuery('.home-menu-logo').addClass('slide-in-left');
+                jQuery('.home-menu-bar').addClass('slide-in-right');
+            }, 50);
+        } else {
+            secondaryNav.removeClass('is-fixed');
+            setTimeout(function () {
+                jQuery('.home-menu-logo').removeClass('slide-in-left');
+                jQuery('.home-menu-bar').removeClass('slide-in-right');
+                jQuery('.home-menu-logo').addClass('hidden');
+                jQuery('.home-menu-bar').addClass('hidden');
+            }, 50);
+        }
+    });
+
+    jQuery('#menu_icon').on('click touchstart', function () {
+        jQuery(this).toggleClass('open');
+        jQuery('.home-menu-extra').toggleClass('home-menu-extra-hidden');
+    });
+
+    jQuery('#menu-btn-mobile').on('click touchstart', function () {
+        if (!flag) {
+            flag = true;
+            jQuery(this).toggleClass('open');
+            jQuery('.navbar-mobile-collapse').toggleClass('navbar-mobile-collapse-hidden');
+            jQuery('.header-mobile').toggleClass('fixed-click-mobile');
+            setTimeout(function () {
+                flag = false;
+            }, 300);
+        }
+    });
+
+
+
+    jQuery('#search_opener').on('click touchstart', function () {
+        jQuery('.search-container').removeClass('search-container-hidden');
+    });
+
+    jQuery('#search_closer').on('click touchstart', function () {
+        jQuery('.search-container').addClass('search-container-hidden');
+    });
+
+     jQuery('#menu_icon').on('click touchstart', function () {
+        jQuery(this).toggleClass('open');
+        jQuery('.home-menu-extra').toggleClass('home-menu-extra-hidden');
+    });
+
+    jQuery('#menu-btn-mobile').on('click touchstart', function () {
+        if (!flag) {
+            flag = true;
+            jQuery(this).toggleClass('open');
+            jQuery('.navbar-mobile-collapse').toggleClass('navbar-mobile-collapse-hidden');
+            jQuery('.header-mobile').toggleClass('fixed-click-mobile');
+            setTimeout(function () {
+                flag = false;
+            }, 300);
+        }
+    });
+
     // Perform AJAX login on form submit
     jQuery('form#login').on('submit', function (e) {
         e.preventDefault();
@@ -104,22 +182,3 @@ jQuery(document).ready(function (jQuery) {
 
 
 }); /* end of as page load scripts */
-
-function change_video(videoid) {
-    jQuery.ajax({
-        type: 'POST',
-        url: ajax_object.ajaxurl,
-        data: {
-            'action': 'change_current_video', //calls wp_ajax_nopriv_ajaxlogin
-            'videoid': videoid
-        },
-        beforeSend: function () {
-            jQuery('#video_container').html('<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>');
-            jQuery('.video-player-level-container div').removeClass('active');
-            jQuery('#video-' + videoid).addClass('active');
-        },
-        success: function (data) {
-            jQuery('#video_container').html(data);
-        }
-    });
-}

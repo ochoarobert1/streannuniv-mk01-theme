@@ -17,28 +17,28 @@
                 </div>
                 <div class="row">
                     <?php if ( is_active_sidebar( 'sidebar_footer' ) ) : ?>
-                    <div class="footer-item col">
+                    <div class="footer-item col-xl col-lg col-md col-sm-12 col-12">
                         <ul id="sidebar-footer">
                             <?php dynamic_sidebar( 'sidebar_footer' ); ?>
                         </ul>
                     </div>
                     <?php endif; ?>
                     <?php if ( is_active_sidebar( 'sidebar_footer-2' ) ) : ?>
-                    <div class="footer-item col">
+                    <div class="footer-item col-xl col-lg col-md col-sm-12 col-12">
                         <ul id="sidebar-footer">
                             <?php dynamic_sidebar( 'sidebar_footer-2' ); ?>
                         </ul>
                     </div>
                     <?php endif; ?>
                     <?php if ( is_active_sidebar( 'sidebar_footer-3' ) ) : ?>
-                    <div class="footer-item col">
+                    <div class="footer-item col-xl col-lg col-md col-sm-12 col-12">
                         <ul id="sidebar-footer">
                             <?php dynamic_sidebar( 'sidebar_footer-3' ); ?>
                         </ul>
                     </div>
                     <?php endif; ?>
                     <?php if ( is_active_sidebar( 'sidebar_footer-4' ) ) : ?>
-                    <div class="footer-item col">
+                    <div class="footer-item col-xl col-lg col-md col-sm-12 col-12">
                         <ul id="sidebar-footer">
                             <?php dynamic_sidebar( 'sidebar_footer-4' ); ?>
                         </ul>

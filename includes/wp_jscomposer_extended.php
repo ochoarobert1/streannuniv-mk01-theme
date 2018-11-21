@@ -248,7 +248,7 @@ class VCExtendAddonClass {
         $output .= '</div>';
         $output .= '<div class="custom-testimonial-slider-item-img col-4">';
         $output .= '<div class="media custom-media">';
-        $output .= '<img src="'. get_the_post_thumbnail_url(get_the_ID(), array('100', '100')) .'" class="align-self-center img-fluid img-testimonials"/>';
+        $output .= '<img src="'. get_the_post_thumbnail_url(get_the_ID(), 'avatar') .'" class="align-self-center img-fluid img-testimonials"/>';
         $output .= '<div class="media-body">';
         $output .= '<h2>' . get_the_title() . '</h2>';
         $output .= '<p>' . get_post_meta(get_the_ID(), 'su_testimonial_position', true) . '</p>';

@@ -49,37 +49,55 @@
 
                                 <div class="tab-content tab-user" id="myTabContent">
                                     <div class="tab-pane fade show active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                                        <h2>
+                                        <h2 class="main-title">
                                             <?php _e('Escritorio', 'streannuniv'); ?>
                                         </h2>
                                         <div class="row">
-                                            <div class="dashboard-item col-4">
-                                                <h3>
-                                                    <?php _e('Último video visto', 'streannuniv'); ?>
-                                                </h3>
-                                            </div>
-                                            <div class="dashboard-item col-4">
-                                                <h3>
-                                                    <?php _e('Quiz realizados', 'streannuniv'); ?>
-                                                </h3>
-                                            </div>
-                                            <div class="dashboard-item col-4">
-                                                <h3>
-                                                    <?php _e('Total tiempo', 'streannuniv'); ?>
-                                                </h3>
-                                            </div>
+                                            <?php $course_approbed = get_approved_levels(); ?>
+                                            <?php if (!empty($course_approbed)) { ?>
                                             <div class="dashboard-item col-12">
-                                                <h3>
+                                                <h2>
+                                                    <?php _e('Cursos Aprobados', 'streannuniv')?>
+                                                </h2>
+                                                <div class="row">
+                                                    <?php foreach ($course_approbed as $course_item) { ?>
+                                                    <?php $course_post = get_post($course_item); ?>
+                                                    <div class="my-account-course-item col">
+                                                        <div class="course-item-wrapper">
+                                                            <h3>
+                                                                <?php echo $course_post->post_title; ?>
+                                                            </h3>
+                                                            <a href="<?php echo home_url('/certificados'); ?><?php echo '?levelid=' . $course_post->ID . '&user_id=' . get_current_user_id(); ?>" class="btn btn-md btn-certificate" target="_blank">
+                                                                <?php _e('Imprimir Certificado', 'streannuniv'); ?></a>
+                                                        </div>
+                                                    </div>
+                                                    <?php } ?>
+                                                </div>
+                                            </div>
+                                            <?php  } ?>
+                                            <?php $array_auth = get_authorized_levels(); ?>
+                                            <?php $level_array = get_posts(array('post_type' => 'nivel', 'posts_per_page' => -1, 'order' => 'ASC', 'orderby' => 'date', 'post__in' => $array_auth)); ?>
+                                            <?php $total_approbed = count($course_approbed); ?>
+                                            <?php $total_levels = count($level_array); ?>
+                                            <div class="dashboard-item col-12">
+                                                <h2>
                                                     <?php _e('Progreso de Certificación', 'streannuniv'); ?>
-                                                </h3>
+                                                </h2>
                                                 <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <?php if ($total_approbed === 0 ) { ?>
+                                                    <?php $total = 0; ?>
+                                                    <?php } else { ?>
+                                                    <?php $total = ($total_approbed * 100) / $total_levels; ?>
+                                                    <?php } ?>
+
+                                                    <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: <?php echo number_format($total, 0); ?>%;" aria-valuenow="<?php echo number_format($total, 0); ?>" aria-valuemin="0" aria-valuemax="100">
+                                                        <?php echo number_format($total, 0); ?>%</div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="datapers" role="tabpanel" aria-labelledby="datapers-tab">
-                                        <h2>
+                                        <h2 class="main-title">
                                             <?php _e('Datos Personales', 'streannuniv'); ?>
                                         </h2>
                                         <p>
@@ -114,7 +132,7 @@
                                         </form>
                                     </div>
                                     <div class="tab-pane fade" id="social" role="tabpanel" aria-labelledby="social-tab">
-                                        <h2>
+                                        <h2 class="main-title">
                                             <?php _e('Redes Sociales', 'streannuniv'); ?>
                                         </h2>
                                         <p>
@@ -152,7 +170,7 @@
                                         </form>
                                     </div>
                                     <div class="tab-pane fade" id="certificate" role="tabpanel" aria-labelledby="certificate-tab">
-                                        <h2>
+                                        <h2 class="main-title">
                                             <?php _e('Certificados', 'streannuniv'); ?>
                                         </h2>
                                         <p>
@@ -169,10 +187,10 @@
                                                 <div class="certificate-item-wrapper">
                                                     <?php the_post_thumbnail('full', array('class' => 'img-fluid')); ?>
                                                     <h3>
-                                                        <?php _e('Nivel'); ?>
                                                         <?php echo get_the_title(); ?>
                                                     </h3>
-
+                                                    <a href="<?php echo home_url('/certificados'); ?><?php echo '?levelid=' . get_the_ID() . '&user_id=' . get_current_user_id(); ?>" class="btn btn-md btn-certificate" target="_blank">
+                                                        <?php _e('Imprimir Certificado', 'streannuniv'); ?></a>
                                                 </div>
                                             </div>
                                             <?php } ?>
@@ -190,7 +208,9 @@
                                         <form id="login-page" action="login" method="post">
                                             <div class="row align-items-center form-item">
                                                 <div class="col-12">
-                                                    <p><?php _e('Ingresa con tus datos y empieza a aprender mediante nuestros cursos', 'streannuniv'); ?></p>
+                                                    <p>
+                                                        <?php _e('Ingresa con tus datos y empieza a aprender mediante nuestros cursos', 'streannuniv'); ?>
+                                                    </p>
                                                 </div>
                                                 <div class="col-12">
                                                     <input type="text" id="username-page" name="username" class="form-control" placeholder="<?php _e('Correo electrónico:', 'streannuniv'); ?>" autocomplete="username" />
@@ -203,13 +223,15 @@
                                                     <small class="danger d-none"></small>
                                                 </div>
                                                 <div class="col-12">
-                                                    <a class="lost" href="<?php echo wp_lostpassword_url(); ?>"><?php _e('¿Has perdido tu contraseña?'); ?></a>
+                                                    <a class="lost" href="<?php echo wp_lostpassword_url(); ?>">
+                                                        <?php _e('¿Has perdido tu contraseña?'); ?></a>
                                                 </div>
                                             </div>
                                             <div class="row align-items-center justify-content-end form-item">
                                                 <div class="col-12 status"></div>
                                                 <div class="col-12">
-                                                    <button class="btn btn-md btn-login"><?php _e('Ingresar', 'streannuniv'); ?></button>
+                                                    <button class="btn btn-md btn-login">
+                                                        <?php _e('Ingresar', 'streannuniv'); ?></button>
                                                 </div>
                                             </div>
                                         </form>

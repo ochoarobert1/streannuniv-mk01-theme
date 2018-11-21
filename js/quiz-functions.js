@@ -106,6 +106,18 @@ function repeat_level(level_id) {
             window.location = data;
         }
     });
+}
 
-
+function next_level(level_id) {
+    jQuery.ajax({
+        type: 'POST',
+        url: ajax_object.ajaxurl,
+        data: {
+            'action': 'quiz_next_level',
+            'level_id': level_id
+        },
+        success: function (data) {
+            window.location = data;
+        }
+    });
 }

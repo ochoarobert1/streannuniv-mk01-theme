@@ -48,11 +48,16 @@ CUSTOM ITEM COUNTERS
 CUSTOM MEDIA ITEMS
 -------------------------------------------------------------- */
 .custom-media {
-    font-size: 1.05rem;
+    font-size: .9rem;
     line-height: 1.4rem;
+
+    & .media-body {
+        min-height: 190px;
+    }
 
     & img {
         margin-right: 1.5rem;
+        max-width: 65px;
     }
 
     & h2 {
@@ -115,6 +120,7 @@ CUSTOM MEDIA ITEMS
     font-size: 1.1rem;
     line-height: 2.5rem;
     min-height: 450px;
+    margin-bottom: 2rem;
     .transition(all .3s ease-in-out);
 
     & .custom-level-img-wrapper {
@@ -159,6 +165,13 @@ CUSTOM MEDIA ITEMS
                 font-weight: 900;
                 color: @orange;
                 font-size: 2rem;
+                .transition(all .3s ease-in-out);
+            }
+
+            &:hover {
+                &:before {
+                    .transform(rotate(180deg));
+                }
             }
 
             & a {

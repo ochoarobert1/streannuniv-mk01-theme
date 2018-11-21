@@ -54,3 +54,32 @@
     <?php if (is_singular('quiz')) { $class = "quiz-container"; } else { $class = "player-container"; } ?>
     <body class="the-main-body <?php echo $class; ?> <?php echo join(' ', get_body_class()); ?>" itemscope itemtype="http://schema.org/WebPage">
         <div id="fb-root"></div>
+        <?php  if (is_singular('quiz')) { ?>
+        <header class="container-fluid p-0" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+            <div class="row no-gutters">
+                <?php if (is_front_page()) { $class = 'header-home'; } else { $class = 'header-internal'; } ?>
+                <div class="the-header d-none d-sm-none d-xl-block d-lg-block d-md-none col-xl-12 col-lg-12 col-md-12 <?php echo $class; ?>">
+                    <div class="container-fluid">
+                        <div class="row align-items-center justify-content-center no-gutters">
+                            <div class="the-navbar col-xl-11 col-lg-11 col-md-11 col-sm-12 col-12">
+                                <nav class="navbar navbar-expand-md bg-light" role="navigation">
+                                    <a class="navbar-brand" href="<?php echo home_url('/');?>" title="<?php echo get_bloginfo('name'); ?>">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="<?php echo get_bloginfo('name'); ?>" class="img-fluid img-navbar-logo" />
+                                    </a>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-mobile col-12 col-sm-12 d-flex d-sm-flex d-md-flex d-lg-none d-xl-none">
+                    <div class="row">
+                        <nav class="the-navbar-mobile col-12" role="navigation">
+                            <a class="navbar-brand" href="<?php echo home_url('/');?>" title="<?php echo get_bloginfo('name'); ?>">
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="<?php echo get_bloginfo('name'); ?>" class="img-fluid img-brand" />
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <?php } ?>

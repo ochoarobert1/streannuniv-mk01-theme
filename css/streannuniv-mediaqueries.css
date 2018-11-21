@@ -2,9 +2,65 @@
 /* --------------------------------------------------------------
 MEDIAQUERIES LG/MD - LAYOUTS BIGGER THAN 992px
 -------------------------------------------------------------- */
+@media (max-width: 1280px) {
+  .the-header .the-navbar .navbar .img-navbar-logo {
+    max-height: 50px;
+  }
+  .the-header .the-navbar .navbar .navbar-nav li a {
+    margin: .5rem .9rem;
+    font-size: 1.2rem;
+  }
+  .the-header .the-navbar .navbar .btn-login-navbar {
+    padding: .5rem 2rem;
+    font-size: 1.1rem;
+  }
+  .custom-counter-item h2 {
+    font-size: 1rem;
+    line-height: 1.2rem;
+  }
+  .custom-counter-item .timer {
+    font-size: 2rem;
+    margin: .5rem 0;
+    line-height: 1rem;
+    margin-top: 2rem;
+  }
+  .the-footer .footer-item img {
+    max-height: 50px;
+  }
+  .the-footer .footer-item ul .widget {
+    font-size: 1rem;
+    line-height: 1.1rem;
+  }
+}
+@media (max-width: 1170px) {
+  .the-header .the-navbar .navbar .btn-login-navbar {
+    margin-left: 1rem;
+  }
+  .the-header .the-navbar .navbar .img-navbar-logo {
+    max-height: 40px;
+  }
+}
 /* --------------------------------------------------------------
 MEDIAQUERIES SM - LAYOUTS BIGGER THAN 768px
 -------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .footer-copyright {
+    text-align: center;
+  }
+  .footer-copyright .footer-copyright-menu {
+    text-align: center;
+    padding: .5rem;
+  }
+  .the-footer .footer-item img {
+    display: block;
+    margin: 0 auto;
+  }
+  .the-footer .footer-social {
+    text-align: center;
+    padding: 0;
+    padding-bottom: 2rem;
+  }
+}
 /* --------------------------------------------------------------
 MEDIAQUERIES XS - LAYOUTS LESS THAN 768px
 -------------------------------------------------------------- */
