@@ -109,7 +109,7 @@
                                             <?php if ($user_altered == 0) { ?>
                                             <div class="not-started col-12">
                                                 <h4>
-                                                    <?php _e('En las próximas horas se le habilitará los cursos que deber realizar. Si pasadas 24 horas no se le han habilitado, por favor contáctenos en', 'streannuniv')?> <a href="mailto:edu@streann.com">edu@streann.com</a></h4>
+                                                    <?php _e('En las próximas horas se le habilitará los cursos que debe realizar. Si pasadas 24 horas no se le han habilitado, por favor contáctenos en', 'streannuniv')?> <a href="mailto:edu@streann.com">edu@streann.com</a></h4>
                                             </div>
                                             <?php } ?>
                                             <?php } ?>
