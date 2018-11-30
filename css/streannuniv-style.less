@@ -8,7 +8,7 @@ Variables
 
 /* Colors */
 @black: #000000;
-@orange: #282828;
+@darkgray: #282828;
 @gray3: #333333;
 @gray6: #666666;
 @gray9: #999999;
@@ -16,6 +16,7 @@ Variables
 @grayf0: #F0F0F0;
 @white: #FFFFFF;
 @orange: #FC5000;
+@darkorange: #fc3000;
 
 /* --------------------------------------------------------------
 Body default
@@ -641,6 +642,13 @@ a {
         float: right;
     }
 
+    & .btn-register {
+        background: @darkorange;
+        color: @white;
+        padding: .5rem 2rem;
+        float: left;
+    }
+
     & .danger {
         background: red;
         width: 100%;
@@ -738,9 +746,14 @@ a {
 .my-account-login-content {
     margin-top: 2rem;
     background: #fbfbfb;
-    padding: 1rem;
+    padding: 4rem;
+    margin-bottom: 5rem;
     border-radius: 10px;
     box-shadow: 0 0 20px #d8d8d8;
+}
+
+.form-login-image {
+    padding-right: 3.5rem;
 }
 
 .user-container {
@@ -1296,4 +1309,67 @@ a {
     & a {
         color: @orange;
     }
+}
+
+
+#customBtn {
+    display: inline-block;
+    background: white;
+    color: #444;
+    width: 190px;
+    border-radius: 5px;
+    border: thin solid #888;
+    box-shadow: 1px 1px 1px grey;
+    white-space: nowrap;
+}
+
+#customBtn:hover {
+    cursor: pointer;
+}
+
+span.label {
+    font-family: serif;
+    font-weight: normal;
+}
+
+span.icon {
+    background: url('/identity/sign-in/g-normal.png') transparent 5px 50% no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    width: 42px;
+    height: 42px;
+}
+
+span.buttonText {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 42px;
+    padding-right: 42px;
+    font-size: 14px;
+    font-weight: bold;
+    /* Use the Roboto font that is loaded in the <head> */
+    font-family: 'Roboto', sans-serif;
+}
+
+.btn-back {
+    border: 1px solid @orange;
+    color: @white;
+    background: transparent;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 1rem;
+    border-radius: 0;
+    padding: .5rem 2rem;
+    margin-top: 1rem;
+    width: 100%;
+
+    &:hover {
+        color: @orange;
+    }
+}
+
+.custom-progress {
+    background: #d0d0d0;
+    margin-top: 3rem;
+    margin-bottom: 0;
 }

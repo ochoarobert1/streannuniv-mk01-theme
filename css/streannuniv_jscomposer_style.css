@@ -156,3 +156,14 @@ CUSTOM MEDIA ITEMS
 .custom-level-item ul li a:hover {
   color: #fc5000;
 }
+.approbed-class {
+  text-align: center;
+  margin: 1.5rem;
+  text-transform: uppercase;
+}
+.approbed-class h4 {
+  font-weight: 300;
+}
+.approbed-class .fa-check {
+  color: green;
+}

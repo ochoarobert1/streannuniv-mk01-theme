@@ -7,6 +7,7 @@ var currentQuizID = 0,
     nextItem = 0,
     acum = 0,
     quizQuantity = 0,
+    progress = 0,
     decript;
 
 jQuery(document).ready(function () {
@@ -56,6 +57,10 @@ jQuery(document).ready(function () {
             jQuery("#item-" + multipleOptionVal[1] + " :input").attr("disabled", true);
         }
 
+        progress = (multipleOptionVal[1] * 100) / quizQuantity;
+
+        jQuery('#quiz_progress').attr('aria-valuenow', progress).css('width', progress + '%');
+
         setTimeout(function () {
             if (multipleOptionVal[1] != quizQuantity) {
                 jQuery("#item-" + multipleOptionVal[1]).removeClass('quiz-item-active');
@@ -92,6 +97,7 @@ function repeat_quiz() {
     "use strict";
     jQuery('.quiz-test-results').addClass('quiz-test-hidden');
     jQuery('.quiz-beginner').removeClass('quiz-test-hidden');
+    jQuery('#quiz_progress').attr('aria-valuenow', 0).css('width', '0%');
 }
 
 function repeat_level(level_id) {

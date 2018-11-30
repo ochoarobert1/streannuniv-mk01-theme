@@ -6,6 +6,8 @@ var passd = false,
     secondaryNav = jQuery('.home-menu-section-content'),
     secondaryNavTopPosition = secondaryNav.offset().top,
     testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+
+
 jQuery(document).ready(function (jQuery) {
     "use strict";
     jQuery(window).on('scroll', function () {
@@ -63,7 +65,7 @@ jQuery(document).ready(function (jQuery) {
         jQuery('.search-container').addClass('search-container-hidden');
     });
 
-     jQuery('#menu_icon').on('click touchstart', function () {
+    jQuery('#menu_icon').on('click touchstart', function () {
         jQuery(this).toggleClass('open');
         jQuery('.home-menu-extra').toggleClass('home-menu-extra-hidden');
     });
@@ -123,55 +125,6 @@ jQuery(document).ready(function (jQuery) {
                 },
                 success: function (data) {
                     jQuery('form#login div.status').html(data.message);
-                    if (data.loggedin == true) {
-                        document.location.href = data.url;
-                    }
-                }
-            });
-        }
-    });
-
-    jQuery('form#login-page').on('submit', function (e) {
-        e.preventDefault();
-        passd = true;
-
-        var $el = jQuery('#username-page');
-        if (($el.val() == '') || ($el.val() == null) || ($el.val().length < 2)) {
-            $el.next("small").removeClass("d-none");
-            $el.next("small").html("El campo no puede estar vacio ni tener menos de dos caracteres");
-            passd = false;
-        } else {
-            if (testEmail.test($el.val())) {
-                $el.next("small").addClass("d-none");
-            } else {
-                $el.next("small").removeClass("d-none");
-                $el.next("small").html("El correo es invalido. recuerde que debe colocar un correo válido");
-                passd = false;
-            }
-        }
-
-        var $el = jQuery('#password-page');
-        if (($el.val() == '') || ($el.val() == null) || ($el.val().length < 2)) {
-            $el.next("small").removeClass("d-none");
-            $el.next("small").html("El campo no puede estar vacio ni tener menos de dos caracteres");
-            passd = false;
-        } else {
-            $el.next("small").addClass("d-none");
-        }
-
-        if (passd == true) {
-            jQuery('form#login-page div.status').show().html('<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div><br/>' + ajax_object.loadingmessage);
-            jQuery.ajax({
-                type: 'POST',
-                dataType: 'json',
-                url: ajax_object.ajaxurl,
-                data: {
-                    'action': 'ajaxpagelogin', //calls wp_ajax_nopriv_ajaxlogin
-                    'username': jQuery('form#login-page #username-page').val(),
-                    'password': jQuery('form#login-page #password-page').val(),
-                },
-                success: function (data) {
-                    jQuery('form#login-page div.status').html(data.message);
                     if (data.loggedin == true) {
                         document.location.href = data.url;
                     }

@@ -275,6 +275,9 @@ class VCExtendAddonClass {
 
         $image_url = $image_object[0];
 
+        $approved_levels = get_approved_levels();
+
+
 
         $term = get_post( $level_selection );
 
@@ -303,7 +306,14 @@ class VCExtendAddonClass {
             $output .= '</li>';
         }
         $output .= '</ul>';
+        if (in_array($level_selection, $approved_levels, TRUE )) {
+            $output .= '<div class="approbed-class"><h4><i class="fa fa-check"></i>Aprobado</h4></div>';
+        } else {
+            $output .= '';
+        }
         $output .= '</div>';
+
+
 
         return $output;
     }

@@ -39,9 +39,19 @@
                                             <?php _e('Redes Sociales', 'streannuniv'); ?></a>
                                     </li>
                                     <li class="nav-item">
+                                        <a class="nav-link" id="courses-tab" data-toggle="tab" href="#courses" role="tab" aria-controls="courses" aria-selected="false">
+                                            <i class="fa fa-th"></i>
+                                            <?php _e('Cursos Disponibles', 'streannuniv'); ?></a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a class="nav-link" id="certificate-tab" data-toggle="tab" href="#certificate" role="tab" aria-controls="certificate" aria-selected="false">
                                             <i class="fa fa-certificate"></i>
                                             <?php _e('Certificados', 'streannuniv'); ?></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="<?php echo wp_logout_url( get_permalink() ); ?>" class="nav-link">
+                                            <i class="fa fa-user"></i>
+                                            <?php _e('Cerrar Sesión', 'streannuniv'); ?></a>
                                     </li>
                                 </ul>
                             </div>
@@ -54,7 +64,9 @@
                                         </h2>
                                         <div class="row">
                                             <?php $course_approbed = get_approved_levels(); ?>
+                                            <?php $user_altered = get_user_meta(get_current_user_id(), 'user_altered', true); ?>
                                             <?php if (!empty($course_approbed)) { ?>
+
                                             <div class="dashboard-item col-12">
                                                 <h2>
                                                     <?php _e('Cursos Aprobados', 'streannuniv')?>
@@ -74,11 +86,46 @@
                                                     <?php } ?>
                                                 </div>
                                             </div>
-                                            <?php  } ?>
+                                            <?php  } else { ?>
+                                            <?php if ($user_altered == 2) { ?>
+                                            <div class="not-started col-12">
+                                                <h4>
+                                                    <?php _e('Todavía no ha completado satisfactoriamente ninguno de los cursos asignados. Para comenzar, haga clic en "Iniciar Certificación"', 'streannuniv'); ?>
+                                                </h4>
+                                                <a href="<?php echo home_url('/reproductor'); ?>" class="btn btn-md btn-certificate">
+                                                    <?php _e('Iniciar Certificación', 'streannuniv'); ?></a>
+                                            </div>
+                                            <?php } ?>
+                                            <?php if ($user_altered == 1) { ?>
+                                            <div class="not-started col-12">
+                                                <h4>
+                                                    <?php _e('Los cursos que debe realizar han sido habilitados. Haga clic en "Iniciar Certificación" para comenzar', 'streannuniv')?>
+                                                </h4>
+                                                <a href="<?php echo home_url('/reproductor'); ?>" class="btn btn-md btn-certificate">
+                                                    <?php _e('Iniciar Certificación', 'streannuniv'); ?></a>
+                                                <?php update_user_meta(get_current_user_id(), 'user_altered', 2); ?>
+                                            </div>
+                                            <?php } ?>
+                                            <?php if ($user_altered == 0) { ?>
+                                            <div class="not-started col-12">
+                                                <h4>
+                                                    <?php _e('En las próximas horas se le habilitará los cursos que deber realizar. Si pasadas 24 horas no se le han habilitado, por favor contáctenos en', 'streannuniv')?> <a href="mailto:edu@streann.com">edu@streann.com</a></h4>
+                                            </div>
+                                            <?php } ?>
+                                            <?php } ?>
                                             <?php $array_auth = get_authorized_levels(); ?>
                                             <?php $level_array = get_posts(array('post_type' => 'nivel', 'posts_per_page' => -1, 'order' => 'ASC', 'orderby' => 'date', 'post__in' => $array_auth)); ?>
+                                            <?php if (empty($course_approbed)) { ?>
+                                            <?php $total_approbed = 0; ?>
+                                            <?php } else { ?>
                                             <?php $total_approbed = count($course_approbed); ?>
+                                            <?php } ?>
+
+                                            <?php if (empty($level_array)) { ?>
+                                            <?php $total_levels = 0; ?>
+                                            <?php } else { ?>
                                             <?php $total_levels = count($level_array); ?>
+                                            <?php } ?>
                                             <div class="dashboard-item col-12">
                                                 <h2>
                                                     <?php _e('Progreso de Certificación', 'streannuniv'); ?>
@@ -169,6 +216,35 @@
                                             </div>
                                         </form>
                                     </div>
+                                    <div class="tab-pane fade" id="courses" role="tabpanel" aria-labelledby="courses-tab">
+                                        <h2 class="main-title">
+                                            <?php _e('Cursos Disponibles', 'streannuniv'); ?>
+                                        </h2>
+                                        <p>
+                                            <?php _e('Aquí tiene un listado de los cursos / niveles que tiene disponible', 'streannuniv'); ?>
+                                        </p>
+                                        <div class="row">
+                                            <?php $authorized_levels = get_authorized_levels(); ?>
+                                            <?php $args = array('post_type' => 'nivel', 'posts_per_page' => -1, 'order' => 'ASC', 'orderby' => 'date'); ?>
+                                            <?php $nivel_list = new WP_Query($args); ?>
+                                            <?php if ($nivel_list->have_posts()) : ?>
+                                            <?php while ($nivel_list->have_posts()) : $nivel_list->the_post(); ?>
+                                            <?php if (in_array(get_the_ID(), $authorized_levels)) { ?>
+                                            <div class="certificate-item col-4">
+                                                <div class="certificate-item-wrapper">
+                                                    <?php the_post_thumbnail('full', array('class' => 'img-fluid')); ?>
+                                                    <h3>
+                                                        <?php echo get_the_title(); ?>
+                                                    </h3>
+                                                    <a href="<?php echo home_url('/reproductor'); ?>" class="btn btn-md btn-certificate" target="_blank">
+                                                        <?php _e('Iniciar Certificación', 'streannuniv'); ?></a>
+                                                </div>
+                                            </div>
+                                            <?php } ?>
+                                            <?php endwhile; ?>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
                                     <div class="tab-pane fade" id="certificate" role="tabpanel" aria-labelledby="certificate-tab">
                                         <h2 class="main-title">
                                             <?php _e('Certificados', 'streannuniv'); ?>
@@ -177,7 +253,7 @@
                                             <?php _e('Aquí tiene un listado de los documentos digitales que usted ha generado durante el proceso de certificación', 'streannuniv'); ?>
                                         </p>
                                         <div class="row">
-                                            <?php $authorized_levels = get_authorized_levels(); ?>
+                                            <?php $authorized_levels = get_approved_levels(); ?>
                                             <?php $args = array('post_type' => 'nivel', 'posts_per_page' => -1, 'order' => 'ASC', 'orderby' => 'date'); ?>
                                             <?php $nivel_list = new WP_Query($args); ?>
                                             <?php if ($nivel_list->have_posts()) : ?>
@@ -204,37 +280,103 @@
                             <?php } else { ?>
                             <div class="my-account-login-container col-12">
                                 <div class="row align-items-center justify-content-center">
-                                    <div class="my-account-login-content col-6">
-                                        <form id="login-page" action="login" method="post">
-                                            <div class="row align-items-center form-item">
-                                                <div class="col-12">
-                                                    <p>
-                                                        <?php _e('Ingresa con tus datos y empieza a aprender mediante nuestros cursos', 'streannuniv'); ?>
-                                                    </p>
-                                                </div>
-                                                <div class="col-12">
-                                                    <input type="text" id="username-page" name="username" class="form-control" placeholder="<?php _e('Correo electrónico:', 'streannuniv'); ?>" autocomplete="username" />
-                                                    <small class="danger d-none"></small>
+                                    <div class="my-account-login-content col-10">
+                                        <div class="row align-items-center justify-content-center">
+                                            <div class="form-login-image col-5">
+                                                <img src="<?php echo get_template_directory_uri(); ?>/images/account-login.png" alt="Login" class="img-fluid" />
+                                            </div>
+                                            <div class="form-login-container col-7">
+                                                <h4>
+                                                    <?php _e('Iniciar Sesión', 'streannuniv'); ?>
+                                                </h4>
+                                                <form id="login-page" action="login" method="post">
+                                                    <div class="row align-items-center form-item">
+                                                        <div class="col-12">
+                                                            <p>
+                                                                <?php _e('Ingresa con tus datos y empieza a aprender mediante nuestros cursos', 'streannuniv'); ?>
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <input type="text" id="username-page" name="username" class="form-control" placeholder="<?php _e('Correo electrónico:', 'streannuniv'); ?>" autocomplete="username" />
+                                                            <small class="danger d-none"></small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row align-items-center form-item">
+                                                        <div class="col-12">
+                                                            <input type="password" id="password-page" name="password" class="form-control" placeholder="<?php _e('Contraseña:', 'streannuniv'); ?>" autocomplete="current-password" />
+                                                            <small class="danger d-none"></small>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <a class="lost" href="<?php echo wp_lostpassword_url(); ?>">
+                                                                <?php _e('¿Has perdido tu contraseña?'); ?></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row align-items-center justify-content-end form-item">
+                                                        <div class="col-12 status"></div>
+                                                        <div class="col-12">
+                                                            <button class="btn btn-md btn-login">
+                                                                <?php _e('Ingresar', 'streannuniv'); ?></button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <div class="register-container col-12">
+                                                    <hr>
+                                                    <h4>
+                                                        <?php _e('¿ No posee una cuenta? Registrese aquí', 'streannuniv'); ?>
+                                                    </h4>
+                                                    <form id="register-page" method="post">
+                                                        <div class="row align-items-center form-item">
+                                                            <div class="col-12">
+                                                                <input type="text" id="firstname-page" name="firstname" class="form-control" placeholder="<?php _e('Nombre:', 'streannuniv'); ?>" autocomplete="firstname" />
+                                                                <small class="danger d-none"></small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row align-items-center form-item">
+                                                            <div class="col-12">
+                                                                <input type="text" id="lastname-page" name="lastname" class="form-control" placeholder="<?php _e('Apellido:', 'streannuniv'); ?>" autocomplete="lastname" />
+                                                                <small class="danger d-none"></small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row align-items-center form-item">
+                                                            <div class="col-12">
+                                                                <input type="text" id="company-page" name="company" class="form-control" placeholder="<?php _e('Compañía:', 'streannuniv'); ?>" autocomplete="company" />
+                                                                <small class="danger d-none"></small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row align-items-center form-item">
+                                                            <div class="col-12">
+                                                                <input type="text" id="email-page" name="email" class="form-control" placeholder="<?php _e('Correo electrónico:', 'streannuniv'); ?>" autocomplete="email" />
+                                                                <small class="danger d-none"></small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row align-items-center form-item">
+                                                            <div class="col-12">
+                                                                <input type="password" id="register-pass-page" name="password" class="form-control" placeholder="<?php _e('Contraseña:', 'streannuniv'); ?>" autocomplete="current-password" />
+                                                                <small class="danger d-none"></small>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="row align-items-center form-item">
+                                                            <div class="col-12">
+                                                                <input type="password" id="confirm-pass-page" name="password" class="form-control" placeholder="<?php _e('Confirmar Contraseña:', 'streannuniv'); ?>" autocomplete="current-password" />
+                                                                <small class="danger d-none"></small>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div id="g-recaptcha"></div>
+                                                        <div class="row align-items-center justify-content-end form-item">
+                                                            <div class="col-12 status"></div>
+                                                            <div class="col-12">
+                                                                <button class="btn btn-md btn-login">
+                                                                    <?php _e('Registrarse', 'streannuniv'); ?></button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+
                                                 </div>
                                             </div>
-                                            <div class="row align-items-center form-item">
-                                                <div class="col-12">
-                                                    <input type="password" id="password-page" name="password" class="form-control" placeholder="<?php _e('Contraseña:', 'streannuniv'); ?>" autocomplete="current-password" />
-                                                    <small class="danger d-none"></small>
-                                                </div>
-                                                <div class="col-12">
-                                                    <a class="lost" href="<?php echo wp_lostpassword_url(); ?>">
-                                                        <?php _e('¿Has perdido tu contraseña?'); ?></a>
-                                                </div>
-                                            </div>
-                                            <div class="row align-items-center justify-content-end form-item">
-                                                <div class="col-12 status"></div>
-                                                <div class="col-12">
-                                                    <button class="btn btn-md btn-login">
-                                                        <?php _e('Ingresar', 'streannuniv'); ?></button>
-                                                </div>
-                                            </div>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -56,7 +56,7 @@ function get_levels() {
 -------------------------------------------------------------- */
 
 function load_user_scripts_styles($hook_suffix) {
-    if(($hook_suffix == 'profile.php') || ($hook_suffix == 'user-new.php')) {
+    if(($hook_suffix == 'profile.php') || ($hook_suffix == 'user-new.php') || ($hook_suffix == 'user-edit.php')) {
         wp_register_style( 'select2-css-admin', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css', false, '4.0.6' );
         wp_enqueue_style( 'select2-css-admin');
 
@@ -114,6 +114,7 @@ function save_extra_user_profile_fields( $user_id ) {
         return false;
     }
     update_user_meta( $user_id, 'course_selection', $_POST['course_selection'] );
+    update_user_meta( $user_id, 'user_altered', 1);
 }
 
 /* --------------------------------------------------------------
@@ -128,6 +129,17 @@ function get_authorized_levels() {
         endwhile;
     } else {
         $authorized_levels = (array)get_user_meta($user_id, 'course_selection', true);
+        foreach ($authorized_levels as $key => $value) {
+            if ((empty($value)) || ($value == 0)) {
+                unset($authorized_levels[$key]);
+            }
+        }
+        if (empty($authorized_levels)) {
+            $level_array = new WP_Query(array('post_type' => 'nivel', 'posts_per_page' => 1, 'order' => 'ASC', 'orderby' => 'date'));
+            while ($level_array->have_posts()) : $level_array->the_post();
+            $authorized_levels[] = get_the_ID();
+            endwhile;
+        }
     }
     return $authorized_levels;
 }
@@ -146,16 +158,9 @@ function get_approved_levels() {
     } else {
         $approved_levels = (array)get_user_meta($user_id, 'course_approved', true);
         foreach ($approved_levels as $key => $value) {
-            if (empty($value)) {
+            if ((empty($value)) || ($value == 0)) {
                 unset($approved_levels[$key]);
             }
-        }
-        if (empty($approved_levels)) {
-            $level_array = new WP_Query(array('post_type' => 'nivel', 'posts_per_page' => 1, 'order' => 'ASC', 'orderby' => 'date'));
-            while ($level_array->have_posts()) : $level_array->the_post();
-            $basic_level = get_the_ID();
-            endwhile;
-            $approved_levels[] = $basic_level;
         }
     }
     return $approved_levels;
@@ -249,18 +254,15 @@ function get_quiz_results_callback() {
     $quantity = $_POST['quantity'];
     $quiz_id = $_POST['quiz_id'];
     $user_id = get_current_user_id();
-    $quizzes = array();
-    $level_id = get_post_meta($quiz_id, 'su_curso_level', true);
-
+    $level_id = get_post_meta($quiz_id, 'su_curso_nivel', true);
 
     $percentage = ($score * 100) / $quantity;
     if ($percentage > 70) {
         $quizzes = get_approved_levels();
-
-        if(is_array($quizzes))
+        if (!in_array($level_id, $quizzes)) {
             $quizzes[] = $level_id; //I'm sure you would do more processing here
-        else
-            $quizzes = array($level_id);
+        }
+
         update_user_meta($user_id, 'course_approved', $quizzes);
         update_user_meta($user_id, 'quiz_reprobred_times', 0);
 ?>
@@ -344,8 +346,8 @@ function get_quiz_results_callback() {
     }
     die();
 }
-
 add_action('wp_ajax_get_quiz_results', 'get_quiz_results_callback');
+add_action('wp_ajax_nopriv_get_quiz_results', 'get_quiz_results_callback');
 
 function repeat_level_by_quiz_callback() {
     $level_ID = $_POST['level_id'];

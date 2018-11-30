@@ -94,7 +94,10 @@
                     </div>
                     <div class="row align-items-center justify-content-end form-item">
                         <div class="col-12 status"></div>
-                        <div class="col-12">
+                        <div class="col-6">
+                            <a class="btn btn-md btn-register" href="<?php echo home_url('/mi-cuenta'); ?>"><?php _e('Registrarse', 'streannuniv'); ?></a>
+                        </div>
+                        <div class="col-6">
                             <button class="btn btn-md btn-login"><?php _e('Ingresar', 'streannuniv'); ?></button>
                         </div>
                     </div>

@@ -120,6 +120,8 @@ function streannuniv_load_js() {
 
         }
 
+
+
         /*- MAIN FUNCTIONS -*/
         wp_register_script('main-functions', get_template_directory_uri() . '/js/functions.js', array('jquery'), $version_remove, true);
         wp_enqueue_script('main-functions');
@@ -130,7 +132,10 @@ function streannuniv_load_js() {
         ));
 
         if (is_page('mi-cuenta')) {
-            wp_register_script('user-functions', get_template_directory_uri() . '/js/user-functions.js', array('jquery'), $version_remove, true);
+            wp_register_script('recaptcha-js', 'https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit', array('jquery'), '3.0.0', true);
+            wp_enqueue_script('recaptcha-js');
+
+            wp_register_script('user-functions', get_template_directory_uri() . '/js/user-functions.js', array('jquery', 'recaptcha-js'), $version_remove, true);
             wp_enqueue_script('user-functions');
 
             wp_localize_script( 'user-functions', 'ajax_object', array(

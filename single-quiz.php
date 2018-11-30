@@ -38,6 +38,9 @@ if (!is_user_logged_in()) {
                 <h1 class="text-center">
                     <?php the_title(); ?>
                 </h1>
+                <div class="progress custom-progress">
+                    <div id="quiz_progress" class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
                 <form id="quiz-test" method="post" data-enc="">
                     <?php $array_questions = (array)get_post_meta(get_the_ID(), 'preguntas_group', true); ?>
                     <?php $i = 1; ?>
