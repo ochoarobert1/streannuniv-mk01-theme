@@ -216,3 +216,70 @@ CUSTOM LOGIN OVERRIDE
     display: inline-block;
     padding: 1rem !important;
 }
+
+/* --------------------------------------------------------------
+CUSTOM DASHBOARD
+-------------------------------------------------------------- */
+.admin-custom-area-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    padding-left: 0;
+
+    & .img-fluid {
+        max-width: 250px;
+    }
+}
+
+.admin-custom-area-content {
+    display: block;
+
+    & .clearfix-admin {
+        clear: both;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    & .admin-custom-area-item {
+        float: left;
+        max-width: 30%;
+        min-width: 21%;
+        background: white;
+        padding: 10px;
+        margin: 2rem;
+
+        & h3 {
+            margin: 0;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #d2d2d2;
+            padding-bottom: .5rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            font-size: .9rem;
+        }
+
+        & table {
+            border-spacing: 0;
+
+            & th {
+                border-bottom: 1px solid #333333;
+                padding: .5rem 1rem;
+            }
+
+            & td {
+                border-bottom: 1px solid #dadada;
+                padding: .5rem 1rem;
+
+
+            }
+
+            & tr {
+                &:hover {
+                    background: #efefef;
+                }
+            }
+        }
+    }
+}

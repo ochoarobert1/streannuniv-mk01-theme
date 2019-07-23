@@ -51,7 +51,7 @@
             <div class="container p-0">
                 <div class="row no-gutters align-items-center">
                     <div class="footer-copyright-inline col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <h5>Copyright 2018 - Streann.com - Todos los derechos reservados</h5>
+                        <h5>Copyright 2018 - Streann.com - <?php _e('Todos los derechos reservados', 'streannuniv'); ?></h5>
                     </div>
                     <div class="footer-copyright-menu col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                         <a href="">Terms of Use</a><a href="">Privacy Policy</a>
@@ -67,7 +67,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4><?php _e('Iniciar Sesión', 'srteannuniv'); ?></h4>
+                <h4><?php _e('Iniciar Sesión', 'streannuniv'); ?></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

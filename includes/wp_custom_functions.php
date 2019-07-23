@@ -81,7 +81,7 @@ function extra_user_profile_fields( $user ) { ?>
 <table class="form-table">
     <tr>
         <th><label for="course_selection">
-                <?php _e("Selección de Cursos"); ?></label></th>
+            <?php _e("Selección de Cursos"); ?></label></th>
         <td>
             <?php $args = array('post_type' => 'nivel', 'posts_per_page' => -1, 'order' => 'ASC', 'orderby' => 'date'); ?>
             <?php $nivel_list = new WP_Query($args); ?>
@@ -102,6 +102,16 @@ function extra_user_profile_fields( $user ) { ?>
         </td>
     </tr>
 </table>
+<table class="form-table">
+    <tr>
+        <?php $business = get_user_meta($user->ID, 'business', true); ?>
+        <th><label for="business">
+            <?php _e("Business"); ?></label></th>
+        <td>
+            <input type="text" name="business" id="business" value="<?php echo $business; ?>" />
+        </td>
+    </tr>
+</table>
 <?php }
 
 add_action('user_register', 'save_extra_user_profile_fields');
@@ -113,7 +123,12 @@ function save_extra_user_profile_fields( $user_id ) {
     if ( !current_user_can( 'edit_user', $user_id ) ) {
         return false;
     }
-    update_user_meta( $user_id, 'course_selection', $_POST['course_selection'] );
+    if (isset($_POST['course_selection'])) {
+        update_user_meta( $user_id, 'course_selection', $_POST['course_selection'] );
+    }
+    if (isset($_POST['business'])) {
+        update_user_meta( $user_id, 'business', $_POST['business']);
+    }
     update_user_meta( $user_id, 'user_altered', 1);
 }
 
@@ -161,6 +176,18 @@ function get_approved_levels() {
             if ((empty($value)) || ($value == 0)) {
                 unset($approved_levels[$key]);
             }
+        }
+    }
+    return $approved_levels;
+}
+
+function get_approved_admin_levels($user_id) {
+    $approved_levels = array();
+
+    $approved_levels = (array)get_user_meta($user_id, 'course_approved', true);
+    foreach ($approved_levels as $key => $value) {
+        if ((empty($value)) || ($value == 0)) {
+            unset($approved_levels[$key]);
         }
     }
     return $approved_levels;
@@ -284,7 +311,7 @@ function get_quiz_results_callback() {
             </p>
             <?php $level_array = get_posts(array('post_type' => 'nivel', 'posts_per_page' => 1, 'order' => 'ASC', 'orderby' => 'date', 'offset' => 1)); ?>
             <button onclick="next_level(<?php echo $level_array[0]->ID; ?>)" class="btn btn-md btn-quiz">
-                <?php _e('Siguiente Nivel', 'streannteam'); ?></button>
+                <?php _e('Siguiente Nivel', 'streannuniv'); ?></button>
         </div>
     </div>
 </div>

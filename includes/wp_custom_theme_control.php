@@ -49,15 +49,94 @@ function load_custom_wp_admin_style($hook) {
 add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
 
 function streann_dashboard_callback() {
+?>
+<div class="admin-custom-area-header">
+    <h1>
+        <?php echo get_admin_page_title(); ?>
+    </h1>
+    <img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="<?php echo get_bloginfo('name');?>" class="img-fluid" />
+</div>
+<div class="admin-custom-area-content">
+    <div class="admin-custom-area-item">
+        <h3>
+            <?php _e('Últimos Registros', 'streannuniv'); ?>
+        </h3>
+        <?php $usuarios = get_users( array( 'blog_id' => $GLOBALS['blog_id'], 'role' => 'subscriber', 'orderby' => 'ID', 'order' => 'DESC' )); ?>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+            </tr>
+            <?php foreach ( $usuarios as $user ) { ?>
+            <tr>
+                <td>
+                    <?php echo $user->ID; ?>
+                </td>
+                <td>
+                    <?php echo get_user_meta($user->ID, 'first_name', true); ?>
+                    <?php echo get_user_meta($user->ID, 'last_name', true); ?>
+                </td>
+                <td>
+                    <?php echo esc_html( $user->user_email ); ?>
+                </td>
+            </tr>
+            <?php } ?>
+        </table>
+    </div>
+    <?php $array_courses = new WP_Query(array('post_type' => 'nivel', 'posts_per_page' => -1, 'order' => 'ASC', 'orderby' => 'date' )); ?>
 
-}
+    <?php if ($array_courses->have_posts()) : $i = 1; ?>
+    <?php while ($array_courses->have_posts()) : $array_courses->the_post(); ?>
+    <div class="admin-custom-area-item">
+        <h3>
+            <?php _e('Aprobados:', 'streannuniv'); ?>
+            <?php the_title(); ?>
+        </h3>
+        <?php $usuarios = get_users( array( 'blog_id' => $GLOBALS['blog_id'], 'role' => 'subscriber', 'orderby' => 'ID', 'order' => 'DESC' )); ?>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+            </tr>
+            <?php foreach ( $usuarios as $user ) { ?>
+            <?php $course_approbed = get_approved_admin_levels($user->ID); ?>
+            <?php if (in_array(get_the_ID(), $course_approbed)) { ?>
+            <tr>
+                <td>
+                    <?php echo $user->ID; ?>
+                </td>
+                <td>
+                    <?php echo get_user_meta($user->ID, 'first_name', true); ?>
+                    <?php echo get_user_meta($user->ID, 'last_name', true); ?>
+                </td>
+                <td>
+                    <?php echo esc_html( $user->user_email ); ?>
+                </td>
+            </tr>
+            <?php } ?>
+            <?php } ?>
+        </table>
+    </div>
+    <?php $i++; ?>
+    <?php if ($i == 2) { echo '<div class="clearfix-admin"></div>';$i = 0; } ?>
+    <?php endwhile; ?>
+    <?php endif; ?>
+    <?php wp_reset_query(); ?>
+
+</div>
+
+<?php }
 
 /* CUSTOM MENU PAGE CONTENT */
 function streannuniv_custom_options_callback() { ?>
 
 <div class="streannuniv_custom_options-header">
     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/logo.png" alt="<?php echo get_bloginfo('name'); ?>" class="logo-header" />
-    <h1><?php echo get_admin_page_title(); ?></h1>
+    <h1>
+        <?php echo get_admin_page_title(); ?>
+    </h1>
     <div class="custom-clearfix"></div>
 </div>
 <div class="streannuniv_custom_options-content">
@@ -67,46 +146,66 @@ function streannuniv_custom_options_callback() { ?>
         <table class="form-table">
 
             <tr valign="top">
-                <th scope="row"><?php _e('Dirección', 'streannuniv'); ?></th>
+                <th scope="row">
+                    <?php _e('Dirección', 'streannuniv'); ?>
+                </th>
                 <td><textarea name="streannuniv_dir" cols="95" rows="5"><?php echo esc_attr( get_option('streannuniv_dir') ); ?></textarea></td>
             </tr>
 
             <tr valign="top">
-                <th scope="row"><?php _e('Correo Electrónico', 'streannuniv'); ?></th>
+                <th scope="row">
+                    <?php _e('Correo Electrónico', 'streannuniv'); ?>
+                </th>
                 <td><input type="text" size="90" name="streannuniv_email" value="<?php echo esc_attr( get_option('streannuniv_email') ); ?>" /></td>
             </tr>
 
             <tr valign="top">
-                <th scope="row"><?php _e('Teléfono', 'streannuniv'); ?></th>
+                <th scope="row">
+                    <?php _e('Teléfono', 'streannuniv'); ?>
+                </th>
                 <td><input type="text" size="90" name="streannuniv_telf" value="<?php echo esc_attr( get_option('streannuniv_telf') ); ?>" /></td>
             </tr>
 
             <tr valign="top">
-                <th scope="row"><?php _e('Móvil', 'streannuniv'); ?></th>
+                <th scope="row">
+                    <?php _e('Móvil', 'streannuniv'); ?>
+                </th>
                 <td><input type="text" size="90" name="streannuniv_mob" value="<?php echo esc_attr( get_option('streannuniv_mob') ); ?>" /></td>
             </tr>
 
             <tr valign="top">
-                <th scope="row" colspan="2"><h3><?php _e('Redes Sociales', 'streannuniv'); ?></h3></th>
+                <th scope="row" colspan="2">
+                    <h3>
+                        <?php _e('Redes Sociales', 'streannuniv'); ?>
+                    </h3>
+                </th>
             </tr>
 
             <tr valign="top">
-                <th scope="row"><?php _e('Perfil de Facebook', 'streannuniv'); ?></th>
+                <th scope="row">
+                    <?php _e('Perfil de Facebook', 'streannuniv'); ?>
+                </th>
                 <td><input type="text" size="90" name="streannuniv_fb" value="<?php echo esc_attr( get_option('streannuniv_fb') ); ?>" /></td>
             </tr>
 
             <tr valign="top">
-                <th scope="row"><?php _e('Perfil de Twitter', 'streannuniv'); ?></th>
+                <th scope="row">
+                    <?php _e('Perfil de Twitter', 'streannuniv'); ?>
+                </th>
                 <td><input type="text" size="90" name="streannuniv_tw" value="<?php echo esc_attr( get_option('streannuniv_tw') ); ?>" /></td>
             </tr>
 
             <tr valign="top">
-                <th scope="row"><?php _e('Perfil de Instagram', 'streannuniv'); ?></th>
+                <th scope="row">
+                    <?php _e('Perfil de Instagram', 'streannuniv'); ?>
+                </th>
                 <td><input type="text" size="90" name="streannuniv_ig" value="<?php echo esc_attr( get_option('streannuniv_ig') ); ?>" /></td>
             </tr>
 
             <tr valign="top">
-                <th scope="row"><?php _e('Canal de Youtube', 'streannuniv'); ?></th>
+                <th scope="row">
+                    <?php _e('Canal de Youtube', 'streannuniv'); ?>
+                </th>
                 <td><input type="text" size="90" name="streannuniv_yt" value="<?php echo esc_attr( get_option('streannuniv_yt') ); ?>" /></td>
             </tr>
 

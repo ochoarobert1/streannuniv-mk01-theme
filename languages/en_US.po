@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: streannuniv\n"
-"POT-Creation-Date: 2017-02-25 22:26-0400\n"
-"PO-Revision-Date: 2017-02-25 22:29-0400\n"
+"POT-Creation-Date: 2019-07-23 03:05-0400\n"
+"PO-Revision-Date: 2019-07-23 03:06-0400\n"
 "Last-Translator: \n"
 "Language-Team: Robert Ochoa <contacto@robertochoa.com.ve>\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -22,272 +22,1445 @@ msgstr "Error 404"
 
 #: ../404.php:14
 msgid "No podemos encontrar la página que buscas. Dirígete nuevamente al"
-msgstr "Sorry, but we can't seem to find the page you are looking for. Go back to"
+msgstr ""
+"Sorry, but we can't seem to find the page you are looking for. Go back to"
 
-#: ../404.php:14 ../archive.php:43 ../author.php:49 ../category.php:43
-#: ../index.php:43 ../search.php:43 ../tag.php:43
+#: ../404.php:14 ../archive.php:53 ../author.php:52 ../category.php:53
+#: ../footer.php:7 ../index.php:53 ../search.php:53 ../tag.php:53
 msgid "Volver al Inicio"
 msgstr "Back to Home"
 
-#: ../404.php:14 ../archive.php:43 ../author.php:49 ../category.php:43
-#: ../index.php:43 ../search.php:43 ../tag.php:43
+#: ../404.php:14 ../archive.php:53 ../author.php:52 ../category.php:53
+#: ../index.php:53 ../search.php:53 ../tag.php:53
 msgid "inicio"
 msgstr "home"
 
-#: ../archive.php:42 ../author.php:48 ../category.php:42 ../index.php:42
-#: ../search.php:42 ../tag.php:42
+#: ../archive.php:34 ../category.php:34 ../index.php:34 ../search.php:34
+#: ../tag.php:34
+msgid "Publicado por:"
+msgstr "Posted by:"
+
+#: ../archive.php:37 ../category.php:37 ../index.php:37 ../search.php:37
+#: ../tag.php:37
+msgid "Leer Más"
+msgstr "View More"
+
+#: ../archive.php:52 ../author.php:51 ../category.php:52 ../index.php:52
+#: ../search.php:52 ../tag.php:52
 msgid "Disculpe, su busqueda no arrojo ningun resultado"
 msgstr "Sorry, your search doesn't threw any result"
 
-#: ../archive.php:43 ../author.php:49 ../category.php:43 ../index.php:43
-#: ../search.php:43 ../tag.php:43
+#: ../archive.php:53 ../author.php:52 ../category.php:53 ../index.php:53
+#: ../search.php:53 ../tag.php:53
 msgid "Dirígete nuevamente al"
 msgstr "Go back to"
 
-#: ../functions.php:87
+#: ../footer.php:54
+msgid "Todos los derechos reservados"
+msgstr "All rights reserved"
+
+#: ../footer.php:70 ../header.php:88 ../page-mi-cuenta.php:290
+msgid "Iniciar Sesión"
+msgstr "Login"
+
+#: ../footer.php:79 ../page-mi-cuenta.php:296
+msgid "Ingresa con tus datos y empieza a aprender mediante nuestros cursos"
+msgstr "Enter your data and start learning through our courses"
+
+#: ../footer.php:82 ../page-mi-cuenta.php:300 ../page-mi-cuenta.php:348
+msgid "Correo electrónico:"
+msgstr "E-mail address:"
+
+#: ../footer.php:88 ../page-mi-cuenta.php:306 ../page-mi-cuenta.php:354
+msgid "Contraseña:"
+msgstr "Password:"
+
+#: ../footer.php:92 ../page-mi-cuenta.php:311
+msgid "¿Has perdido tu contraseña?"
+msgstr "Lost your password?"
+
+#: ../footer.php:98 ../page-mi-cuenta.php:372
+msgid "Registrarse"
+msgstr "Register"
+
+#: ../footer.php:101 ../page-mi-cuenta.php:318
+msgid "Ingresar"
+msgstr "Log In"
+
+#: ../functions.php:111
 msgid "Menu Header - Principal"
 msgstr "Menu Header - Main"
 
-#: ../functions.php:88
+#: ../functions.php:112
 msgid "Menu Footer - Principal"
 msgstr "Menu Footer - Main"
 
-#: ../functions.php:98
-msgid "Main Sidebar"
-msgstr "Main Sidebar"
+#: ../functions.php:122
+msgid "Sidebar Principal"
+msgstr "Sidebar Main"
 
-#: ../functions.php:100
-msgid "Estos widgets seran vistos en posts y pages"
-msgstr "These widgets will be seen in posts and pages"
+#: ../functions.php:124
+msgid "Estos widgets seran vistos en las entradas y páginas del sitio"
+msgstr "These widgets will be seen in the entries and pages of the site"
 
-#: ../functions.php:108
-msgid "Shop Sidebar"
-msgstr "Shop Sidebar"
+#: ../functions.php:132
+#, php-format
+msgid "Pie de Pagina %d"
+msgstr "Footer %d"
 
-#: ../functions.php:110
-msgid "Estos widgets seran vistos en Tienda y Categorias de Producto"
-msgstr "These widgets will be seen in shop and product categories"
+#: ../functions.php:134
+msgid "Sección de Pie de Pagina"
+msgstr "Footer Section"
 
-#: ../functions.php:133
-msgid "Gracias por crear con"
-msgstr "Thank you for using"
+#: ../functions.php:157
+msgid "Gracias por crear con "
+msgstr "Thank you for creating with "
 
-#: ../functions.php:135
-msgid "Tema desarrollado por"
-msgstr "Theme Developed By"
+#: ../functions.php:159
+msgid "Tema desarrollado por "
+msgstr "Theme Developed By "
 
-#: ../includes/wp_bootstrap_navwalker.php:197
-msgid "Agrega un Menu"
-msgstr "Add a Menu"
+#: ../functions.php:243 ../functions.php:266 ../functions.php:326
+#: ../functions.php:331 ../functions.php:334 ../functions.php:337
+msgid "Error:"
+msgstr "Error:"
 
-#: ../includes/wp_custom_functions.php:7
-msgid "año"
-msgstr "year"
+#: ../functions.php:243 ../functions.php:266
+msgid "Correo electrónico o contraseña incorrecta."
+msgstr "Incorrect email or password."
 
-#: ../includes/wp_custom_functions.php:7
-msgid "años"
-msgstr "years"
+#: ../functions.php:245 ../functions.php:268 ../functions.php:328
+#: ../functions.php:381 ../functions.php:411
+msgid "Éxito:"
+msgstr "Success:"
 
-#: ../includes/wp_custom_functions.php:8
-msgid "mes"
-msgstr "month"
+#: ../functions.php:245 ../functions.php:268
+msgid "Bienvenido, iniciando su sesión."
+msgstr "Welcome, starting your session."
 
-#: ../includes/wp_custom_functions.php:8
-msgid "meses"
-msgstr "months"
+#: ../functions.php:326
+msgid "Error. No se ha registrado el usuario"
+msgstr "Error. The user has not registered"
 
-#: ../includes/wp_custom_functions.php:9
-msgid "semana"
-msgstr "week"
+#: ../functions.php:328
+msgid "Bienvenido, Iniciaremos su sesión automáticamente."
+msgstr "Welcome, We will start your session automatically."
 
-#: ../includes/wp_custom_functions.php:9
-msgid "semanas"
-msgstr "weeks"
+#: ../functions.php:331
+msgid ""
+"El correo esta registrado en nuestros sistemas. ¿Ha olvidado su password?"
+msgstr ""
+"The mail is registered in our systems. Have you forgotten your password?"
 
-#: ../includes/wp_custom_functions.php:10
-msgid "dia"
-msgstr "day"
+#: ../functions.php:334 ../functions.php:337
+msgid "Ha fallado la verificación contra bots."
+msgstr "Verification against bots failed."
 
-#: ../includes/wp_custom_functions.php:10
-msgid "dias"
-msgstr "days"
+#: ../functions.php:381 ../functions.php:411
+msgid "Los datos han sido actualizados."
+msgstr "Your data has been updated."
 
-#: ../includes/wp_custom_functions.php:11
-msgid "hora"
-msgstr "hour"
+#: ../header.php:83
+msgid "Ir a Mi Cuenta"
+msgstr "Continue to my account"
 
-#: ../includes/wp_custom_functions.php:11
-msgid "horas"
-msgstr "hours"
+#: ../header.php:84
+msgid "Mi Cuenta"
+msgstr "My Account"
 
-#: ../includes/wp_custom_functions.php:12
-msgid "minuto"
-msgstr "minute"
+#: ../includes/class-tgm-plugin-activation.php:334
+msgid "Install Required Plugins"
+msgstr "Install Required Plugins"
 
-#: ../includes/wp_custom_functions.php:12
-msgid "minutos"
-msgstr "minutes"
+#: ../includes/class-tgm-plugin-activation.php:335
+msgid "Install Plugins"
+msgstr "Install Plugins"
 
-#: ../includes/wp_custom_functions.php:13
-msgid "segundo"
-msgstr "second"
+#: ../includes/class-tgm-plugin-activation.php:337
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr "Installing Plugin: %s"
 
-#: ../includes/wp_custom_functions.php:13
-#: ../includes/wp_custom_functions.php:32
-msgid "segundos"
-msgstr "seconds"
+#: ../includes/class-tgm-plugin-activation.php:339
+#, php-format
+msgid "Updating Plugin: %s"
+msgstr "Updating plugin: %s"
 
-#: ../includes/wp_custom_functions.php:24
-msgid " un momento"
-msgstr "a momento ago"
+#: ../includes/class-tgm-plugin-activation.php:340
+msgid "Something went wrong with the plugin API."
+msgstr "Something went wrong with the plugin API."
 
-#: ../includes/wp_custom_functions.php:57
-msgid "Inicio"
-msgstr "Home"
+#: ../includes/class-tgm-plugin-activation.php:392
+msgid "Return to Required Plugins Installer"
+msgstr "Return to Required Plugins Installer"
+
+#: ../includes/class-tgm-plugin-activation.php:393
+msgid "Return to the Dashboard"
+msgstr "Return to the Dashboard"
+
+#: ../includes/class-tgm-plugin-activation.php:394
+#: ../includes/class-tgm-plugin-activation.php:3252
+msgid "Plugin activated successfully."
+msgstr "Plugin activated successfully."
+
+#: ../includes/class-tgm-plugin-activation.php:395
+msgid "The following plugin was activated successfully:"
+msgstr "The following plugin was activated successfully:"
+
+#: ../includes/class-tgm-plugin-activation.php:397
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr "No action taken. Plugin %1$s was already active."
+
+#: ../includes/class-tgm-plugin-activation.php:399
+#, php-format
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+
+#: ../includes/class-tgm-plugin-activation.php:401
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr "All plugins installed and activated successfully. %1$s"
+
+#: ../includes/class-tgm-plugin-activation.php:402
+msgid "Dismiss this notice"
+msgstr "Dismiss this notice"
+
+#: ../includes/class-tgm-plugin-activation.php:403
+msgid ""
+"There are one or more required or recommended plugins to install, update or "
+"activate."
+msgstr ""
+"There are one or more required or recommended plugins to install, update or "
+"activate."
+
+#: ../includes/class-tgm-plugin-activation.php:404
+msgid "Please contact the administrator of this site for help."
+msgstr "Please contact the administrator of this site for help."
+
+#: ../includes/class-tgm-plugin-activation.php:2075
+#, php-format
+msgid "TGMPA v%s"
+msgstr "TGMPA v%s"
+
+#: ../includes/class-tgm-plugin-activation.php:2366
+msgid "Required"
+msgstr "Required"
+
+#: ../includes/class-tgm-plugin-activation.php:2369
+msgid "Recommended"
+msgstr "Recommended"
+
+#: ../includes/class-tgm-plugin-activation.php:2385
+msgid "WordPress Repository"
+msgstr "WordPress Repository"
+
+#: ../includes/class-tgm-plugin-activation.php:2388
+msgid "External Source"
+msgstr "External Source"
+
+#: ../includes/class-tgm-plugin-activation.php:2391
+msgid "Pre-Packaged"
+msgstr "Pre-Packaged"
+
+#: ../includes/class-tgm-plugin-activation.php:2408
+msgid "Not Installed"
+msgstr "Not Installed"
+
+#: ../includes/class-tgm-plugin-activation.php:2412
+msgid "Installed But Not Activated"
+msgstr "Installed But Not Activated"
+
+#: ../includes/class-tgm-plugin-activation.php:2414
+msgid "Active"
+msgstr "Active"
+
+#: ../includes/class-tgm-plugin-activation.php:2420
+msgid "Required Update not Available"
+msgstr "Required Update not Available"
+
+#: ../includes/class-tgm-plugin-activation.php:2423
+msgid "Requires Update"
+msgstr "Requires Update"
+
+#: ../includes/class-tgm-plugin-activation.php:2426
+msgid "Update recommended"
+msgstr "Update recommended"
+
+#: ../includes/class-tgm-plugin-activation.php:2435
+#, php-format
+msgctxt "Install/Update Status"
+msgid "%1$s, %2$s"
+msgstr "%1$s, %2$s"
+
+#: ../includes/class-tgm-plugin-activation.php:2575
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr "unknown"
+
+#: ../includes/class-tgm-plugin-activation.php:2583
+msgid "Installed version:"
+msgstr "Installed version:"
+
+#: ../includes/class-tgm-plugin-activation.php:2591
+msgid "Minimum required version:"
+msgstr "Minimum required version:"
+
+#: ../includes/class-tgm-plugin-activation.php:2603
+msgid "Available version:"
+msgstr "Available version:"
+
+#: ../includes/class-tgm-plugin-activation.php:2640
+msgid "Plugin"
+msgstr "Plugin"
+
+#: ../includes/class-tgm-plugin-activation.php:2641
+msgid "Source"
+msgstr "Source"
+
+#: ../includes/class-tgm-plugin-activation.php:2642
+msgid "Type"
+msgstr "Type"
+
+#: ../includes/class-tgm-plugin-activation.php:2646
+msgid "Version"
+msgstr "Version"
+
+#: ../includes/class-tgm-plugin-activation.php:2647
+msgid "Status"
+msgstr "Status"
+
+#: ../includes/class-tgm-plugin-activation.php:2696
+#, php-format
+msgid "Install %2$s"
+msgstr "Install %2$s"
+
+#: ../includes/class-tgm-plugin-activation.php:2701
+#, php-format
+msgid "Update %2$s"
+msgstr "Update %2$s"
+
+#: ../includes/class-tgm-plugin-activation.php:2707
+#, php-format
+msgid "Activate %2$s"
+msgstr "Activate %2$s"
+
+#: ../includes/class-tgm-plugin-activation.php:2810
+msgid "Install"
+msgstr "Install"
+
+#: ../includes/class-tgm-plugin-activation.php:2816
+msgid "Update"
+msgstr "Update"
+
+#: ../includes/class-tgm-plugin-activation.php:2819
+msgid "Activate"
+msgstr "Activate"
+
+#: ../includes/class-tgm-plugin-activation.php:2850
+msgid "No plugins were selected to be installed. No action taken."
+msgstr "No plugins were selected to be installed. No action taken."
+
+#: ../includes/class-tgm-plugin-activation.php:2852
+msgid "No plugins were selected to be updated. No action taken."
+msgstr "No plugins were selected to be updated. No action taken."
+
+#: ../includes/class-tgm-plugin-activation.php:2893
+msgid "No plugins are available to be installed at this time."
+msgstr "No plugins are available to be installed at this time."
+
+#: ../includes/class-tgm-plugin-activation.php:2895
+msgid "No plugins are available to be updated at this time."
+msgstr "No plugins are available to be updated at this time."
+
+#: ../includes/class-tgm-plugin-activation.php:3251
+msgid "Plugin activation failed."
+msgstr "Plugin activation failed."
+
+#: ../includes/class-tgm-plugin-activation.php:3591
+#, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr "Updating Plugin %1$s (%2$d/%3$d)"
+
+#: ../includes/class-tgm-plugin-activation.php:3594
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr "An error occurred while installing%1$s: <strong>%2$s</strong> ."
+
+#: ../includes/class-tgm-plugin-activation.php:3596
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr "The installation of %1$s failed."
+
+#: ../includes/class-tgm-plugin-activation.php:3600
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+
+#: ../includes/class-tgm-plugin-activation.php:3602
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr "%1$s installed and activated successfully."
+
+#: ../includes/class-tgm-plugin-activation.php:3603
+msgid "All installations and activations have been completed."
+msgstr "All installations and activations have been completed."
+
+#: ../includes/class-tgm-plugin-activation.php:3605
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr "Installing and activating Plugin%1$s (%2$d/%3$d)"
+
+#: ../includes/class-tgm-plugin-activation.php:3608
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+
+#: ../includes/class-tgm-plugin-activation.php:3611
+msgid "All installations have been completed."
+msgstr "All installations have been completed."
+
+#: ../includes/class-tgm-plugin-activation.php:3613
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr "Installing Plugin%1$s (%2$d/%3$d)"
+
+#: ../includes/wp_custom_functions.php:78
+msgid "Información Adicional del Usuario"
+msgstr "Additional user information"
+
+#: ../includes/wp_custom_functions.php:84
+msgid "Selección de Cursos"
+msgstr "Course Selection"
+
+#: ../includes/wp_custom_functions.php:101
+msgid "Seleccione los cursos al cual el usuario tendrá acceso."
+msgstr "Select the courses to which the user will have access."
+
+#: ../includes/wp_custom_functions.php:109
+msgid "Business"
+msgstr "Business"
+
+#: ../includes/wp_custom_functions.php:307
+msgid "Ud ha aprobado el curso"
+msgstr "You have passed the course"
+
+#: ../includes/wp_custom_functions.php:310
+msgid ""
+"Te invitamos a continuar con el siguiente nivel de estudio para completar tu "
+"certificación"
+msgstr ""
+"We invite you to continue with the next level of study to complete your "
+"certification"
+
+#: ../includes/wp_custom_functions.php:314
+msgid "Siguiente Nivel"
+msgstr "Next Level"
+
+#: ../includes/wp_custom_functions.php:337
+#: ../includes/wp_custom_functions.php:361
+msgid "Ud no ha aprobado el curso"
+msgstr "You have not passed the course"
+
+#: ../includes/wp_custom_functions.php:340 ../single-quiz.php:31
+msgid ""
+"Te invitamos a repetir el nivel para poder aprobar este quiz y completar tu "
+"certificación"
+msgstr ""
+"We invite you to repeat the level to be able to pass this quiz and complete "
+"your certification"
+
+#: ../includes/wp_custom_functions.php:343 ../single-quiz.php:34
+msgid "Repetir Qüiz"
+msgstr "Repeat Qüiz"
+
+#: ../includes/wp_custom_functions.php:364
+msgid "Deberás repetir el nivel antes de intentar de nuevo este quiz"
+msgstr "You must repeat the level before trying again this quiz"
+
+#: ../includes/wp_custom_functions.php:367
+msgid "Repetir Nivel"
+msgstr "Repeat Level"
 
 #: ../includes/wp_custom_post_type.php:6
 msgctxt "Post Type General Name"
-msgid "Portafolios"
-msgstr "Portfolios"
+msgid "Cursos"
+msgstr "Courses"
 
 #: ../includes/wp_custom_post_type.php:7
 msgctxt "Post Type Singular Name"
-msgid "Portafolio"
-msgstr "Portfolio"
+msgid "Curso"
+msgstr "Course"
 
 #: ../includes/wp_custom_post_type.php:8 ../includes/wp_custom_post_type.php:9
-#: ../includes/wp_custom_post_type.php:35
-msgid "Portafolio"
-msgstr "Portfolio"
+#: ../includes/wp_custom_theme_control.php:23
+msgid "Cursos"
+msgstr "Courses"
 
 #: ../includes/wp_custom_post_type.php:10
-msgid "Archivo de Portafolio"
-msgstr "Portfolio Archive"
+msgid "Archivo de Cursos"
+msgstr "Course Archives"
 
 #: ../includes/wp_custom_post_type.php:11
-msgid "Atributos de Portafolio"
-msgstr "Portfolio Attributes"
+msgid "Atributos de Cursos"
+msgstr "Course Attributes"
 
 #: ../includes/wp_custom_post_type.php:12
-msgid "Portafolio Padre:"
-msgstr "Parent Portfolio:"
+msgid "Curso Padre:"
+msgstr "Parent Course:"
 
 #: ../includes/wp_custom_post_type.php:13
-msgid "Todos los Items"
-msgstr "All Items"
+msgid "Todos los Cursos"
+msgstr "All courses"
 
 #: ../includes/wp_custom_post_type.php:14
-msgid "Agregar Nuevo Item"
-msgstr "Add New Item"
+msgid "Agregar Nuevo Curso"
+msgstr "Add New Course"
 
 #: ../includes/wp_custom_post_type.php:15
+#: ../includes/wp_custom_post_type.php:67
 msgid "Agregar Nuevo"
 msgstr "Add New"
 
 #: ../includes/wp_custom_post_type.php:16
-msgid "Nuevo Item"
-msgstr "New Item"
+msgid "Nuevo Curso"
+msgstr "New Course"
 
 #: ../includes/wp_custom_post_type.php:17
-msgid "Editar Item"
-msgstr "Edit Item"
+msgid "Editar Curso"
+msgstr "Edit Course"
 
 #: ../includes/wp_custom_post_type.php:18
-msgid "Actualizar Item"
-msgstr "Update Item"
+msgid "Actualizar Curso"
+msgstr "Update Course"
 
 #: ../includes/wp_custom_post_type.php:19
-msgid "Ver Item"
-msgstr "View Item"
+msgid "Ver Curso"
+msgstr "View Course"
 
 #: ../includes/wp_custom_post_type.php:20
-msgid "Ver Portafolio"
-msgstr "View Portfolio"
+msgid "Ver Cursos"
+msgstr "See courses"
 
 #: ../includes/wp_custom_post_type.php:21
-msgid "Buscar en Portafolio"
-msgstr "Search in Portfolio"
+msgid "Buscar Curso"
+msgstr "Search Course"
 
 #: ../includes/wp_custom_post_type.php:22
 msgid "No hay Resultados"
 msgstr "No Items"
 
 #: ../includes/wp_custom_post_type.php:23
-msgid "No hay Resultados en la Papelera"
-msgstr "No Items in Trash"
+msgid "No hay Resultados en Papelera"
+msgstr "No Results in Trash"
 
 #: ../includes/wp_custom_post_type.php:24
-msgid "Imagen Destacada"
-msgstr "Featured Image"
+msgid "Imagen Descriptiva"
+msgstr "Descriptive Image"
 
 #: ../includes/wp_custom_post_type.php:25
-msgid "Colocar Imagen Destacada"
-msgstr "Set Featured Image"
+msgid "Colocar Imagen Descriptiva"
+msgstr "Place Descriptive Image"
 
 #: ../includes/wp_custom_post_type.php:26
-msgid "Remover Imagen Destacada"
-msgstr "Remove Featured Image"
+msgid "Remover Imagen Descriptiva"
+msgstr "Remove Descriptive Image"
 
 #: ../includes/wp_custom_post_type.php:27
-msgid "Usar como Imagen Destacada"
-msgstr "Use as Featured Image"
+msgid "Usar como Imagen Descriptiva"
+msgstr "Use as a Descriptive Image"
 
 #: ../includes/wp_custom_post_type.php:28
-msgid "Insertar dentro de Item"
-msgstr "Insert Into Item"
+msgid "Insertar en Curso"
+msgstr "Insert in Course"
 
 #: ../includes/wp_custom_post_type.php:29
-msgid "Cargado a este item"
-msgstr "Uploaded to this Item"
+msgid "Cargado a este Curso"
+msgstr "Uploaded to this Course"
 
 #: ../includes/wp_custom_post_type.php:30
-msgid "Listado del Portafolio"
-msgstr "Portfolio Lists"
+msgid "Listado de Cursos"
+msgstr "Course Listing"
 
 #: ../includes/wp_custom_post_type.php:31
-msgid "Navegación de Listado del Portafolio"
-msgstr "Portfolio Lists Navigation"
+msgid "Navegación del Listado de Cursos"
+msgstr "Navigation Courses List"
 
 #: ../includes/wp_custom_post_type.php:32
-msgid "Filtro de Listado del Portafolio"
-msgstr "Filter Portfolio Lists"
+msgid "Filtro del Listado de Cursos"
+msgstr "Filter of the List of Courses"
+
+#: ../includes/wp_custom_post_type.php:35
+msgid "Curso"
+msgstr "Course"
 
 #: ../includes/wp_custom_post_type.php:36
-msgid "Portafolio de Desarrollos"
-msgstr "Development Portfolios"
+msgid "Cursos Ofrecidos por la Academia"
+msgstr "Courses offered by the Academy"
 
-#: ../index.php:5
-msgid "Ultimas Entradas"
-msgstr "Last Entries"
+#: ../includes/wp_custom_post_type.php:58
+msgctxt "Post Type General Name"
+msgid "Quizzes"
+msgstr "Quizzes"
+
+#: ../includes/wp_custom_post_type.php:59
+msgctxt "Post Type Singular Name"
+msgid "Quiz"
+msgstr "Quiz"
+
+#: ../includes/wp_custom_post_type.php:60
+#: ../includes/wp_custom_post_type.php:61
+#: ../includes/wp_custom_theme_control.php:25
+msgid "Quizzes"
+msgstr "Quizzes"
+
+#: ../includes/wp_custom_post_type.php:62
+msgid "Archivo de Quizzes"
+msgstr "Quizzes Archive"
+
+#: ../includes/wp_custom_post_type.php:63
+msgid "Atributos de Quizzes"
+msgstr "Quizzes Attributes"
+
+#: ../includes/wp_custom_post_type.php:64
+msgid "Quiz Padre:"
+msgstr "Parent Quiz:"
+
+#: ../includes/wp_custom_post_type.php:65
+msgid "Todos los Quizzes"
+msgstr "All Quizzes"
+
+#: ../includes/wp_custom_post_type.php:66
+msgid "Agregar Nuevo Quiz"
+msgstr "Add New Quiz"
+
+#: ../includes/wp_custom_post_type.php:68
+msgid "Nuevo Quiz"
+msgstr "New Quiz"
+
+#: ../includes/wp_custom_post_type.php:69
+msgid "Editar Quiz"
+msgstr "Edit Quiz"
+
+#: ../includes/wp_custom_post_type.php:70
+msgid "Actualizar Quiz"
+msgstr "Update Quiz"
+
+#: ../includes/wp_custom_post_type.php:71
+msgid "Ver Quiz"
+msgstr "See Quiz"
+
+#: ../includes/wp_custom_post_type.php:72
+msgid "Ver Quizzes"
+msgstr "See Quizzes"
+
+#: ../includes/wp_custom_post_type.php:73
+msgid "Buscar Podcast"
+msgstr "Search Podcasts"
+
+#: ../includes/wp_custom_post_type.php:74
+#: ../includes/wp_custom_post_type.php:125
+#: ../includes/wp_custom_post_type.php:175
+msgid "No hay resultados"
+msgstr "No results found"
+
+#: ../includes/wp_custom_post_type.php:75
+msgid "No hay resultados en papelera"
+msgstr "No List found in Trash"
+
+#: ../includes/wp_custom_post_type.php:76
+msgid "Imagen del Quiz"
+msgstr "Image Quiz"
+
+#: ../includes/wp_custom_post_type.php:77
+msgid "Colocar Imagen del Quiz"
+msgstr "Place Quiz Image"
+
+#: ../includes/wp_custom_post_type.php:78
+msgid "Remover Imagen del Quiz"
+msgstr "Remove Image from Quiz"
+
+#: ../includes/wp_custom_post_type.php:79
+msgid "Usar como Imagen del Quiz"
+msgstr "Use as Quiz Image"
+
+#: ../includes/wp_custom_post_type.php:80
+msgid "Insertar en Quiz"
+msgstr "Insert in Quiz"
+
+#: ../includes/wp_custom_post_type.php:81
+msgid "Cargado a este Quiz"
+msgstr "Uploaded to this Quiz"
+
+#: ../includes/wp_custom_post_type.php:82
+msgid "Listado de Quizzes"
+msgstr "List of Quizzes"
+
+#: ../includes/wp_custom_post_type.php:83
+msgid "Navegación del listado de Quizzes"
+msgstr "Quizzes listing navigation"
+
+#: ../includes/wp_custom_post_type.php:84
+msgid "Filtro del Listado de Quizzes"
+msgstr "Quizzes Listing Filter"
+
+#: ../includes/wp_custom_post_type.php:87
+msgid "Quiz"
+msgstr "Image Quiz"
+
+#: ../includes/wp_custom_post_type.php:88
+msgid "Quiz dentro del site"
+msgstr "Quiz inside the site"
+
+#: ../includes/wp_custom_post_type.php:109
+msgctxt "Post Type General Name"
+msgid "Testimonios"
+msgstr "Testimonies"
+
+#: ../includes/wp_custom_post_type.php:110
+msgctxt "Post Type Singular Name"
+msgid "Testimonio"
+msgstr "Testimony"
+
+#: ../includes/wp_custom_post_type.php:111
+#: ../includes/wp_custom_post_type.php:112
+#: ../includes/wp_custom_theme_control.php:27
+msgid "Testimonios"
+msgstr "Testimonies"
+
+#: ../includes/wp_custom_post_type.php:113
+msgid "Archivo de Testimonios"
+msgstr "Testimonial Archives"
+
+#: ../includes/wp_custom_post_type.php:114
+msgid "Atributo de Testimonios"
+msgstr "Testimonials Attribute"
+
+#: ../includes/wp_custom_post_type.php:115
+msgid "Testimonio Padre"
+msgstr "Parent testimonial"
+
+#: ../includes/wp_custom_post_type.php:116
+msgid "Todos los Testimonios"
+msgstr "All Testimonies"
+
+#: ../includes/wp_custom_post_type.php:117
+msgid "Agregar Nuevo Testimonio"
+msgstr "Add New Testimonial"
+
+#: ../includes/wp_custom_post_type.php:118
+#: ../includes/wp_custom_theme_control.php:28
+msgid "Agregar Testimonio"
+msgstr "Add Testimonial"
+
+#: ../includes/wp_custom_post_type.php:119
+msgid "Nuevo Testimonio"
+msgstr "New Testimony"
+
+#: ../includes/wp_custom_post_type.php:120
+msgid "Editar Testimonio"
+msgstr "Edit Testimony"
+
+#: ../includes/wp_custom_post_type.php:121
+msgid "Actualizar Testimonio"
+msgstr "Update Testimony"
+
+#: ../includes/wp_custom_post_type.php:122
+msgid "Ver Testimonio"
+msgstr "See Testimony"
+
+#: ../includes/wp_custom_post_type.php:123
+msgid "Ver Testimonios"
+msgstr "View Testimonials"
+
+#: ../includes/wp_custom_post_type.php:124
+msgid "Buscar Testimonio"
+msgstr "Search Testimony"
+
+#: ../includes/wp_custom_post_type.php:126
+#: ../includes/wp_custom_post_type.php:176
+msgid "No hay resultados en Papelera"
+msgstr "No List found in Trash"
+
+#: ../includes/wp_custom_post_type.php:127
+msgid "Imagen del Testimonio"
+msgstr "Image of the Testimony"
+
+#: ../includes/wp_custom_post_type.php:128
+msgid "Colocar Imagen del Testimonio"
+msgstr "Place Image of the Testimony"
+
+#: ../includes/wp_custom_post_type.php:129
+msgid "Remover Imagen del Testimonio"
+msgstr "Remove Image of the Testimony"
+
+#: ../includes/wp_custom_post_type.php:130
+msgid "Usar como Imagen del Testimonio"
+msgstr "Use as Testimony image"
+
+#: ../includes/wp_custom_post_type.php:131
+msgid "Insertar en Testimonio"
+msgstr "Insert in Testimony"
+
+#: ../includes/wp_custom_post_type.php:132
+msgid "Cargado a este Testimonio"
+msgstr "Loaded to this Testimony"
+
+#: ../includes/wp_custom_post_type.php:133
+msgid "Listado de Testimonios"
+msgstr "Testimonials List"
+
+#: ../includes/wp_custom_post_type.php:134
+msgid "Navegación del Listado de Testimonios"
+msgstr "Testimonials Listing Navigation"
+
+#: ../includes/wp_custom_post_type.php:135
+msgid "Filtro del Listado de Testimonios"
+msgstr "Test List Filter"
+
+#: ../includes/wp_custom_post_type.php:138
+msgid "Testimonio"
+msgstr "Testimony"
+
+#: ../includes/wp_custom_post_type.php:139
+msgid "Testimonios dentro del Instituto"
+msgstr "Testimonies within the Institute"
+
+#: ../includes/wp_custom_post_type.php:159
+msgctxt "Post Type General Name"
+msgid "Niveles"
+msgstr "Levels"
+
+#: ../includes/wp_custom_post_type.php:160
+msgctxt "Post Type Singular Name"
+msgid "Nivel"
+msgstr "Level"
+
+#: ../includes/wp_custom_post_type.php:161
+#: ../includes/wp_custom_post_type.php:162
+#: ../includes/wp_custom_theme_control.php:21
+msgid "Niveles"
+msgstr "Levels"
+
+#: ../includes/wp_custom_post_type.php:163
+msgid "Archivo de Niveles"
+msgstr "Level Archive"
+
+#: ../includes/wp_custom_post_type.php:164
+msgid "Atributos de Niveles"
+msgstr "Level Attributes"
+
+#: ../includes/wp_custom_post_type.php:165
+msgid "Nivel Padre:"
+msgstr "Parent Level:"
+
+#: ../includes/wp_custom_post_type.php:166
+msgid "Todos los Niveles"
+msgstr "All level"
+
+#: ../includes/wp_custom_post_type.php:167
+msgid "Agregar Nuevo Nivel"
+msgstr "Add New Level"
+
+#: ../includes/wp_custom_post_type.php:168
+#: ../includes/wp_custom_theme_control.php:22
+msgid "Agregar Nivel"
+msgstr "Add tier"
+
+#: ../includes/wp_custom_post_type.php:169
+msgid "Nuevo Nivel"
+msgstr "New Level"
+
+#: ../includes/wp_custom_post_type.php:170
+msgid "Editar Nivel"
+msgstr "Edit Level"
+
+#: ../includes/wp_custom_post_type.php:171
+msgid "Actualizar Nivel"
+msgstr "UPDATE LEVEL"
+
+#: ../includes/wp_custom_post_type.php:172
+msgid "Ver Nivel"
+msgstr "View level"
+
+#: ../includes/wp_custom_post_type.php:173
+msgid "Ver Niveles"
+msgstr "View Levels"
+
+#: ../includes/wp_custom_post_type.php:174
+msgid "Buscar Nivel"
+msgstr "Level search"
+
+#: ../includes/wp_custom_post_type.php:177
+msgid "Imagen del Nivel"
+msgstr "Level Image"
+
+#: ../includes/wp_custom_post_type.php:178
+msgid "Colocar Imagen del Nivel"
+msgstr "Place Level Image"
+
+#: ../includes/wp_custom_post_type.php:179
+msgid "Remover Imagen del Nivel"
+msgstr "Remove Level Image"
+
+#: ../includes/wp_custom_post_type.php:180
+msgid "Usar como Imagen del Nivel"
+msgstr "Use as Level Image"
+
+#: ../includes/wp_custom_post_type.php:181
+msgid "Insertar en Nivel"
+msgstr "Insert in Level"
+
+#: ../includes/wp_custom_post_type.php:182
+msgid "Cargado a este Nivel"
+msgstr "Loaded to this Level"
+
+#: ../includes/wp_custom_post_type.php:183
+msgid "Listado de Niveles"
+msgstr "Level List"
+
+#: ../includes/wp_custom_post_type.php:184
+msgid "Navegación del Listado de Niveles"
+msgstr "Navigation of the List of Levels"
+
+#: ../includes/wp_custom_post_type.php:185
+msgid "Filtro del Listado de Niveles"
+msgstr "Filter of the List of Levels"
+
+#: ../includes/wp_custom_post_type.php:188 ../page-player.php:32
+msgid "Nivel"
+msgstr "Level"
+
+#: ../includes/wp_custom_post_type.php:189
+msgid "Niveles de Curso"
+msgstr "Course levels"
+
+#: ../includes/wp_custom_quiz_metabox.php:30
+msgid "Pregunta {#}"
+msgstr "Question {#}"
+
+#: ../includes/wp_custom_quiz_metabox.php:31
+msgid "Agrega otra pregunta"
+msgstr "Add another question"
+
+#: ../includes/wp_custom_quiz_metabox.php:32
+msgid "Remover pregunta"
+msgstr "Remove question"
+
+#: ../includes/wp_custom_quiz_metabox.php:116
+msgid "Opcion 1"
+msgstr "Option 1"
+
+#: ../includes/wp_custom_quiz_metabox.php:117
+msgid "Opcion 2"
+msgstr "Option 2"
+
+#: ../includes/wp_custom_quiz_metabox.php:118
+msgid "Opcion 3"
+msgstr "Option 3"
+
+#: ../includes/wp_custom_quiz_metabox.php:119
+msgid "Opcion 4"
+msgstr "Option 4"
+
+#: ../includes/wp_custom_quiz_metabox.php:120
+msgid "Opcion 5"
+msgstr "Option 5"
+
+#: ../includes/wp_custom_theme_control.php:24
+msgid "Agregar Curso"
+msgstr "Add Course"
+
+#: ../includes/wp_custom_theme_control.php:26
+msgid "Agregar Quiz"
+msgstr "Add Quiz"
+
+#: ../includes/wp_custom_theme_control.php:29
+msgid "Opciones del Sitio"
+msgstr "Site Preferences"
+
+#: ../includes/wp_custom_theme_control.php:62
+msgid "Últimos Registros"
+msgstr "Latest Records"
+
+#: ../includes/wp_custom_theme_control.php:93
+msgid "Aprobados:"
+msgstr "Approved:"
+
+#: ../includes/wp_custom_theme_control.php:150
+msgid "Dirección"
+msgstr "Direction"
+
+#: ../includes/wp_custom_theme_control.php:157
+msgid "Correo Electrónico"
+msgstr "Email"
+
+#: ../includes/wp_custom_theme_control.php:164
+msgid "Teléfono"
+msgstr "Phone"
+
+#: ../includes/wp_custom_theme_control.php:171
+msgid "Móvil"
+msgstr "Mobile"
+
+#: ../includes/wp_custom_theme_control.php:179 ../page-mi-cuenta.php:39
+#: ../page-mi-cuenta.php:183
+msgid "Redes Sociales"
+msgstr "Social Networks"
+
+#: ../includes/wp_custom_theme_control.php:186
+msgid "Perfil de Facebook"
+msgstr "Facebook Profile"
+
+#: ../includes/wp_custom_theme_control.php:193
+msgid "Perfil de Twitter"
+msgstr "Twitter Profile"
+
+#: ../includes/wp_custom_theme_control.php:200
+msgid "Perfil de Instagram"
+msgstr "Instagram Profile"
+
+#: ../includes/wp_custom_theme_control.php:207
+msgid "Canal de Youtube"
+msgstr "Youtube channel"
+
+#: ../includes/wp_enqueue_scripts.php:131
+msgid "Validando tus datos, por favor espere..."
+msgstr "Validating details, Please wait…"
+
+#: ../includes/wp_enqueue_scripts.php:143
+msgid "Actualizando tus datos, por favor espere..."
+msgstr "Updating data, Please wait."
+
+#: ../includes/wp_jscomposer_extended.php:45
+msgid "Item Contador Especial"
+msgstr "Item Special Accountant"
+
+#: ../includes/wp_jscomposer_extended.php:46
+msgid "Shortcode para insertar un contador automático"
+msgstr "Shortcode to insert an automatic counter"
+
+#: ../includes/wp_jscomposer_extended.php:51
+#: ../includes/wp_jscomposer_extended.php:101
+#: ../includes/wp_jscomposer_extended.php:133
+#: ../includes/wp_jscomposer_extended.php:156
+msgid "Content"
+msgstr "Content"
+
+#: ../includes/wp_jscomposer_extended.php:58
+#: ../includes/wp_jscomposer_extended.php:108
+msgid "Ícono del Contador"
+msgstr "Accountant Icon"
+
+#: ../includes/wp_jscomposer_extended.php:61
+#: ../includes/wp_jscomposer_extended.php:111
+msgid "Inserte un ícono del contador. Se redimensionará a 50x50"
+msgstr "Insert a counter icon. It will be resized to 50x50"
+
+#: ../includes/wp_jscomposer_extended.php:66
+msgid "Valor Mínimo"
+msgstr "Minimum Value"
+
+#: ../includes/wp_jscomposer_extended.php:70
+msgid "Inserte el valor mínimo del contador. E.G.: 0"
+msgstr "Insert the minimum value of the counter. EG: 0"
+
+#: ../includes/wp_jscomposer_extended.php:75
+msgid "Valor Máximo"
+msgstr "Maximum value"
+
+#: ../includes/wp_jscomposer_extended.php:79
+msgid "Inserte el valor máximo del contador. E.G.: 100."
+msgstr "Insert the maximum value of the counter. E.G.: 100."
+
+#: ../includes/wp_jscomposer_extended.php:85
+#: ../includes/wp_jscomposer_extended.php:117 ../page-player.php:20
+#: ../page-reproductor.php:34 ../single-nivel.php:46 ../single-nivel.php:67
+msgid "Contenido"
+msgstr "Content"
+
+#: ../includes/wp_jscomposer_extended.php:89
+#: ../includes/wp_jscomposer_extended.php:121
+msgid "Ingrese el contenido que irá al final del contador"
+msgstr "Enter the content that will go to the end of the counter"
+
+#: ../includes/wp_jscomposer_extended.php:95
+msgid "Item Media Especial"
+msgstr "Item Special Media"
+
+#: ../includes/wp_jscomposer_extended.php:96
+msgid "Shortcode para insertar un elemento tipo media"
+msgstr "Shortcode to insert a medium type element"
+
+#: ../includes/wp_jscomposer_extended.php:127
+msgid "Slider de Testimonios"
+msgstr "Testimonial Slider"
+
+#: ../includes/wp_jscomposer_extended.php:128
+msgid "Shortcode para insertar un Slider de Testimonios"
+msgstr "Shortcode to insert a Testimonial Slider"
+
+#: ../includes/wp_jscomposer_extended.php:140
+msgid "Cantidad de Testimonios"
+msgstr "Number of Testimonies"
+
+#: ../includes/wp_jscomposer_extended.php:144
+msgid "Inserte la Cantidad de Testimonios a cargar"
+msgstr "Insert the Number of Testimonials to load"
+
+#: ../includes/wp_jscomposer_extended.php:150
+msgid "Items de Niveles de Cursos"
+msgstr "Course Level Items"
+
+#: ../includes/wp_jscomposer_extended.php:151
+msgid "Shortcode para insertar un Items de Niveles de Cursos"
+msgstr "Shortcode to insert a Course Level Items"
+
+#: ../includes/wp_jscomposer_extended.php:163
+msgid "Banner del Nivel"
+msgstr "Level Banner"
+
+#: ../includes/wp_jscomposer_extended.php:166
+msgid "Inserte un Banner del Nivel. Se redimensionará a 50x50"
+msgstr "Insert a Level Banner. It will be resized to 50x50"
+
+#: ../includes/wp_jscomposer_extended.php:172
+msgid "Seleccione Nivel"
+msgstr "Select Level"
+
+#: ../includes/wp_jscomposer_extended.php:173
+msgid "Seleccione Nivel a colocar en el item."
+msgstr "Select Level to place in the item."
+
+#: ../index.php:8
+msgid "Blog"
+msgstr "Blog"
+
+#: ../page-mi-cuenta.php:29 ../page-mi-cuenta.php:63
+msgid "Escritorio"
+msgstr "Dashboard"
+
+#: ../page-mi-cuenta.php:34 ../page-mi-cuenta.php:148
+msgid "Datos Personales"
+msgstr "Contact details"
+
+#: ../page-mi-cuenta.php:44 ../page-mi-cuenta.php:221
+msgid "Cursos Disponibles"
+msgstr "Courses Available"
+
+#: ../page-mi-cuenta.php:49 ../page-mi-cuenta.php:250
+msgid "Certificados"
+msgstr "Certificates"
+
+#: ../page-mi-cuenta.php:54
+msgid "Cerrar Sesión"
+msgstr "Log out"
+
+#: ../page-mi-cuenta.php:72
+msgid "Cursos Aprobados"
+msgstr "Courses Passed"
+
+#: ../page-mi-cuenta.php:83 ../page-mi-cuenta.php:269
+msgid "Imprimir Certificado"
+msgstr "Print Certificate"
+
+#: ../page-mi-cuenta.php:93
+msgid ""
+"Todavía no ha completado satisfactoriamente ninguno de los cursos asignados. "
+"Para comenzar, haga clic en \"Iniciar Certificación\""
+msgstr ""
+"You haven't yet satisfactorily completed any of the assigned courses. To "
+"begin, click on \"Start Certification\""
+
+#: ../page-mi-cuenta.php:96 ../page-mi-cuenta.php:105 ../page-mi-cuenta.php:240
+msgid "Iniciar Certificación"
+msgstr "Start Certification"
+
+#: ../page-mi-cuenta.php:102
+msgid ""
+"Los cursos que debe realizar han sido habilitados. Haga clic en \"Iniciar "
+"Certificación\" para comenzar"
+msgstr ""
+"The courses you must complete have been enabled. Click on \"Start "
+"Certification\" to begin"
+
+#: ../page-mi-cuenta.php:112
+msgid ""
+"En las próximas horas se le habilitará los cursos que debe realizar. Si "
+"pasadas 24 horas no se le han habilitado, por favor contáctenos en"
+msgstr ""
+"In the next few hours the courses you must complete will be enabled. If "
+"after 24 hours you have not been enabled, please contact us at"
+
+#: ../page-mi-cuenta.php:131
+msgid "Progreso de Certificación"
+msgstr "Certification Progress"
+
+#: ../page-mi-cuenta.php:151
+msgid ""
+"Asegúrese de tener sus datos correctos, ya que los certificados se generan "
+"digitalmente a partir de ellos."
+msgstr ""
+"Make sure you have your correct data, since the certificates are generated "
+"digitally from them."
+
+#: ../page-mi-cuenta.php:158 ../page-mi-cuenta.php:330
+msgid "Nombre:"
+msgstr "Name:"
+
+#: ../page-mi-cuenta.php:159
+msgid "Coloque su nombre"
+msgstr "Enter your first name"
+
+#: ../page-mi-cuenta.php:164 ../page-mi-cuenta.php:336
+msgid "Apellido:"
+msgstr "Surname:"
+
+#: ../page-mi-cuenta.php:165
+msgid "Coloque su apellido"
+msgstr "Enter your surname"
+
+#: ../page-mi-cuenta.php:170
+msgid "Empresa:"
+msgstr "Company:"
+
+#: ../page-mi-cuenta.php:171
+msgid "Coloque la empresa a la cual esta laborando"
+msgstr "Enter the company you are working for"
+
+#: ../page-mi-cuenta.php:177 ../page-mi-cuenta.php:215
+msgid "Guardar Cambios"
+msgstr "Save Changes"
+
+#: ../page-mi-cuenta.php:186
+msgid ""
+"Manténgase conectado con nosotros, mediante estas redes sociales podrás "
+"estar enterado de avances, promociones, nuevos cursos, etc."
+msgstr ""
+"Stay connected with us, through these social networks you can be aware of "
+"advances, promotions, new courses, etc."
+
+#: ../page-mi-cuenta.php:194
+msgid "Perfil de Facebook:"
+msgstr "Facebook Profile:"
+
+#: ../page-mi-cuenta.php:195
+msgid "E.G.: https://www.facebook.com/nombre-de-usuario/"
+msgstr "EG: https://www.facebook.com/nombre-de-usuario/"
+
+#: ../page-mi-cuenta.php:201
+msgid "Perfil de Twitter:"
+msgstr "Twitter profile:"
+
+#: ../page-mi-cuenta.php:202 ../page-mi-cuenta.php:209
+msgid "E.G.: @nombre-de-usuario"
+msgstr "EG: @ user-name"
+
+#: ../page-mi-cuenta.php:208
+msgid "Usuario de Instagram:"
+msgstr "Instagram user:"
+
+#: ../page-mi-cuenta.php:224
+msgid "Aquí tiene un listado de los cursos / niveles que tiene disponible"
+msgstr "Here is a list of the courses / levels you have available"
+
+#: ../page-mi-cuenta.php:253
+msgid ""
+"Aquí tiene un listado de los documentos digitales que usted ha generado "
+"durante el proceso de certificación"
+msgstr ""
+"Here is a list of the digital documents that you have generated during the "
+"certification process"
+
+#: ../page-mi-cuenta.php:325
+msgid "¿ No posee una cuenta? Registrese aquí"
+msgstr "Do not have an account? Register here"
+
+#: ../page-mi-cuenta.php:342
+msgid "Compañía:"
+msgstr "Company:"
+
+#: ../page-mi-cuenta.php:361
+msgid "Confirmar Contraseña:"
+msgstr "Confirm Password:"
+
+#: ../page-player.php:23
+msgid "Buscar video"
+msgstr "Search Video"
+
+#: ../page-player.php:48 ../page-reproductor.php:57 ../page-reproductor.php:105
+#: ../single-nivel.php:74
+msgid "Ver Video"
+msgstr "Watch Video"
+
+#: ../page-reproductor.php:31 ../page-reproductor.php:32
+msgid "Volver a Mi Cuenta"
+msgstr "Back to My Account"
+
+#: ../page-reproductor.php:138
+msgid "Bloqueado"
+msgstr "Locked"
+
+#: ../page-reproductor.php:141
+msgid "Deberá aprobar el curso anterior"
+msgstr "You must approve the previous course"
 
 #: ../post-formats/format-aside.php:12 ../post-formats/format-audio.php:11
-#: ../post-formats/format-chat.php:12 ../post-formats/format-gallery.php:11
+#: ../post-formats/format-chat.php:11 ../post-formats/format-gallery.php:11
 #: ../post-formats/format-image.php:11 ../post-formats/format-link.php:11
 #: ../post-formats/format-quote.php:11 ../post-formats/format-status.php:11
-#: ../post-formats/format-video.php:11 ../post-formats/format.php:12
+#: ../post-formats/format-video.php:11 ../post-formats/format.php:11
 msgid "Tags: "
 msgstr "Tags: "
 
 #: ../post-formats/format-aside.php:17 ../post-formats/format-audio.php:16
-#: ../post-formats/format-chat.php:17 ../post-formats/format-gallery.php:16
+#: ../post-formats/format-chat.php:16 ../post-formats/format-gallery.php:16
 #: ../post-formats/format-image.php:16 ../post-formats/format-link.php:16
 #: ../post-formats/format-quote.php:16 ../post-formats/format-status.php:16
-#: ../post-formats/format-video.php:16 ../post-formats/format.php:17
+#: ../post-formats/format-video.php:16 ../post-formats/format.php:16
 msgid "Pages:"
 msgstr "Pages:"
 
-#: ../search.php:5
+#: ../search.php:8
 #, php-format
 msgid "%s Search Results for "
 msgstr "%s Search Results for "
 
 #: ../searchform.php:3
 msgid "Buscar por Términos:"
-msgstr "Search Terms"
+msgstr "Search Terms:"
 
 #: ../searchform.php:6
 msgid "Buscar"
 msgstr "Buscar"
+
+#: ../single-nivel.php:22 ../taxonomy-nivel_cursos.php:18
+msgid "Iniciar Curso"
+msgstr "Start taking this Course"
+
+#: ../single-nivel.php:26
+msgid "El nivel posee"
+msgstr "This level has"
+
+#: ../single-nivel.php:27
+msgid "elementos"
+msgstr "items"
+
+#: ../single-nivel.php:42
+msgid "Descripción"
+msgstr "Description"
+
+#: ../single-nivel.php:55
+msgid "Descripción del curso"
+msgstr "Course description"
+
+#: ../single-quiz.php:24
+msgid "Iniciar Quiz"
+msgstr "Start Quiz"
+
+#: ../single-quiz.php:52
+msgid "Pregunta:"
+msgstr "Question:"
+
+#: ../taxonomy-nivel_cursos.php:33
+msgid "completados"
+msgstr "completed"
+
+#~ msgid "Main Sidebar"
+#~ msgstr "Main Sidebar"
+
+#~ msgid "Estos widgets seran vistos en posts y pages"
+#~ msgstr "These widgets will be seen in posts and pages"
+
+#~ msgid "Shop Sidebar"
+#~ msgstr "Shop Sidebar"
+
+#~ msgid "Gracias por crear con"
+#~ msgstr "Thank you for using"
+
+#~ msgid "Tema desarrollado por"
+#~ msgstr "Theme Developed By"
+
+#~ msgid "Agrega un Menu"
+#~ msgstr "Add a Menu"
+
+#~ msgid "año"
+#~ msgstr "year"
+
+#~ msgid "años"
+#~ msgstr "years"
+
+#~ msgid "mes"
+#~ msgstr "month"
+
+#~ msgid "meses"
+#~ msgstr "months"
+
+#~ msgid "semana"
+#~ msgstr "week"
+
+#~ msgid "semanas"
+#~ msgstr "weeks"
+
+#~ msgid "dia"
+#~ msgstr "day"
+
+#~ msgid "dias"
+#~ msgstr "days"
+
+#~ msgid "hora"
+#~ msgstr "hour"
+
+#~ msgid "horas"
+#~ msgstr "hours"
+
+#~ msgid "minuto"
+#~ msgstr "minute"
+
+#~ msgid "minutos"
+#~ msgstr "minutes"
+
+#~ msgid "segundo"
+#~ msgstr "second"
+
+#~ msgid "segundos"
+#~ msgstr "seconds"
+
+#~ msgid " un momento"
+#~ msgstr "a momento ago"
+
+#~ msgctxt "Post Type General Name"
+#~ msgid "Portafolios"
+#~ msgstr "Portfolios"
+
+#~ msgctxt "Post Type Singular Name"
+#~ msgid "Portafolio"
+#~ msgstr "Portfolio"
+
+#~ msgid "Portafolio"
+#~ msgstr "Portfolio"
+
+#~ msgid "Ver Item"
+#~ msgstr "View Item"
+
+#~ msgid "Ver Portafolio"
+#~ msgstr "View Portfolio"
+
+#~ msgid "Portafolio de Desarrollos"
+#~ msgstr "Development Portfolios"
+
+#~ msgid "Ultimas Entradas"
+#~ msgstr "Last Entries"
 
 #~ msgctxt "Post Type General Name"
 #~ msgid "Portafolio"
@@ -296,18 +1469,6 @@ msgstr "Buscar"
 #~ msgctxt "Post Type Singular Name"
 #~ msgid "Item"
 #~ msgstr "Add New Item"
-
-#~ msgid "Item Padre:"
-#~ msgstr "Parent item:"
-
-#~ msgid "Agregar Item"
-#~ msgstr "Add Item"
-
-#~ msgid "Agregar"
-#~ msgstr "Add New"
-
-#~ msgid "Buscar Item"
-#~ msgstr "Search Item"
 
 #~ msgid "No encontrado"
 #~ msgstr "Not found"
@@ -321,9 +1482,6 @@ msgstr "Buscar"
 #~ msgid "Trabajos realizados"
 #~ msgstr "Jobs performed"
 
-#~ msgid "Menu Header Principal"
-#~ msgstr "Main Menu Header"
-
 #~ msgid "Menu Footer"
 #~ msgstr "Menu Footer"
 
@@ -333,18 +1491,18 @@ msgstr "Buscar"
 #~ msgid "Widgets seran vistos en Tienda y Categorias de Producto"
 #~ msgstr "Widgets will be seen in shop and product categories"
 
-#~ msgid "Gracias por crear con "
-#~ msgstr "Thank you for creating with"
-
-#~ msgid "Tema desarrollado por "
-#~ msgstr "Theme Developed By"
-
 #~ msgid "Page %s"
 #~ msgstr "Page %s"
 
 #, fuzzy
-#~ msgid "<span id=\"footer-thankyou\">Gracias por crear con <a href=\"http://wordpress.org/\" >WordPress.</a> - Tema desarrollado por <a href=\"http://robertochoa.com.ve/\" >Robert Ochoa</a></span>"
-#~ msgstr "<span id=\"footer-thankyou\">Gracias por crear con <a href=\"http://wordpress.org/\">WordPress.</a> - Tema desarrollado por <a href=\"http://robertochoa.com.ve/\">Roberto Ochoa</a></span>"
+#~ msgid ""
+#~ "<span id=\"footer-thankyou\">Gracias por crear con <a href=\"http://"
+#~ "wordpress.org/\" >WordPress.</a> - Tema desarrollado por <a href=\"http://"
+#~ "robertochoa.com.ve/\" >Robert Ochoa</a></span>"
+#~ msgstr ""
+#~ "<span id=\"footer-thankyou\">Gracias por crear con <a href=\"http://"
+#~ "wordpress.org/\">WordPress.</a> - Tema desarrollado por <a href=\"http://"
+#~ "robertochoa.com.ve/\">Roberto Ochoa</a></span>"
 
 #~ msgid "Home"
 #~ msgstr "Inicio"
@@ -377,9 +1535,6 @@ msgstr "Buscar"
 
 #~ msgid "Edit Slide"
 #~ msgstr "Editar Diapositiva"
-
-#~ msgid "Update Slide"
-#~ msgstr "Actualizar Diapositiva"
 
 #~ msgid "View Slide"
 #~ msgstr "Ver Diapositiva"
@@ -427,9 +1582,6 @@ msgstr "Buscar"
 
 #~ msgid "Edit Service"
 #~ msgstr "Editar Servicio"
-
-#~ msgid "Update Service"
-#~ msgstr "Actualizar Servicio"
 
 #~ msgid "View Service"
 #~ msgstr "Ver Servicio"
@@ -501,9 +1653,6 @@ msgstr "Buscar"
 
 #~ msgid "About Us"
 #~ msgstr "¿Quiénes Somos?"
-
-#~ msgid "Blog"
-#~ msgstr "Blog"
 
 #~ msgid "Legal"
 #~ msgstr "Legal"

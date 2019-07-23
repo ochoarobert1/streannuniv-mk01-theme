@@ -308,7 +308,7 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <a class="lost" href="<?php echo wp_lostpassword_url(); ?>">
-                                                                <?php _e('¿Has perdido tu contraseña?'); ?></a>
+                                                                <?php _e('¿Has perdido tu contraseña?', 'streannuniv'); ?></a>
                                                         </div>
                                                     </div>
                                                     <div class="row align-items-center justify-content-end form-item">

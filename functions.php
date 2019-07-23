@@ -182,7 +182,6 @@ require_once('includes/wp_custom_theme_control.php');
 /* --------------------------------------------------------------
     ADD CUSTOM JS COMPOSER COMPONENTS
 -------------------------------------------------------------- */
-
 require_once('includes/wp_jscomposer_extended.php');
 
 /* --------------------------------------------------------------
