@@ -1,7 +1,8 @@
 <?php
-function streannuniv_load_js() {
+function streannuniv_load_js()
+{
     $version_remove = NULL;
-    if (!is_admin()){
+    if (!is_admin()) {
         if ($_SERVER['REMOTE_ADDR'] == '::1') {
 
             /*- MODERNIZR ON LOCAL  -*/
@@ -59,7 +60,6 @@ function streannuniv_load_js() {
             /*- AOS ON LOCAL -*/
             wp_register_script('aos-js', get_template_directory_uri() . '/js/aos.js', array('jquery'), '3.0.0', true);
             wp_enqueue_script('aos-js');
-
         } else {
 
             /*- MODERNIZR -*/
@@ -117,29 +117,31 @@ function streannuniv_load_js() {
             /*- AOS -*/
             wp_register_script('aos-js', 'https://unpkg.com/aos@next/dist/aos.js', array('jquery'), '3.0.0', true);
             wp_enqueue_script('aos-js');
-
         }
 
-
+        /*- STREANN OTT -*/
+        wp_register_script('streannott-js', 'https://streann-static.s3.amazonaws.com/inside-ad-ima-2/player2.js', array('jquery'), NULL, true);
+        wp_enqueue_script('streannott-js');
 
         /*- MAIN FUNCTIONS -*/
         wp_register_script('main-functions', get_template_directory_uri() . '/js/functions.js', array('jquery'), $version_remove, true);
         wp_enqueue_script('main-functions');
 
-        wp_localize_script( 'main-functions', 'ajax_object', array(
-            'ajaxurl' => admin_url( 'admin-ajax.php' ),
+        wp_localize_script('main-functions', 'ajax_object', array(
+            'ajaxurl' => admin_url('admin-ajax.php'),
             'loadingmessage' => __('Validando tus datos, por favor espere...', 'streannuniv')
         ));
 
-        if (is_page('mi-cuenta')) {
+        $myaccount_page_id = get_option('streann_myaccount_page_id');
+        if (is_page($myaccount_page_id)) {
             wp_register_script('recaptcha-js', 'https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit', array('jquery'), '3.0.0', true);
             wp_enqueue_script('recaptcha-js');
 
             wp_register_script('user-functions', get_template_directory_uri() . '/js/user-functions.js', array('jquery', 'recaptcha-js'), $version_remove, true);
             wp_enqueue_script('user-functions');
 
-            wp_localize_script( 'user-functions', 'ajax_object', array(
-                'ajaxurl' => admin_url( 'admin-ajax.php' ),
+            wp_localize_script('user-functions', 'ajax_object', array(
+                'ajaxurl' => admin_url('admin-ajax.php'),
                 'loadingmessage' => __('Actualizando tus datos, por favor espere...', 'streannuniv')
             ));
         }
@@ -151,22 +153,19 @@ function streannuniv_load_js() {
             wp_register_script('video-functions', get_template_directory_uri() . '/js/video-functions.js', array('jquery', 'vimeo-js', 'main-functions'), $version_remove, true);
             wp_enqueue_script('video-functions');
 
-            wp_localize_script( 'video-functions', 'ajax_object', array(
-                'ajaxurl' => admin_url( 'admin-ajax.php' )
+            wp_localize_script('video-functions', 'ajax_object', array(
+                'ajaxurl' => admin_url('admin-ajax.php')
             ));
-
         }
 
         if (is_singular('quiz')) {
             wp_register_script('quiz-functions', get_template_directory_uri() . '/js/quiz-functions.js', array('jquery', 'main-functions'), $version_remove, true);
             wp_enqueue_script('quiz-functions');
 
-            wp_localize_script( 'quiz-functions', 'ajax_object', array(
-                'ajaxurl' => admin_url( 'admin-ajax.php' )
+            wp_localize_script('quiz-functions', 'ajax_object', array(
+                'ajaxurl' => admin_url('admin-ajax.php')
             ));
-
         }
-
     }
 }
 

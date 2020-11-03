@@ -1,6 +1,5 @@
-<?php $levelid = $_GET['levelid']; ?>
-<?php $userid = $_GET['user_id']?>
-<?php echo get_certificate_pdf($levelid, $userid); ?>
+<?php $levelid = $_GET['course_id']; ?>
+<?php echo streann_admin_report_course_handler($levelid); ?>
 <?php
 /* --------------------------------------------------------------
 /* CUSTOM REDIRECT IF NOT LOGGED IN

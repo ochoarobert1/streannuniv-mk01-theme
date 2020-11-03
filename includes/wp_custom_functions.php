@@ -150,7 +150,7 @@ function get_authorized_levels() {
             }
         }
         if (empty($authorized_levels)) {
-            $level_array = new WP_Query(array('post_type' => 'nivel', 'posts_per_page' => 1, 'order' => 'ASC', 'orderby' => 'date'));
+            $level_array = new WP_Query(array('post_type' => 'nivel', 'posts_per_page' => -1, 'order' => 'ASC', 'orderby' => 'date'));
             while ($level_array->have_posts()) : $level_array->the_post();
             $authorized_levels[] = get_the_ID();
             endwhile;

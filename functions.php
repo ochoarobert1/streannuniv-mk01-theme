@@ -286,59 +286,63 @@ function get_random_unique_username( $prefix = '' ){
 }
 
 function ajax_page_register(){
-    if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])){
-        $secret = '6LdcX3wUAAAAAB-0GURs6V25AXpo2pZxXaX0LOE-';
-        $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST["g-recaptcha-response"] .'&remoteip='.$_SERVER["REMOTE_ADDR"]);
-        $responseData = json_decode($verifyResponse);
-        if($responseData->success == true) {
-            $authorized_levels = array();
-            $level_array = array();
-            $level_array = new WP_Query(array('post_type' => 'nivel', 'posts_per_page' => 1, 'order' => 'ASC', 'orderby' => 'date'));
-            while ($level_array->have_posts()) : $level_array->the_post();
-            $authorized_levels[] = get_the_ID();
-            endwhile;
-            // Nonce is checked, get the POST data and sign user on
-            $info = array();
-            $info['user_firstname'] = $_POST['firstname'];
-            $info['user_lastname'] = $_POST['lastname'];
-            $info['business'] = $_POST['company'];
-            $info['user_email'] = $_POST['username'];
-            $info['user_password'] = $_POST['password'];
-            $hash = wp_hash_password( $info['user_password'] );
+    if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+        error_reporting( E_ALL );
+        ini_set( 'display_errors', 1 );
+    }
+    //    if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])){
+    //        $secret = '6LdcX3wUAAAAAB-0GURs6V25AXpo2pZxXaX0LOE-';
+    //        $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST["g-recaptcha-response"] .'&remoteip='.$_SERVER["REMOTE_ADDR"]);
+    //        $responseData = json_decode($verifyResponse);
+    //        if($responseData->success == true) {
+    $authorized_levels = array();
+    $level_array = array();
+    $level_array = new WP_Query(array('post_type' => 'nivel', 'posts_per_page' => -1, 'order' => 'ASC', 'orderby' => 'date'));
+    while ($level_array->have_posts()) : $level_array->the_post();
+    $authorized_levels[] = get_the_ID();
+    endwhile;
+    // Nonce is checked, get the POST data and sign user on
+    $info = array();
+    $info['user_firstname'] = $_POST['firstname'];
+    $info['user_lastname'] = $_POST['lastname'];
+    $info['business'] = $_POST['company'];
+    $info['user_email'] = $_POST['username'];
+    $info['user_password'] = $_POST['password'];
+    $hash = wp_hash_password( $info['user_password'] );
 
-            $info['username'] = get_random_unique_username( "user_" );
+    $info['username'] = get_random_unique_username( "user_" );
 
-            $info_login = array();
-            $info_login['user_login'] = $_POST['username'];
-            $info_login['user_password'] = $_POST['password'];
-            $info_login['remember'] = true;
+    $info_login = array();
+    $info_login['user_login'] = $_POST['username'];
+    $info_login['user_password'] = $_POST['password'];
+    $info_login['remember'] = true;
 
-            if ( email_exists($info['user_email']) == false ) {
-                $user_id = wp_create_user( $info['username'], $info['user_password'], $info['user_email']);
-                update_user_meta($user_id, 'first_name', $info['user_firstname']);
-                update_user_meta($user_id, 'last_name', $info['user_lastname']);
-                update_user_meta($user_id, 'business', $info['business']);
-                update_user_meta($user_id, 'user_altered', 0);
-                update_user_meta( $user_id, 'course_selection', $authorized_levels );
+    if ( email_exists($info['user_email']) == false ) {
+        $user_id = wp_create_user( $info['username'], $info['user_password'], $info['user_email']);
+        update_user_meta($user_id, 'first_name', $info['user_firstname']);
+        update_user_meta($user_id, 'last_name', $info['user_lastname']);
+        update_user_meta($user_id, 'business', $info['business']);
+        update_user_meta($user_id, 'user_altered', 0);
+        update_user_meta( $user_id, 'course_selection', $authorized_levels );
 
-                $user_signon = wp_signon( $info_login, false );
-                if ( is_wp_error($user_signon) ){
-                    echo json_encode(array('registered'=>false, 'message'=> '<strong>' . __('Error:', 'streannuniv') . '</strong> ' . __('Error. No se ha registrado el usuario', 'streannuniv')));
-                } else {
-                    echo json_encode(array('registered'=>true, 'url' => wp_get_referer(), 'message'=> '<strong>' . __('Éxito:', 'streannuniv') . '</strong> ' . __('Bienvenido, Iniciaremos su sesión automáticamente.', 'streannuniv')));
-                }
-            } else {
-                echo json_encode(array('registered'=>false, 'message'=> '<strong>' . __('Error:', 'streannuniv') . '</strong> ' . __('El correo esta registrado en nuestros sistemas. ¿Ha olvidado su password?', 'streannuniv')));
-            }
+        $user_signon = wp_signon( $info_login, false );
+        if ( is_wp_error($user_signon) ){
+            echo json_encode(array('registered'=>false, 'message'=> '<strong>' . __('Error:', 'streannuniv') . '</strong> ' . __('Error. No se ha registrado el usuario', 'streannuniv')));
         } else {
-            echo json_encode(array('registered'=>false, 'message'=> '<strong>' . __('Error:', 'streannuniv') . '</strong> ' . __('Ha fallado la verificación contra bots.', 'streannuniv')));
+            echo json_encode(array('registered'=>true, 'url' => wp_get_referer(), 'message'=> '<strong>' . __('Éxito:', 'streannuniv') . '</strong> ' . __('Bienvenido, Iniciaremos su sesión automáticamente.', 'streannuniv')));
         }
     } else {
-        echo json_encode(array('registered'=>false, 'message'=> '<strong>' . __('Error:', 'streannuniv') . '</strong> ' . __('Ha fallado la verificación contra bots.', 'streannuniv')));
+        echo json_encode(array('registered'=>false, 'message'=> '<strong>' . __('Error:', 'streannuniv') . '</strong> ' . __('El correo esta registrado en nuestros sistemas. ¿Ha olvidado su password?', 'streannuniv')));
     }
+    //        } else {
+    //            echo json_encode(array('registered'=>false, 'message'=> '<strong>' . __('Error:', 'streannuniv') . '</strong> ' . __('Ha fallado la verificación contra bots.', 'streannuniv')));
+    //        }
+    //    } else {
+    //        echo json_encode(array('registered'=>false, 'message'=> '<strong>' . __('Error:', 'streannuniv') . '</strong> ' . __('Ha fallado la verificación contra bots.', 'streannuniv')));
+    //    }
 
 
-    die();
+    wp_die();
 }
 
 add_action('wp_ajax_nopriv_ajaxpageregister', 'ajax_page_register' );

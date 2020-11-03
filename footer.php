@@ -1,3 +1,9 @@
+<?php 
+$myaccount_page_id = get_option('streann_myaccount_page_id');
+if ( $myaccount_page_id ) {
+  $myaccount_page_url = get_permalink( $myaccount_page_id );
+}
+?>
 <footer class="container-fluid p-0" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
     <div class="row no-gutters">
         <div class="the-footer col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -89,13 +95,13 @@
                             <small class="danger d-none"></small>
                         </div>
                         <div class="col-12">
-                            <a class="lost" href="<?php echo wp_lostpassword_url(); ?>"><?php _e('¿Has perdido tu contraseña?'); ?></a>
+                            <a class="lost" href="<?php echo wp_lostpassword_url(); ?>"><?php _e('¿Has perdido tu contraseña?', 'streannuniv'); ?></a>
                         </div>
                     </div>
                     <div class="row align-items-center justify-content-end form-item">
                         <div class="col-12 status"></div>
                         <div class="col-6">
-                            <a class="btn btn-md btn-register" href="<?php echo home_url('/mi-cuenta'); ?>"><?php _e('Registrarse', 'streannuniv'); ?></a>
+                            <a class="btn btn-md btn-register" href="<?php echo $myaccount_page_url; ?>"><?php _e('Registrarse', 'streannuniv'); ?></a>
                         </div>
                         <div class="col-6">
                             <button class="btn btn-md btn-login"><?php _e('Ingresar', 'streannuniv'); ?></button>

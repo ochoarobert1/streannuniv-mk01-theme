@@ -2,8 +2,12 @@
 /* --------------------------------------------------------------
 /* CUSTOM REDIRECT IF NOT LOGGED IN
 -------------------------------------------------------------- */
+$myaccount_page_id = get_option('streann_myaccount_page_id');
+if ( $myaccount_page_id ) {
+  $myaccount_page_url = get_permalink( $myaccount_page_id );
+}
 if (!is_user_logged_in()) {
-    wp_redirect( home_url('/mi-cuenta') );
+    wp_redirect( $myaccount_page_url );
     exit;
 }
 ?>

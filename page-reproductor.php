@@ -2,8 +2,12 @@
 /* --------------------------------------------------------------
 /* CUSTOM REDIRECT IF NOT LOGGED IN
 -------------------------------------------------------------- */
+$myaccount_page_id = get_option('streann_myaccount_page_id');
+if ( $myaccount_page_id ) {
+  $myaccount_page_url = get_permalink( $myaccount_page_id );
+}
 if (!is_user_logged_in()) {
-    wp_redirect( home_url('/mi-cuenta') );
+    wp_redirect( $myaccount_page_url );
     exit;
 }
 ?>
@@ -14,6 +18,7 @@ if (!is_user_logged_in()) {
 <?php $approved_levels = get_approved_levels(); ?>
 <?php $reprobed_times = get_user_meta(get_current_user_id(), 'quiz_reprobred_times', true); ?>
 <?php $unlocked_quizzes = (array)get_user_meta(get_current_user_id(), 'quiz_unlocked_level', true);
+
 foreach ($unlocked_quizzes as $key => $value) {
     if (empty($value)) {
         unset($unlocked_quizzes[$key]);
@@ -28,7 +33,7 @@ if (empty($unlocked_quizzes)) { $unlocked_quizzes = array(); } ?>
                     <div class="video-player-side-content col-12" data-us="<?php echo get_current_user_id(); ?>">
                         <div class="temp-video" data-currentlast=""></div>
                         <img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="Streann University" class="img-fluid" />
-                        <a href="<?php echo home_url('/mi-cuenta') ?>" title="<?php _e('Volver a Mi Cuenta', 'streannuniv'); ?>" class="btn btn-md btn-back">
+                        <a href="<?php echo $myaccount_page_url; ?>" title="<?php _e('Volver a Mi Cuenta', 'streannuniv'); ?>" class="btn btn-md btn-back">
                             <?php _e('Volver a Mi Cuenta', 'streannuniv'); ?></a>
                         <h3 class="main-title">
                             <?php _e('Contenido', 'streannuniv'); ?>
@@ -67,9 +72,9 @@ if (empty($unlocked_quizzes)) { $unlocked_quizzes = array(); } ?>
                             <div id="quiz-<?php echo get_the_ID(); ?>" class="video-player-quiz-item" data-count="<?php echo $count_cursos; ?>" data-video="<?php echo $last_video; ?>">
                                 <?php  if (($reprobed_times < 3) && (in_array($level_item->ID, $unlocked_quizzes))) { ?>
                                 <div class="wrapper-lkd-link" style="display: none;"><i class="fa fa-lock"></i></div>
-                                <?php } else { ?>
+                                <?php } else { /*?>
                                 <div class="wrapper-lkd-link"><i class="fa fa-lock"></i></div>
-                                <?php } ?>
+                                <?php */ } ?>
                                 <a href="<?php the_permalink(); ?>"><i class="fa fa-file-text" aria-hidden="true"></i>
                                     <?php the_title(); ?></a>
 
@@ -115,9 +120,9 @@ if (empty($unlocked_quizzes)) { $unlocked_quizzes = array(); } ?>
                             <div id="quiz-<?php echo get_the_ID(); ?>" class="video-player-quiz-item" data-count="<?php echo $count_cursos; ?>" data-video="<?php echo $last_video; ?>">
                                 <?php  if (($reprobed_times < 3) && (in_array($level_item->ID, $unlocked_quizzes))) { ?>
                                 <div class="wrapper-lkd-link" style="display: none;"><i class="fa fa-lock"></i></div>
-                                <?php } else { ?>
+                                <?php } else { /* ?>
                                 <div class="wrapper-lkd-link"><i class="fa fa-lock"></i></div>
-                                <?php } ?>
+                                <?php */ } ?>
                                 <a href="<?php the_permalink(); ?>"><i class="fa fa-file-text" aria-hidden="true"></i>
                                     <?php the_title(); ?></a>
 
@@ -135,7 +140,7 @@ if (empty($unlocked_quizzes)) { $unlocked_quizzes = array(); } ?>
                         <div class="video-player-level-container">
                             <h3>
                                 <?php echo $level_item->post_title; ?> <span>
-                                <?php _e('Bloqueado', 'streannuniv'); ?></span>
+                                    <?php _e('Bloqueado', 'streannuniv'); ?></span>
                             </h3>
                             <small>
                                 <?php _e('Deberá aprobar el curso anterior', 'streannuniv'); ?></small>

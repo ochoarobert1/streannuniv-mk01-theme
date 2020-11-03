@@ -1,5 +1,8 @@
 /* CUSTOM WORDPRESS ADMIN OVERRIDES */
-
+/* --------------------------------------------------------------
+/* MAIN LESS MIXINS AND FUNCTIONS - LESSHAT
+-------------------------------------------------------------- */
+@import 'less/lesshat.less';
 /* --------------------------------------------------------------
 VARIABLES
 -------------------------------------------------------------- */
@@ -251,6 +254,9 @@ CUSTOM DASHBOARD
         margin: 2rem;
 
         & h3 {
+            .display(flex);
+            align-items: center;
+            justify-content: space-between;
             margin: 0;
             margin-bottom: 1rem;
             border-bottom: 1px solid #d2d2d2;
@@ -258,6 +264,10 @@ CUSTOM DASHBOARD
             font-weight: 400;
             text-transform: uppercase;
             font-size: .9rem;
+
+            & span {
+                font-weight: 800;
+            }
         }
 
         & table {
@@ -280,6 +290,64 @@ CUSTOM DASHBOARD
                     background: #efefef;
                 }
             }
+        }
+    }
+
+    & .admin-custom-area-button {
+        cursor: pointer;
+        font-weight: 300;
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    & .custom-admin-table {
+        width: 100%;
+    }
+
+    & .admin-custom-area-collapse {
+        height: 0;
+        overflow: hidden;
+        .transition(all .3s ease-in-out);
+    }
+
+    & .admin-custom-area-collapse-collapsed {
+        height: auto;
+    }
+
+    & .admin_report {
+        text-decoration: none;
+        margin: 1rem auto;
+        max-width: 100px;
+        display: block;
+        margin-right: 0;
+        margin-bottom: 0;
+        background: @orange;
+        border: 2px solid @orange;
+        color: @white;
+        padding: 0.7rem 1.5rem;
+        .transition(all .3s ease-in-out);
+
+        &:hover {
+            background: none transparent;
+            color: @black;
+        }
+
+    }
+
+    & .admin-custom-area-item-buttons button {
+        margin: 1rem auto;
+        display: block;
+        margin-right: 0;
+        margin-bottom: 0;
+        background: @orange;
+        border: 2px solid @orange;
+        color: @white;
+        padding: 0.7rem 1.5rem;
+        .transition(all .3s ease-in-out);
+
+        &:hover {
+            background: none transparent;
+            color: @black;
         }
     }
 }

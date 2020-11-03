@@ -1,3 +1,12 @@
+<?php
+/**
+* Template Name: Template - Mi Cuenta
+*
+* @package streannuniv
+* @subpackage streannuniv-mk01-theme
+* @since Mk. 1.0
+*/
+?>
 <?php get_header(); ?>
 <?php the_post(); ?>
 <main class="container-fluid p-0" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
@@ -278,14 +287,14 @@
 
                             </div>
                             <?php } else { ?>
-                            <div class="my-account-login-container col-12">
+                            <div class="my-account-login-container col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="row align-items-center justify-content-center">
-                                    <div class="my-account-login-content col-10">
+                                    <div class="my-account-login-content col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
                                         <div class="row align-items-center justify-content-center">
-                                            <div class="form-login-image col-5">
+                                            <div class="form-login-image col-xl-5 col-lg-5 col-md-5 col-sm-12 col-12">
                                                 <img src="<?php echo get_template_directory_uri(); ?>/images/account-login.png" alt="Login" class="img-fluid" />
                                             </div>
-                                            <div class="form-login-container col-7">
+                                            <div class="form-login-container col-xl-7 col-lg-7 col-md-7 col-sm-12 col-12">
                                                 <h4>
                                                     <?php _e('Iniciar Sesión', 'streannuniv'); ?>
                                                 </h4>
@@ -296,30 +305,30 @@
                                                                 <?php _e('Ingresa con tus datos y empieza a aprender mediante nuestros cursos', 'streannuniv'); ?>
                                                             </p>
                                                         </div>
-                                                        <div class="col-12">
+                                                        <div class=" col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                             <input type="text" id="username-page" name="username" class="form-control" placeholder="<?php _e('Correo electrónico:', 'streannuniv'); ?>" autocomplete="username" />
                                                             <small class="danger d-none"></small>
                                                         </div>
                                                     </div>
                                                     <div class="row align-items-center form-item">
-                                                        <div class="col-12">
+                                                        <div class=" col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                             <input type="password" id="password-page" name="password" class="form-control" placeholder="<?php _e('Contraseña:', 'streannuniv'); ?>" autocomplete="current-password" />
                                                             <small class="danger d-none"></small>
                                                         </div>
-                                                        <div class="col-12">
+                                                        <div class=" col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                             <a class="lost" href="<?php echo wp_lostpassword_url(); ?>">
                                                                 <?php _e('¿Has perdido tu contraseña?', 'streannuniv'); ?></a>
                                                         </div>
                                                     </div>
                                                     <div class="row align-items-center justify-content-end form-item">
-                                                        <div class="col-12 status"></div>
-                                                        <div class="col-12">
+                                                        <div class=" col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 status"></div>
+                                                        <div class=" col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                             <button class="btn btn-md btn-login">
                                                                 <?php _e('Ingresar', 'streannuniv'); ?></button>
                                                         </div>
                                                     </div>
                                                 </form>
-                                                <div class="register-container col-12">
+                                                <div class="register-container  col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                     <hr>
                                                     <h4>
                                                         <?php _e('¿ No posee una cuenta? Registrese aquí', 'streannuniv'); ?>
